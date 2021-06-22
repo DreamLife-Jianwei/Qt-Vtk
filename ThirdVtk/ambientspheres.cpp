@@ -109,6 +109,7 @@ AmbientSpheres::AmbientSpheres(QWidget *parent) :QWidget(parent),ui(new Ui::Ambi
                                                             //设置灯光锥角SetConeAngle()
                                                             //选择设置平行光或者聚光PositionalOff/On()
     renderer->AddLight(light);
+    //GetActiveCamera()获取vtkRenderer里的默认相机
     renderer->GetActiveCamera()->SetFocalPoint(0,0,0);      //设置相机焦点
     renderer->GetActiveCamera()->SetPosition(0,0,1);        //设置相机位置
     renderer->GetActiveCamera()->SetViewUp(0,1,0);          //设置图像正方向

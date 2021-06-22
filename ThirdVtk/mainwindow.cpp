@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabWidget_Main->tabBar()->hide();
     mAmbintSpheres = new AmbientSpheres(ui->tab_ambientSpheres);
     mAmbintSpheres->resize(ui->tab_ambientSpheres->size());
+    this->setWindowTitle("Qt&Vtk");
     this->showMaximized();
 
 }
