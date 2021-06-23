@@ -33,7 +33,14 @@ private:
 
     vtkSmartPointer<vtkPolyDataMapper> sphereMapper = nullptr;
 
-    vtkSmartPointer<vtkActor> sphere1 = nullptr,sphere2 = nullptr,sphere3 = nullptr,sphere4 = nullptr,sphere5 = nullptr,sphere6 = nullptr,sphere7 = nullptr,sphere8 = nullptr;
+    vtkSmartPointer<vtkActor>   sphere1 = nullptr,
+                                sphere2 = nullptr,
+                                sphere3 = nullptr,
+                                sphere4 = nullptr,
+                                sphere5 = nullptr,
+                                sphere6 = nullptr,
+                                sphere7 = nullptr,
+                                sphere8 = nullptr;
 
     vtkSmartPointer<vtkRenderer> renderer = nullptr;
 

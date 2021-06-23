@@ -18,7 +18,7 @@ AmbientSpheres::AmbientSpheres(QWidget *parent) :QWidget(parent),ui(new Ui::Ambi
     sphere->SetPhiResolution(50);
     //创建一个映射器
     sphereMapper = vtkSmartPointer<vtkPolyDataMapper>::New();
-    sphereMapper->SetInputConnection(sphere->GetOutputPort());
+    sphereMapper->SetInputConnection(sphere->GetOutputPort());          //把球体的输出接口链接到映射器的输入接口
     //创建8个小球
     sphere1 = vtkSmartPointer<vtkActor>::New();
     sphere2 = vtkSmartPointer<vtkActor>::New();
