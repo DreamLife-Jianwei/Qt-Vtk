@@ -9,16 +9,18 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabWidget_Main->tabBar()->hide();
     this->setWindowTitle("Qt&Vtk");
     mAmbintSpheres = new AmbientSpheres(ui->tab_ambientSpheres);
-    mAmbintSpheres->resize(ui->tab_ambientSpheres->size());
+    mAmbintSpheres->resize(1366,768);
 
     mArrays = new MArrays(ui->tab_Arrays);
-    mArrays->resize(ui->tab_Arrays->size());
+    mArrays->resize(1366,768);
+
+    this->resize(1366,768);
 
 
 
 
 
-    this->showMaximized();                  //这句话不要写到前面，不然你得知道怎么死的
+//    this->showMaximized();                  //这句话不要写到前面，不然你得知道怎么死的
 }
 
 MainWindow::~MainWindow()

@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QResizeEvent>
+#include <QTabBar>
 #include "ambientspheres.h"
 #include "marrays.h"
 namespace Ui {
