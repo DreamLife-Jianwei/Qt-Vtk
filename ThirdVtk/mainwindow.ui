@@ -18,14 +18,14 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget_Main">
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_ambientSpheres">
        <attribute name="title">
         <string>Tab 1</string>
        </attribute>
       </widget>
-      <widget class="QWidget" name="tab_2">
+      <widget class="QWidget" name="tab_Arrays">
        <attribute name="title">
         <string>Tab 2</string>
        </attribute>
@@ -40,7 +40,7 @@
      <x>0</x>
      <y>0</y>
      <width>1366</width>
-     <height>22</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -48,6 +48,7 @@
      <string>项目选择</string>
     </property>
     <addaction name="actionAmbientSpheres"/>
+    <addaction name="actionArrays"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -63,6 +64,11 @@
   <action name="actionAmbientSpheres">
    <property name="text">
     <string>AmbientSpheres</string>
+   </property>
+  </action>
+  <action name="actionArrays">
+   <property name="text">
+    <string>Arrays</string>
    </property>
   </action>
  </widget>

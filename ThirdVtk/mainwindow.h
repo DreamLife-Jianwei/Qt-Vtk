@@ -3,8 +3,8 @@
 
 #include <QMainWindow>
 #include <QResizeEvent>
-#include <ambientspheres.h>
-
+#include "ambientspheres.h"
+#include "marrays.h"
 namespace Ui {
 class MainWindow;
 }
@@ -22,9 +22,12 @@ public:
 private slots:
     void on_actionAmbientSpheres_triggered();
 
+    void on_actionArrays_triggered();
+
 private:
     Ui::MainWindow *ui;
     AmbientSpheres *mAmbintSpheres = nullptr;
+    MArrays *mArrays = nullptr;
 };
 
 #endif // MAINWINDOW_H

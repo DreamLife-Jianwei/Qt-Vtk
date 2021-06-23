@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AmbientSpheres</class>
- <widget class="QWidget" name="AmbientSpheres">
+ <class>MArrays</class>
+ <widget class="QWidget" name="MArrays">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1366</width>
-    <height>768</height>
+    <width>698</width>
+    <height>564</height>
    </rect>
   </property>
   <property name="windowTitle">
