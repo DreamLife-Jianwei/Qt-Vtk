@@ -7,6 +7,7 @@
 #include "ExampleOrg/ambientspheres.h"
 #include "ExampleOrg/marrays.h"
 #include "ExampleOrg/cone.h"
+#include "ExampleOrg/cone2.h"
 namespace Ui {
 class MainWindow;
 }
@@ -28,11 +29,14 @@ private slots:
 
     void on_actionCone_triggered();
 
+    void on_actionCone2_triggered();
+
 private:
     Ui::MainWindow *ui;
     AmbientSpheres *mAmbintSpheres = nullptr;
     MArrays *mArrays = nullptr;
     Cone *mCone = nullptr;
+    Cone2 *mCone2 = nullptr;
 };
 
 #endif // MAINWINDOW_H

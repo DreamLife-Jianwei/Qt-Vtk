@@ -24,6 +24,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
+    ExampleOrg/cone2.cpp \
         mainwindow.cpp \
     ExampleOrg/ambientspheres.cpp \
     ExampleOrg/marrays.cpp \
@@ -32,12 +33,14 @@ SOURCES += main.cpp\
 
 HEADERS  += mainwindow.h \
     ExampleOrg/ambientspheres.h \
+    ExampleOrg/cone2.h \
     ExampleOrg/marrays.h \
     ExampleOrg/cone.h
 
 
 FORMS    += mainwindow.ui \
     ExampleOrg/ambientspheres.ui \
+    ExampleOrg/cone2.ui \
     ExampleOrg/marrays.ui \
     ExampleOrg/cone.ui
 

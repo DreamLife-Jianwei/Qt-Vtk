@@ -1,12 +1,11 @@
-#include "cone.h"
-#include "ui_cone.h"
+#include "cone2.h"
+#include "ui_cone2.h"
 
-Cone::Cone(QWidget *parent) :
+Cone2::Cone2(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Cone)
+    ui(new Ui::Cone2)
 {
     ui->setupUi(this);
-
     cone = vtkConeSource::New();    //新建对象
 
     cone->SetHeight(3.0);           //设置高度
@@ -23,6 +22,9 @@ Cone::Cone(QWidget *parent) :
     coneRender = vtkRenderer::New();
     coneRender->AddActor(coneActor);
     coneRender->SetBackground(0.1,0.2,0.3);
+
+    coneRender->AddObserver(vtkCommand::StartEvent,vtkMyCallback::New());
+
     //获取渲染窗口
     ui->widget->GetRenderWindow()->AddRenderer(coneRender);
 
@@ -39,11 +41,22 @@ Cone::Cone(QWidget *parent) :
     });
 
     rotationTimer->start(25);
-
 }
 
-Cone::~Cone()
+Cone2::~Cone2()
 {
     rotationTimer->stop();
     delete ui;
+}
+
+void Cone2::outputMessage(double temp)
+{
+
+}
+
+void vtkMyCallback::Execute(vtkObject *caller, unsigned long, void *)
+{
+    vtkRenderer *renderer = reinterpret_cast<vtkRenderer*>(caller);
+    qDebug() << "dsd";
+
 }
