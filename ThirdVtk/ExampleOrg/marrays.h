@@ -34,15 +34,15 @@ public:
 private:
     Ui::MArrays *ui;
 
-    vtkNew<vtkNamedColors> colors;
-    vtkNew<vtkDoubleArray> pcoords;
+    vtkNew<vtkNamedColors> colors;              //新建颜色对象
+    vtkNew<vtkDoubleArray> pcoords;             //新建Double数组
 
     std::array<std::array<double,3>,4> pts = {{{{0.0, 0.0, 0.0}},
                                                {{0.0, 1.0, 0.0}},
                                                {{1.0, 0.0, 0.0}},
-                                               {{1.0, 1.0, 0.0}}}};
+                                               {{1.0, 1.0, 0.0}}}};     //新建Double 二维数组
 
-    vtkNew<vtkPoints> points;
+    vtkNew<vtkPoints> points;                   //新建坐标点
 
     vtkNew<vtkCellArray> strips;
 

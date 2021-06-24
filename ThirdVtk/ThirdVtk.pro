@@ -25,16 +25,19 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    ambientspheres.cpp \
-    marrays.cpp
+    ExampleOrg/ambientspheres.cpp \
+    ExampleOrg/marrays.cpp
+
 
 HEADERS  += mainwindow.h \
-    ambientspheres.h \
-    marrays.h
+    ExampleOrg/ambientspheres.h \
+    ExampleOrg/marrays.h
+
 
 FORMS    += mainwindow.ui \
-    ambientspheres.ui \
-    marrays.ui
+    ExampleOrg/ambientspheres.ui \
+    ExampleOrg/marrays.ui
+
 
 INCLUDEPATH += ./Vtk/include/vtk-8.2
 

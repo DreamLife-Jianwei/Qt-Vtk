@@ -6,14 +6,15 @@ MArrays::MArrays(QWidget *parent) :
     ui(new Ui::MArrays)
 {
     ui->setupUi(this);
-    pcoords->SetNumberOfComponents(3);
-    pcoords->SetNumberOfTuples(4);
 
-    for (auto i = 0ul;i<pts.size();++i) {
+    pcoords->SetNumberOfComponents(3);          //实例中说是设置其组件数为3，默认为1，这里还不明白
+    pcoords->SetNumberOfTuples(4);              //设置pcoords可以容纳4个Tuples数据
+
+    for (auto i = 0ul;i<pts.size();++i) {       //把数据加进去
         pcoords->SetTuple(i,pts[i].data());
     }
 
-    points->SetData(pcoords);
+    points->SetData(pcoords);                   //我理解就是数据放进这个点数组里面
 
     strips->InsertNextCell(4);
     strips->InsertCellPoint(0);

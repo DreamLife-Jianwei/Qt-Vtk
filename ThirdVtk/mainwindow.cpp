@@ -7,13 +7,10 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->tabWidget_Main->tabBar()->hide();
+    ui->tabWidget_Main->setCurrentIndex(0);
     this->setWindowTitle("Qt&Vtk");
     mAmbintSpheres = new AmbientSpheres(ui->tab_ambientSpheres);
-    mAmbintSpheres->resize(1366,768);
-
     mArrays = new MArrays(ui->tab_Arrays);
-    mArrays->resize(1366,768);
-
     this->resize(1366,768);
 
 

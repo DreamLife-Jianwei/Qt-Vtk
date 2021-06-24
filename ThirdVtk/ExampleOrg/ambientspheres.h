@@ -2,6 +2,7 @@
 #define AMBIENTSPHERES_H
 
 #include <QWidget>
+
 #include "QVTKOpenGLWidget.h"               //新版本，旧版QVTKWidget
 #include "vtkAutoInit.h"
 #include "vtkSmartPointer.h"
@@ -25,6 +26,8 @@ class AmbientSpheres : public QWidget
 public:
     explicit AmbientSpheres(QWidget *parent = 0);
     ~AmbientSpheres();
+
+
 
 private:
     Ui::AmbientSpheres *ui;

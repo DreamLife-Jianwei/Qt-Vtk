@@ -4,8 +4,8 @@
 #include <QMainWindow>
 #include <QResizeEvent>
 #include <QTabBar>
-#include "ambientspheres.h"
-#include "marrays.h"
+#include "ExampleOrg/ambientspheres.h"
+#include "ExampleOrg/marrays.h"
 namespace Ui {
 class MainWindow;
 }
