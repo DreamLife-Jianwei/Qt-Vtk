@@ -7,11 +7,12 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->tabWidget_Main->tabBar()->hide();
-    ui->tabWidget_Main->setCurrentIndex(0);
+//    ui->tabWidget_Main->setCurrentIndex(1);
     this->setWindowTitle("Qt&Vtk");
     mAmbintSpheres = new AmbientSpheres(ui->tab_ambientSpheres);
     mArrays = new MArrays(ui->tab_Arrays);
-    this->resize(1366,768);
+    mCone = new Cone(ui->tab_Cone);
+
 
 
 
@@ -30,17 +31,24 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     Q_UNUSED(event)
     mAmbintSpheres->resize(ui->tab_ambientSpheres->size());
     mArrays->resize(ui->tab_Arrays->size());
+    mCone->resize(ui->tab_Cone->size());
 }
 
 void MainWindow::on_actionAmbientSpheres_triggered()
 {
     ui->tabWidget_Main->setCurrentIndex(0);
-    update();
+    this->setWindowTitle("Qt&Vtk-Ambientspheres");
 }
 
 
 void MainWindow::on_actionArrays_triggered()
 {
     ui->tabWidget_Main->setCurrentIndex(1);
-    update();
+    this->setWindowTitle("Qt&Vtk-Arrays");
+}
+
+void MainWindow::on_actionCone_triggered()
+{
+    ui->tabWidget_Main->setCurrentIndex(2);
+    this->setWindowTitle("Qt&Vtk-Cone");
 }

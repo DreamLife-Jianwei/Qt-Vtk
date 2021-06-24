@@ -6,6 +6,7 @@
 #include <QTabBar>
 #include "ExampleOrg/ambientspheres.h"
 #include "ExampleOrg/marrays.h"
+#include "ExampleOrg/cone.h"
 namespace Ui {
 class MainWindow;
 }
@@ -25,10 +26,13 @@ private slots:
 
     void on_actionArrays_triggered();
 
+    void on_actionCone_triggered();
+
 private:
     Ui::MainWindow *ui;
     AmbientSpheres *mAmbintSpheres = nullptr;
     MArrays *mArrays = nullptr;
+    Cone *mCone = nullptr;
 };
 
 #endif // MAINWINDOW_H

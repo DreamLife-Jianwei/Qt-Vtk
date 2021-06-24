@@ -44,19 +44,19 @@ private:
 
     vtkNew<vtkPoints> points;                   //新建坐标点
 
-    vtkNew<vtkCellArray> strips;
+    vtkNew<vtkCellArray> strips;                //暂时不清楚
 
-    vtkNew<vtkIntArray> temperature;
+    vtkNew<vtkIntArray> temperature;            //暂时不了解
 
-    vtkNew<vtkDoubleArray> vorticity;
+    vtkNew<vtkDoubleArray> vorticity;           //Double 数组
 
-    vtkNew<vtkPolyData> polydata;
+    vtkNew<vtkPolyData> polydata;               //PolyData格式的数据
 
-    vtkNew<vtkPolyDataMapper> mapper;
+    vtkNew<vtkPolyDataMapper> mapper;           //映射器
 
-    vtkNew<vtkActor> actor;
+    vtkNew<vtkActor> actor;                     //就是Actor
 
-    vtkNew<vtkRenderer> render;
+    vtkNew<vtkRenderer> render;                 //渲染
 
 };
 
