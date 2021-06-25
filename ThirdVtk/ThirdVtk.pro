@@ -28,21 +28,33 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     ExampleOrg/ambientspheres.cpp \
     ExampleOrg/marrays.cpp \
-    ExampleOrg/cone.cpp
+    ExampleOrg/cone.cpp \
+    ExampleOrg/cone3.cpp \
+    ExampleOrg/cone4.cpp \
+    ExampleOrg/cone5.cpp \
+    ExampleOrg/cone6.cpp
 
 
 HEADERS  += mainwindow.h \
     ExampleOrg/ambientspheres.h \
     ExampleOrg/cone2.h \
     ExampleOrg/marrays.h \
-    ExampleOrg/cone.h
+    ExampleOrg/cone.h \
+    ExampleOrg/cone3.h \
+    ExampleOrg/cone4.h \
+    ExampleOrg/cone5.h \
+    ExampleOrg/cone6.h
 
 
 FORMS    += mainwindow.ui \
     ExampleOrg/ambientspheres.ui \
     ExampleOrg/cone2.ui \
     ExampleOrg/marrays.ui \
-    ExampleOrg/cone.ui
+    ExampleOrg/cone.ui \
+    ExampleOrg/cone3.ui \
+    ExampleOrg/cone4.ui \
+    ExampleOrg/cone5.ui \
+    ExampleOrg/cone6.ui
 
 
 INCLUDEPATH += ./Vtk/include/vtk-8.2

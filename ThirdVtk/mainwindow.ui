@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget_Main">
       <property name="currentIndex">
-       <number>3</number>
+       <number>7</number>
       </property>
       <widget class="QWidget" name="tab_ambientSpheres">
        <attribute name="title">
@@ -36,6 +36,26 @@
        </attribute>
       </widget>
       <widget class="QWidget" name="tab_Cone2">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_Cone3">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_Cone4">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_Cone5">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_Cone6">
        <attribute name="title">
         <string>页</string>
        </attribute>
@@ -61,6 +81,10 @@
     <addaction name="actionArrays"/>
     <addaction name="actionCone"/>
     <addaction name="actionCone2"/>
+    <addaction name="actionCone3"/>
+    <addaction name="actionCone4"/>
+    <addaction name="actionCone5"/>
+    <addaction name="actionCone6"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -91,6 +115,26 @@
   <action name="actionCone2">
    <property name="text">
     <string>Cone2</string>
+   </property>
+  </action>
+  <action name="actionCone3">
+   <property name="text">
+    <string>Cone3</string>
+   </property>
+  </action>
+  <action name="actionCone4">
+   <property name="text">
+    <string>Cone4</string>
+   </property>
+  </action>
+  <action name="actionCone5">
+   <property name="text">
+    <string>Cone5</string>
+   </property>
+  </action>
+  <action name="actionCone6">
+   <property name="text">
+    <string>Cone6</string>
    </property>
   </action>
  </widget>

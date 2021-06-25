@@ -1,11 +1,12 @@
-#include "cone.h"
-#include "ui_cone.h"
+#include "cone3.h"
+#include "ui_cone3.h"
 
-Cone::Cone(QWidget *parent) :
+Cone3::Cone3(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::Cone)
+    ui(new Ui::Cone3)
 {
     ui->setupUi(this);
+
 
     cone = vtkConeSource::New();    //新建对象
 
@@ -20,29 +21,32 @@ Cone::Cone(QWidget *parent) :
     coneActor = vtkActor::New();
     coneActor->SetMapper(coneMapper);
     //新建渲染器并设置Actor和背景颜色
-    coneRender = vtkRenderer::New();
-    coneRender->AddActor(coneActor);
-    coneRender->SetBackground(0.1,0.2,0.3);
+    coneRender1 = vtkRenderer::New();
+    coneRender1->AddActor(coneActor);
+    coneRender1->SetBackground(0.1,0.2,0.3);
+    coneRender1->SetViewport(0.0,0.0,0.5,1.0);
+
+    coneRender2 = vtkRenderer::New();
+    coneRender2->AddActor(coneActor);
+    coneRender2->SetBackground(0.7,0.1,0.1);
+    coneRender2->SetViewport(0.5,0.0,1.0,1.0);
     //获取渲染窗口
-    ui->widget->GetRenderWindow()->AddRenderer(coneRender);
 
-
-    //    while (1) {
-    //        ui->widget->GetRenderWindow()->Render();
-    //        coneRender->GetActiveCamera()->Azimuth(1);
-    //    }
+    ui->widget_Cone1->GetRenderWindow()->AddRenderer(coneRender1);
+    ui->widget_Cone1->GetRenderWindow()->AddRenderer(coneRender2);
     //旋转椎体
     rotationTimer = new QTimer();
     connect(rotationTimer,&QTimer::timeout,this,[=](){
-        coneRender->GetActiveCamera()->Azimuth(1);
-        ui->widget->GetRenderWindow()->Render();            //注意这句话，要加上呀，不然人不给你转，惰性渲染。
+        coneRender1->GetActiveCamera()->Azimuth(1);
+        coneRender2->GetActiveCamera()->Azimuth(2);
+        ui->widget_Cone1->GetRenderWindow()->Render();//注意这句话，要加上呀，不然人不给你转，惰性渲染。
     });
 
     rotationTimer->start(25);
 
 }
 
-Cone::~Cone()
+Cone3::~Cone3()
 {
     rotationTimer->stop();
     delete ui;

@@ -4,6 +4,8 @@
 #include <QWidget>
 #include <QTimer>
 #include <QDebug>
+#include <QString>
+#include <QTextBrowser>
 #include "QVTKOpenGLWidget.h"               //新版本，旧版QVTKWidget
 #include "vtkAutoInit.h"
 #include "vtkConeSource.h"
@@ -30,6 +32,10 @@ public:
     }
     void Execute(vtkObject *caller,unsigned long,void*) override;
 
+    QTextBrowser *textBrowser = nullptr;
+
+private:
+
 
 };
 
@@ -55,6 +61,8 @@ private:
     vtkRenderer *coneRender = nullptr;              //声明渲染器
 
     QTimer *rotationTimer = nullptr;                //声明定时器，用于旋转椎体
+
+    vtkMyCallback *myCallBack = nullptr;
 };
 
 #endif // CONE2_H

@@ -23,7 +23,9 @@ Cone2::Cone2(QWidget *parent) :
     coneRender->AddActor(coneActor);
     coneRender->SetBackground(0.1,0.2,0.3);
 
-    coneRender->AddObserver(vtkCommand::StartEvent,vtkMyCallback::New());
+    myCallBack = vtkMyCallback::New();
+    myCallBack->textBrowser = ui->textBrowser;
+    coneRender->AddObserver(vtkCommand::StartEvent,myCallBack);
 
     //获取渲染窗口
     ui->widget->GetRenderWindow()->AddRenderer(coneRender);
@@ -41,6 +43,7 @@ Cone2::Cone2(QWidget *parent) :
     });
 
     rotationTimer->start(25);
+
 }
 
 Cone2::~Cone2()
@@ -49,14 +52,12 @@ Cone2::~Cone2()
     delete ui;
 }
 
-void Cone2::outputMessage(double temp)
-{
-
-}
-
 void vtkMyCallback::Execute(vtkObject *caller, unsigned long, void *)
 {
     vtkRenderer *renderer = reinterpret_cast<vtkRenderer*>(caller);
-    qDebug() << "dsd";
-
+    textBrowser->append("Camera Position:");
+    textBrowser->append(QString::number((renderer->GetActiveCamera()->GetPosition()[0]),'g',6));
+    textBrowser->append(QString::number((renderer->GetActiveCamera()->GetPosition()[1]),'g',6));
+    textBrowser->append(QString::number((renderer->GetActiveCamera()->GetPosition()[2]),'g',6));
 }
+
