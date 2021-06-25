@@ -7,6 +7,14 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     ui->tabWidget_Main->tabBar()->hide();
+    ui->tabWidget_Main->resize(1366,768);
+    ui->statusBar->showMessage("Qt Creator版本: 5.7.1-MSVC 2015    "
+                               "Visual Studio版本：VS2015 Update 3     "
+                               "Vtk版本: 8.2.0 Release    "
+                               "制作：张建伟  "
+                               "邮箱：jianwei1992@foxmail.com    "
+                               "博客：dreamlife.blog.csdn.net    "
+                               "GieHub地址：github.com/DreamLife-Jianwei");
 //    ui->tabWidget_Main->setCurrentIndex(1);
     this->setWindowTitle("Qt&Vtk");
     mAmbintSpheres = new AmbientSpheres(ui->tab_ambientSpheres);
@@ -17,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     mCone4 = new Cone4(ui->tab_Cone4);
     mCone5 = new Cone5(ui->tab_Cone5);
     mCone6 = new Cone6(ui->tab_Cone6);
+
 
 
 
