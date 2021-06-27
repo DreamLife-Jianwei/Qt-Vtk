@@ -44,6 +44,8 @@ private slots:
 
     void on_actionCone6_triggered();
 
+    void on_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     AmbientSpheres *mAmbintSpheres = nullptr;

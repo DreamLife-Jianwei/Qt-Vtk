@@ -103,3 +103,8 @@ void MainWindow::on_actionCone6_triggered()
     this->setWindowTitle("Qt&Vtk-Cone6");
     mCone6->startInteractor();
 }
+
+void MainWindow::on_pushButton_clicked()
+{
+    this->close();
+}
