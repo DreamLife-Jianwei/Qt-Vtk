@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget_Main">
       <property name="currentIndex">
-       <number>9</number>
+       <number>11</number>
       </property>
       <widget class="QWidget" name="tab_ambientSpheres">
        <attribute name="title">
@@ -70,6 +70,16 @@
         <string>页</string>
        </attribute>
       </widget>
+      <widget class="QWidget" name="tab_Cylinder">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_DiffuseSpheres">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -97,6 +107,8 @@
     <addaction name="actionCone6"/>
     <addaction name="actionCreateTree"/>
     <addaction name="actionCube"/>
+    <addaction name="actionCylinder"/>
+    <addaction name="actionDiffuseSpheres"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -157,6 +169,16 @@
   <action name="actionCube">
    <property name="text">
     <string>Cube</string>
+   </property>
+  </action>
+  <action name="actionCylinder">
+   <property name="text">
+    <string>Cylinder</string>
+   </property>
+  </action>
+  <action name="actionDiffuseSpheres">
+   <property name="text">
+    <string>DiffuseSpheres</string>
    </property>
   </action>
  </widget>

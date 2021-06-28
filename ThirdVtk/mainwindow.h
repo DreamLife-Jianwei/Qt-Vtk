@@ -15,6 +15,8 @@
 #include "ExampleOrg/cone6.h"
 #include "ExampleOrg/createtree.h"
 #include "ExampleOrg/cube.h"
+#include "ExampleOrg/cylinder.h"
+#include "ExampleOrg/diffusespheres.h"
 namespace Ui {
 class MainWindow;
 }
@@ -50,6 +52,10 @@ private slots:
 
     void on_actionCube_triggered();
 
+    void on_actionCylinder_triggered();
+
+    void on_actionDiffuseSpheres_triggered();
+
 private:
     Ui::MainWindow *ui;
     AmbientSpheres *mAmbintSpheres = nullptr;
@@ -62,6 +68,8 @@ private:
     Cone6 *mCone6 = nullptr;
     CreateTree *mCreateTree = nullptr;
     Cube *mCube = nullptr;
+    Cylinder *mCylinder = nullptr;
+    DiffuseSpheres *mDiffuseSpheres = nullptr;
 };
 
 #endif // MAINWINDOW_H

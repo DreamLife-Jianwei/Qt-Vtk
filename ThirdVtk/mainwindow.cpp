@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
                                "邮箱：jianwei1992@foxmail.com    "
                                "博客：dreamlife.blog.csdn.net    "
                                "GieHub地址：github.com/DreamLife-Jianwei");
-//    ui->tabWidget_Main->setCurrentIndex(1);
+    //    ui->tabWidget_Main->setCurrentIndex(1);
     this->setWindowTitle("Qt&Vtk");
     mAmbintSpheres = new AmbientSpheres(ui->tab_ambientSpheres);
     mArrays = new MArrays(ui->tab_Arrays);
@@ -27,14 +27,15 @@ MainWindow::MainWindow(QWidget *parent) :
     mCone6 = new Cone6(ui->tab_Cone6);
     mCreateTree = new CreateTree(ui->tab_CreateTree);
     mCube = new Cube(ui->tab_Cube);
+    mCylinder = new Cylinder(ui->tab_Cylinder);
+    mDiffuseSpheres = new DiffuseSpheres(ui->tab_DiffuseSpheres);
 
 
 
 
 
 
-
-//    this->showMaximized();                  //这句话不要写到前面，不然你得知道怎么死的
+    //    this->showMaximized();                  //这句话不要写到前面，不然你得知道怎么死的
 }
 
 MainWindow::~MainWindow()
@@ -55,6 +56,8 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     mCone6->resize(ui->tab_Cone6->size());
     mCreateTree->resize(ui->tab_CreateTree->size());
     mCube->resize(ui->tab_Cube->size());
+    mCylinder->resize(ui->tab_Cylinder->size());
+    mDiffuseSpheres->resize(ui->tab_DiffuseSpheres->size());
 }
 
 void MainWindow::on_actionAmbientSpheres_triggered()
@@ -119,4 +122,16 @@ void MainWindow::on_actionCube_triggered()
 {
     ui->tabWidget_Main->setCurrentIndex(9);
     this->setWindowTitle("Qt&Vtk-Cube");
+}
+
+void MainWindow::on_actionCylinder_triggered()
+{
+    ui->tabWidget_Main->setCurrentIndex(10);
+    this->setWindowTitle("Qt&Vtk-Cylinder");
+}
+
+void MainWindow::on_actionDiffuseSpheres_triggered()
+{
+    ui->tabWidget_Main->setCurrentIndex(10);
+    this->setWindowTitle("Qt&Vtk-DiffuseSpheres");
 }
