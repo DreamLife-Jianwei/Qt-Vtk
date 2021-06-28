@@ -14,18 +14,11 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QFormLayout" name="formLayout">
-    <item row="0" column="1">
-     <widget class="QPushButton" name="pushButton">
-      <property name="text">
-       <string>PushButton</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="0" colspan="2">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget_Main">
       <property name="currentIndex">
-       <number>7</number>
+       <number>9</number>
       </property>
       <widget class="QWidget" name="tab_ambientSpheres">
        <attribute name="title">
@@ -67,6 +60,16 @@
         <string>页</string>
        </attribute>
       </widget>
+      <widget class="QWidget" name="tab_CreateTree">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_Cube">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -92,6 +95,8 @@
     <addaction name="actionCone4"/>
     <addaction name="actionCone5"/>
     <addaction name="actionCone6"/>
+    <addaction name="actionCreateTree"/>
+    <addaction name="actionCube"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -142,6 +147,16 @@
   <action name="actionCone6">
    <property name="text">
     <string>Cone6</string>
+   </property>
+  </action>
+  <action name="actionCreateTree">
+   <property name="text">
+    <string>CreateTree</string>
+   </property>
+  </action>
+  <action name="actionCube">
+   <property name="text">
+    <string>Cube</string>
    </property>
   </action>
  </widget>

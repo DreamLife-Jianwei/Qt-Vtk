@@ -33,7 +33,9 @@ SOURCES += main.cpp\
     ExampleOrg/cone3.cpp \
     ExampleOrg/cone4.cpp \
     ExampleOrg/cone5.cpp \
-    ExampleOrg/cone6.cpp
+    ExampleOrg/cone6.cpp \
+    ExampleOrg/createtree.cpp \
+    ExampleOrg/cube.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -44,7 +46,9 @@ HEADERS  += mainwindow.h \
     ExampleOrg/cone3.h \
     ExampleOrg/cone4.h \
     ExampleOrg/cone5.h \
-    ExampleOrg/cone6.h
+    ExampleOrg/cone6.h \
+    ExampleOrg/createtree.h \
+    ExampleOrg/cube.h
 
 
 FORMS    += mainwindow.ui \
@@ -55,7 +59,9 @@ FORMS    += mainwindow.ui \
     ExampleOrg/cone3.ui \
     ExampleOrg/cone4.ui \
     ExampleOrg/cone5.ui \
-    ExampleOrg/cone6.ui
+    ExampleOrg/cone6.ui \
+    ExampleOrg/createtree.ui \
+    ExampleOrg/cube.ui
 
 
 INCLUDEPATH += ./Vtk/include/vtk-8.2

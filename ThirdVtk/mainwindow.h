@@ -13,6 +13,8 @@
 #include "ExampleOrg/cone4.h"
 #include "ExampleOrg/cone5.h"
 #include "ExampleOrg/cone6.h"
+#include "ExampleOrg/createtree.h"
+#include "ExampleOrg/cube.h"
 namespace Ui {
 class MainWindow;
 }
@@ -44,7 +46,9 @@ private slots:
 
     void on_actionCone6_triggered();
 
-    void on_pushButton_clicked();
+    void on_actionCreateTree_triggered();
+
+    void on_actionCube_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -56,6 +60,8 @@ private:
     Cone4 *mCone4 = nullptr;
     Cone5 *mCone5 = nullptr;
     Cone6 *mCone6 = nullptr;
+    CreateTree *mCreateTree = nullptr;
+    Cube *mCube = nullptr;
 };
 
 #endif // MAINWINDOW_H

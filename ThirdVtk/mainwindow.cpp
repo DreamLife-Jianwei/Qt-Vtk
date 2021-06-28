@@ -25,6 +25,8 @@ MainWindow::MainWindow(QWidget *parent) :
     mCone4 = new Cone4(ui->tab_Cone4);
     mCone5 = new Cone5(ui->tab_Cone5);
     mCone6 = new Cone6(ui->tab_Cone6);
+    mCreateTree = new CreateTree(ui->tab_CreateTree);
+    mCube = new Cube(ui->tab_Cube);
 
 
 
@@ -51,6 +53,8 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     mCone4->resize(ui->tab_Cone4->size());
     mCone5->resize(ui->tab_Cone5->size());
     mCone6->resize(ui->tab_Cone6->size());
+    mCreateTree->resize(ui->tab_CreateTree->size());
+    mCube->resize(ui->tab_Cube->size());
 }
 
 void MainWindow::on_actionAmbientSpheres_triggered()
@@ -104,7 +108,15 @@ void MainWindow::on_actionCone6_triggered()
     mCone6->startInteractor();
 }
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_actionCreateTree_triggered()
 {
-    this->close();
+    ui->tabWidget_Main->setCurrentIndex(8);
+    this->setWindowTitle("Qt&Vtk-CreateTree");
+    mCreateTree->startInteractor();
+}
+
+void MainWindow::on_actionCube_triggered()
+{
+    ui->tabWidget_Main->setCurrentIndex(9);
+    this->setWindowTitle("Qt&Vtk-Cube");
 }
