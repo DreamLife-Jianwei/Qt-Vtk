@@ -132,6 +132,6 @@ void MainWindow::on_actionCylinder_triggered()
 
 void MainWindow::on_actionDiffuseSpheres_triggered()
 {
-    ui->tabWidget_Main->setCurrentIndex(10);
+    ui->tabWidget_Main->setCurrentIndex(11);
     this->setWindowTitle("Qt&Vtk-DiffuseSpheres");
 }

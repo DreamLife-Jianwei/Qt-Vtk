@@ -17,6 +17,7 @@
 #include "ExampleOrg/cube.h"
 #include "ExampleOrg/cylinder.h"
 #include "ExampleOrg/diffusespheres.h"
+#include "ExampleOrg/GraphItem/graphitem.h"
 namespace Ui {
 class MainWindow;
 }

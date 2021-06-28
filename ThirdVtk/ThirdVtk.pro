@@ -25,6 +25,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
+    ExampleOrg/GraphItem/graphitem.cpp \
+    ExampleOrg/GraphItem/vtkgraphitem.cpp \
     ExampleOrg/cone2.cpp \
         mainwindow.cpp \
     ExampleOrg/ambientspheres.cpp \
@@ -41,6 +43,8 @@ SOURCES += main.cpp\
 
 
 HEADERS  += mainwindow.h \
+    ExampleOrg/GraphItem/graphitem.h \
+    ExampleOrg/GraphItem/vtkgraphitem.h \
     ExampleOrg/ambientspheres.h \
     ExampleOrg/cone2.h \
     ExampleOrg/marrays.h \
@@ -56,6 +60,7 @@ HEADERS  += mainwindow.h \
 
 
 FORMS    += mainwindow.ui \
+    ExampleOrg/GraphItem/graphitem.ui \
     ExampleOrg/ambientspheres.ui \
     ExampleOrg/cone2.ui \
     ExampleOrg/marrays.ui \
