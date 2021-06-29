@@ -22,11 +22,12 @@
 
 class GraphAnimate : public vtkCommand
 {
+public:
     static GraphAnimate *New(){return new GraphAnimate();}
     vtkTypeMacro(GraphAnimate,vtkCommand);
     void Execute(vtkObject *caller, unsigned long eventId, void *callData) override
     {
-        this->GraphItem->UpDatePositions();
+        this->GraphItem->UpdatePositions();
         this->view->Render();
         this->view->GetRenderWindow()->GetInteractor()->CreateOneShotTimer(10);
     }
@@ -49,8 +50,14 @@ public:
     explicit GraphItem(QWidget *parent = nullptr);
     ~GraphItem();
 
+    void startinteractor();
+
 private:
     Ui::GraphItem *ui;
+    vtkSmartPointer<vtkGraphItem> item;
+    vtkSmartPointer<vtkRandomGraphSource> source;
+    vtkSmartPointer<vtkContextView> mview;
+    vtkSmartPointer<GraphAnimate> anim;
 };
 
 #endif // GRAPHITEM_H

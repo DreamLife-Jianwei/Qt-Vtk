@@ -4,6 +4,27 @@
 
 #include "vtkContextItem.h"
 
+#include "vtkEdgeListIterator.h"
+#include "vtkOutEdgeIterator.h"
+#include "vtkGraph.h"
+#include "vtkMinimalStandardRandomSequence.h"
+#include "vtkVariant.h"
+
+#include "vtkContext2D.h"
+#include "vtkContextScene.h"
+#include "vtkContextMouseEvent.h"
+#include "vtkPen.h"
+#include "vtkBrush.h"
+#include "vtkTextProperty.h"
+#include "vtkTransform2D.h"
+
+
+#include "vtkObjectFactory.h"
+#include "vtkSmartPointer.h"
+
+#include "utility"
+#include "vector"
+
 class vtkContext2D;
 class vtkGraph;
 
@@ -23,12 +44,40 @@ public:
 
     bool Hit(const vtkContextMouseEvent &mouse)override;
 
+    bool MouseEnterEvent(const vtkContextMouseEvent &mouse)override;
+
+    bool MouseMoveEvent(const vtkContextMouseEvent &mouse)override;
+
+    bool MouseLeaveEvent(const vtkContextMouseEvent &mouse)override;
+
+    bool MouseButtonPressEvent(const vtkContextMouseEvent &mouse)override;
+
+    bool MouseButtonReleaseEvent(const vtkContextMouseEvent &mouse)override;
+
+    void UpdatePositions();
+
 
 
 protected:
 
+    vtkGraphItem();
+    ~vtkGraphItem() override;
+
+    float LastPosition[2];
+    bool MouseOver;
+    int MouseButtonPressed;
+
 
     vtkGraph *Graph;
+    vtkIdType HitVertex;
+
+    class Implementation;
+
+    Implementation *Impl;
+
+private:
+    vtkGraphItem(const vtkGraphItem &) = delete;
+    void operator =(const vtkGraphItem &) = delete;
 
 };
 

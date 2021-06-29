@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget_Main">
       <property name="currentIndex">
-       <number>11</number>
+       <number>14</number>
       </property>
       <widget class="QWidget" name="tab_ambientSpheres">
        <attribute name="title">
@@ -80,6 +80,21 @@
         <string>页</string>
        </attribute>
       </widget>
+      <widget class="QWidget" name="tab_GraphItem">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_HelloWorld">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_LabeledMesh">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -109,6 +124,9 @@
     <addaction name="actionCube"/>
     <addaction name="actionCylinder"/>
     <addaction name="actionDiffuseSpheres"/>
+    <addaction name="actionGraphItem"/>
+    <addaction name="actionHelloWorld"/>
+    <addaction name="actionLabeledMesh"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -179,6 +197,21 @@
   <action name="actionDiffuseSpheres">
    <property name="text">
     <string>DiffuseSpheres</string>
+   </property>
+  </action>
+  <action name="actionGraphItem">
+   <property name="text">
+    <string>GraphItem</string>
+   </property>
+  </action>
+  <action name="actionHelloWorld">
+   <property name="text">
+    <string>HelloWorld</string>
+   </property>
+  </action>
+  <action name="actionLabeledMesh">
+   <property name="text">
+    <string>LabeledMesh</string>
    </property>
   </action>
  </widget>

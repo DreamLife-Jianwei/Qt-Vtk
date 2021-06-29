@@ -29,7 +29,9 @@ MainWindow::MainWindow(QWidget *parent) :
     mCube = new Cube(ui->tab_Cube);
     mCylinder = new Cylinder(ui->tab_Cylinder);
     mDiffuseSpheres = new DiffuseSpheres(ui->tab_DiffuseSpheres);
-
+    mGraphItem = new GraphItem(ui->tab_GraphItem);
+    mHelloWorld = new HelloWorld(ui->tab_HelloWorld);
+    mLabeldMesh = new LabeledMesh(ui->tab_LabeledMesh);
 
 
 
@@ -58,6 +60,9 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     mCube->resize(ui->tab_Cube->size());
     mCylinder->resize(ui->tab_Cylinder->size());
     mDiffuseSpheres->resize(ui->tab_DiffuseSpheres->size());
+    mGraphItem->resize(ui->tab_GraphItem->size());
+    mHelloWorld->resize(ui->tab_HelloWorld->size());
+    mLabeldMesh->resize(ui->tab_LabeledMesh->size());
 }
 
 void MainWindow::on_actionAmbientSpheres_triggered()
@@ -134,4 +139,23 @@ void MainWindow::on_actionDiffuseSpheres_triggered()
 {
     ui->tabWidget_Main->setCurrentIndex(11);
     this->setWindowTitle("Qt&Vtk-DiffuseSpheres");
+}
+
+void MainWindow::on_actionGraphItem_triggered()
+{
+
+    ui->tabWidget_Main->setCurrentIndex(12);
+    this->setWindowTitle("Qt&Vtk-GraphItem");
+}
+
+void MainWindow::on_actionHelloWorld_triggered()
+{
+    ui->tabWidget_Main->setCurrentIndex(13);
+    this->setWindowTitle("Qt&Vtk-HelloWorld");
+}
+
+void MainWindow::on_actionLabeledMesh_triggered()
+{
+    ui->tabWidget_Main->setCurrentIndex(14);
+    this->setWindowTitle("Qt&Vtk-LabeldMesh");
 }

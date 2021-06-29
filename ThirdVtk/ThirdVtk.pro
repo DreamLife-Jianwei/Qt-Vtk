@@ -39,7 +39,9 @@ SOURCES += main.cpp\
     ExampleOrg/createtree.cpp \
     ExampleOrg/cube.cpp \
     ExampleOrg/cylinder.cpp \
-    ExampleOrg/diffusespheres.cpp
+    ExampleOrg/diffusespheres.cpp \
+    ExampleOrg/helloworld.cpp \
+    ExampleOrg/labeledmesh.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -56,7 +58,9 @@ HEADERS  += mainwindow.h \
     ExampleOrg/createtree.h \
     ExampleOrg/cube.h \
     ExampleOrg/cylinder.h \
-    ExampleOrg/diffusespheres.h
+    ExampleOrg/diffusespheres.h \
+    ExampleOrg/helloworld.h \
+    ExampleOrg/labeledmesh.h
 
 
 FORMS    += mainwindow.ui \
@@ -72,7 +76,9 @@ FORMS    += mainwindow.ui \
     ExampleOrg/createtree.ui \
     ExampleOrg/cube.ui \
     ExampleOrg/cylinder.ui \
-    ExampleOrg/diffusespheres.ui
+    ExampleOrg/diffusespheres.ui \
+    ExampleOrg/helloworld.ui \
+    ExampleOrg/labeledmesh.ui
 
 
 INCLUDEPATH += ./Vtk/include/vtk-8.2

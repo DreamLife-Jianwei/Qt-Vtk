@@ -18,6 +18,8 @@
 #include "ExampleOrg/cylinder.h"
 #include "ExampleOrg/diffusespheres.h"
 #include "ExampleOrg/GraphItem/graphitem.h"
+#include "ExampleOrg/helloworld.h"
+#include "ExampleOrg/labeledmesh.h"
 namespace Ui {
 class MainWindow;
 }
@@ -57,6 +59,12 @@ private slots:
 
     void on_actionDiffuseSpheres_triggered();
 
+    void on_actionGraphItem_triggered();
+
+    void on_actionHelloWorld_triggered();
+
+    void on_actionLabeledMesh_triggered();
+
 private:
     Ui::MainWindow *ui;
     AmbientSpheres *mAmbintSpheres = nullptr;
@@ -71,6 +79,9 @@ private:
     Cube *mCube = nullptr;
     Cylinder *mCylinder = nullptr;
     DiffuseSpheres *mDiffuseSpheres = nullptr;
+    GraphItem *mGraphItem = nullptr;
+    HelloWorld *mHelloWorld = nullptr;
+    LabeledMesh *mLabeldMesh = nullptr;
 };
 
 #endif // MAINWINDOW_H
