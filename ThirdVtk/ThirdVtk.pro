@@ -41,7 +41,8 @@ SOURCES += main.cpp\
     ExampleOrg/cylinder.cpp \
     ExampleOrg/diffusespheres.cpp \
     ExampleOrg/helloworld.cpp \
-    ExampleOrg/labeledmesh.cpp
+    ExampleOrg/labeledmesh.cpp \
+    ExampleOrg/multiview.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -60,7 +61,8 @@ HEADERS  += mainwindow.h \
     ExampleOrg/cylinder.h \
     ExampleOrg/diffusespheres.h \
     ExampleOrg/helloworld.h \
-    ExampleOrg/labeledmesh.h
+    ExampleOrg/labeledmesh.h \
+    ExampleOrg/multiview.h
 
 
 FORMS    += mainwindow.ui \
@@ -78,7 +80,8 @@ FORMS    += mainwindow.ui \
     ExampleOrg/cylinder.ui \
     ExampleOrg/diffusespheres.ui \
     ExampleOrg/helloworld.ui \
-    ExampleOrg/labeledmesh.ui
+    ExampleOrg/labeledmesh.ui \
+    ExampleOrg/multiview.ui
 
 
 INCLUDEPATH += ./Vtk/include/vtk-8.2

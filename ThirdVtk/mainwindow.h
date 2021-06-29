@@ -20,6 +20,7 @@
 #include "ExampleOrg/GraphItem/graphitem.h"
 #include "ExampleOrg/helloworld.h"
 #include "ExampleOrg/labeledmesh.h"
+#include "ExampleOrg/multiview.h"
 namespace Ui {
 class MainWindow;
 }
@@ -65,6 +66,8 @@ private slots:
 
     void on_actionLabeledMesh_triggered();
 
+    void on_actionMultiView_triggered();
+
 private:
     Ui::MainWindow *ui;
     AmbientSpheres *mAmbintSpheres = nullptr;
@@ -82,6 +85,7 @@ private:
     GraphItem *mGraphItem = nullptr;
     HelloWorld *mHelloWorld = nullptr;
     LabeledMesh *mLabeldMesh = nullptr;
+    MultiView *mMultiview = nullptr;
 };
 
 #endif // MAINWINDOW_H

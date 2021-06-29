@@ -32,6 +32,7 @@ MainWindow::MainWindow(QWidget *parent) :
     mGraphItem = new GraphItem(ui->tab_GraphItem);
     mHelloWorld = new HelloWorld(ui->tab_HelloWorld);
     mLabeldMesh = new LabeledMesh(ui->tab_LabeledMesh);
+    //    mMultiview =
 
 
 
@@ -158,4 +159,11 @@ void MainWindow::on_actionLabeledMesh_triggered()
 {
     ui->tabWidget_Main->setCurrentIndex(14);
     this->setWindowTitle("Qt&Vtk-LabeldMesh");
+}
+
+void MainWindow::on_actionMultiView_triggered()
+{
+
+    ui->tabWidget_Main->setCurrentIndex(15);
+    this->setWindowTitle("Qt&Vtk-MultiView");
 }

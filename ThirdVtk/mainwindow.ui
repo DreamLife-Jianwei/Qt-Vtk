@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget_Main">
       <property name="currentIndex">
-       <number>14</number>
+       <number>15</number>
       </property>
       <widget class="QWidget" name="tab_ambientSpheres">
        <attribute name="title">
@@ -95,6 +95,11 @@
         <string>页</string>
        </attribute>
       </widget>
+      <widget class="QWidget" name="tab_MultiView">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -127,6 +132,7 @@
     <addaction name="actionGraphItem"/>
     <addaction name="actionHelloWorld"/>
     <addaction name="actionLabeledMesh"/>
+    <addaction name="actionMultiView"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -212,6 +218,11 @@
   <action name="actionLabeledMesh">
    <property name="text">
     <string>LabeledMesh</string>
+   </property>
+  </action>
+  <action name="actionMultiView">
+   <property name="text">
+    <string>MultiView</string>
    </property>
   </action>
  </widget>
