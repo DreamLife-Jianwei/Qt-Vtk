@@ -69,6 +69,9 @@ void Cone6::startInteractor()
 
 void vtkMyCallBack::Execute(vtkObject *caller, unsigned long eventId, void *callData)
 {
+    Q_UNUSED(caller);
+    Q_UNUSED(eventId);
+    Q_UNUSED(callData);
     vtkTransform *t = vtkTransform::New();
     vtkBoxWidget *widget = reinterpret_cast<vtkBoxWidget*>(caller);
     widget->GetTransform(t);

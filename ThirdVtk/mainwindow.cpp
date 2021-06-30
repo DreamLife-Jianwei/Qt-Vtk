@@ -10,21 +10,23 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-//    this->setWindowFlags(Qt::FramelessWindowHint);
+    //    this->setWindowFlags(Qt::FramelessWindowHint);
     ui->centralWidget->installEventFilter(this);
+    ui->tab_Logo->installEventFilter(this);
     ui->tabWidget_Main->tabBar()->hide();
     ui->tabWidget_Example->tabBar()->hide();
     ui->tabWidget_Example->setGeometry(0,0,ui->tab_Example->width(),ui->tab_Example->height());
     //    ui->tabWidget_Main->resize(1366,768);
     QLabel *infor = new QLabel(this);
-    infor->setText("Qt Creator版本: 5.7.1-MSVC 2015    "
-                   "Visual Studio版本：VS2015 Update 3     "
-                   "Vtk版本: 8.2.0 Release    "
-                   "制作：张建伟  "
-                   "邮箱：jianwei1992@foxmail.com    "
-                   "博客：dreamlife.blog.csdn.net    "
+    infor->setText("Qt Creator版本: 5.7.1-MSVC 2015 "
+                   "Visual Studio版本：VS2015 Update 3 "
+                   "Vtk版本: 8.2.0 Release "
+                   "制作：张建伟 "
+                   "邮箱：jianwei1992@foxmail.com "
+                   "博客：dreamlife.blog.csdn.net "
                    "GieHub地址：github.com/DreamLife-Jianwei");
     ui->statusBar->addPermanentWidget(infor);
+    /*按照下面的写法，在鼠标移动的菜单栏的时候，就会消失了*/
     //    ui->statusBar->showMessage("Qt Creator版本: 5.7.1-MSVC 2015    "
     //                               "Visual Studio版本：VS2015 Update 3     "
     //                               "Vtk版本: 8.2.0 Release    "
@@ -34,7 +36,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //                               "GieHub地址：github.com/DreamLife-Jianwei");
     ui->tabWidget_Main->setCurrentIndex(0);
     ui->tabWidget_Example->setCurrentIndex(0);
-    this->setWindowTitle("Qt&Vtk-Ambientspheres");
+    this->setWindowTitle("Qt&Vtk");
     mAmbintSpheres = new AmbientSpheres(ui->tab_ambientSpheres);
     mArrays = new MArrays(ui->tab_Arrays);
     mCone = new Cone(ui->tab_Cone);
@@ -325,12 +327,19 @@ void MainWindow::changeExample()
         ui->tabWidget_Main->setCurrentIndex(1);
     }
 }
-
+/**
+ * @brief MainWindow::paintEvent
+ * @param event
+ * 这部分代码是最坑爹的，在公司电脑上死活执行不正常，在家里电脑上又尼玛可以了
+ */
 void MainWindow::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event)
     QPainter painter_back(this);
-    painter_back.drawPixmap(0,0,this->width(),this->height(),QPixmap(":/MainWindow/Images/MainWindow/background.jpg"));
+    QPixmap image(":/MainWindow/Images/MainWindow/background.png");
+    QPixmap imageN = image.scaled(this->width(),this->height(),Qt::KeepAspectRatio,Qt::SmoothTransformation);
+    painter_back.translate(this->width()/2,this->height()/2);
+    painter_back.drawPixmap(0-imageN.width()/2,0-imageN.height()/2,imageN);
 
 }
 
@@ -362,13 +371,34 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
         this->move(this->x()+dx,this->y()+dy);
     }
 }
-
+/**
+ * @brief MainWindow::eventFilter
+ * @param watched
+ * @param event
+ * @return
+ * 事件过滤器，组后还是没有用上
+ */
 bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 {
     if(watched == ui->centralWidget && event->type() == QEvent::Paint)
     {
-        QPainter painter_back(ui->centralWidget);
-        painter_back.drawPixmap(0,0,this->width(),this->height(),QPixmap(":/MainWindow/Images/MainWindow/background.jpg"));
+        //        QPainter painter_back(ui->centralWidget);
+        //        painter_back.drawPixmap(0,0,this->width(),this->height(),QPixmap(":/MainWindow/Images/MainWindow/background.jpg"));
+    }
+    if(watched == ui->tab_Logo)
+    {
+        if(event->type() == QEvent::MouseButtonPress)
+        {
+            QMouseEvent *keyEvent = static_cast<QMouseEvent*>(event);
+            if(keyEvent->button() == Qt::LeftButton)
+            {
+                changeExample();
+                ui->tabWidget_Example->setCurrentIndex(0);
+                this->setWindowTitle("Qt&Vtk-Ambientspheres");
+                this->resize(this->size() - QSize(1, 1));
+                this->resize(this->size() + QSize(1, 1));
+            }
+        }
     }
     return QMainWindow::eventFilter(watched,event);
 }

@@ -33,7 +33,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget_Main">
       <property name="styleSheet">
-       <string notr="true">border-image: url(:/MainWindow/Images/MainWindow/background.jpg);</string>
+       <string notr="true"/>
       </property>
       <property name="currentIndex">
        <number>0</number>
@@ -42,6 +42,7 @@
        <attribute name="title">
         <string>页</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_2"/>
       </widget>
       <widget class="QWidget" name="tab_Example">
        <attribute name="title">
@@ -228,8 +229,14 @@
     </property>
     <addaction name="actionExit"/>
    </widget>
+   <widget class="QMenu" name="menuImageManage">
+    <property name="title">
+     <string>ImageManage</string>
+    </property>
+   </widget>
    <addaction name="menu_2"/>
    <addaction name="menu"/>
+   <addaction name="menuImageManage"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
