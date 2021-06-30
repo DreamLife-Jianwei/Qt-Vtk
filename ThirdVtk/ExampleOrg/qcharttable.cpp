@@ -70,5 +70,6 @@ QChartTable::~QChartTable()
 
 void QChartTable::resizeEvent(QResizeEvent *event)
 {
+    Q_UNUSED(event);
 //    qvtkWidget->resize(ui->widget->size());
 }

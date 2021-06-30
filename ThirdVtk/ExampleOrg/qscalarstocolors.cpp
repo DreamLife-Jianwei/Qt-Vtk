@@ -47,5 +47,6 @@ QScalarsToColors::~QScalarsToColors()
 
 void QScalarsToColors::resizeEvent(QResizeEvent *event)
 {
+    Q_UNUSED(event);
     qvtkWidget->resize(ui->widget->size());
 }

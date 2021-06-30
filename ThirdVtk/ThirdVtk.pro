@@ -7,7 +7,8 @@
 QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
-RC_ICONS = ./Images/logo.ico
+#RC_ICONS = ./Images/logo.ico
+RC_FILE += QtVtkInfo.rc
 TARGET = ThirdVtk
 TEMPLATE = app
 CONFIG += C++11
