@@ -2,6 +2,8 @@
 #define MULTIVIEW_H
 
 #include <QWidget>
+#include "QVTKOpenGLWidget.h"               //新版本，旧版QVTKWidget
+#include "vtkAutoInit.h"
 #include "vtkAnnotationLink.h"
 #include "vtkCommand.h"
 #include "vtkDataRepresentation.h"

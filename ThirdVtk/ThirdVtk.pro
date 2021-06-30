@@ -42,7 +42,10 @@ SOURCES += main.cpp\
     ExampleOrg/diffusespheres.cpp \
     ExampleOrg/helloworld.cpp \
     ExampleOrg/labeledmesh.cpp \
-    ExampleOrg/multiview.cpp
+    ExampleOrg/multiview.cpp \
+    ExampleOrg/piecewiseitem.cpp \
+    ExampleOrg/qcharttable.cpp \
+    ExampleOrg/qscalarstocolors.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -62,7 +65,10 @@ HEADERS  += mainwindow.h \
     ExampleOrg/diffusespheres.h \
     ExampleOrg/helloworld.h \
     ExampleOrg/labeledmesh.h \
-    ExampleOrg/multiview.h
+    ExampleOrg/multiview.h \
+    ExampleOrg/piecewiseitem.h \
+    ExampleOrg/qcharttable.h \
+    ExampleOrg/qscalarstocolors.h
 
 
 FORMS    += mainwindow.ui \
@@ -81,7 +87,10 @@ FORMS    += mainwindow.ui \
     ExampleOrg/diffusespheres.ui \
     ExampleOrg/helloworld.ui \
     ExampleOrg/labeledmesh.ui \
-    ExampleOrg/multiview.ui
+    ExampleOrg/multiview.ui \
+    ExampleOrg/piecewiseitem.ui \
+    ExampleOrg/qcharttable.ui \
+    ExampleOrg/qscalarstocolors.ui
 
 
 INCLUDEPATH += ./Vtk/include/vtk-8.2

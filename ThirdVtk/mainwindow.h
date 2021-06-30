@@ -21,6 +21,9 @@
 #include "ExampleOrg/helloworld.h"
 #include "ExampleOrg/labeledmesh.h"
 #include "ExampleOrg/multiview.h"
+#include "ExampleOrg/piecewiseitem.h"
+#include "ExampleOrg/qcharttable.h"
+#include "ExampleOrg/qscalarstocolors.h"
 namespace Ui {
 class MainWindow;
 }
@@ -68,6 +71,12 @@ private slots:
 
     void on_actionMultiView_triggered();
 
+    void on_actionPiecewiseItem_triggered();
+
+    void on_actionQChartTable_triggered();
+
+    void on_actionQScalarsToColors_triggered();
+
 private:
     Ui::MainWindow *ui;
     AmbientSpheres *mAmbintSpheres = nullptr;
@@ -86,6 +95,9 @@ private:
     HelloWorld *mHelloWorld = nullptr;
     LabeledMesh *mLabeldMesh = nullptr;
     MultiView *mMultiview = nullptr;
+    PiecewiseItem *mPiecewiseItem = nullptr;
+    QChartTable *mQchartTable = nullptr;
+    QScalarsToColors *mQScalarsToColors = nullptr;
 };
 
 #endif // MAINWINDOW_H

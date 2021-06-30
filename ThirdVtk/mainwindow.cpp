@@ -32,7 +32,10 @@ MainWindow::MainWindow(QWidget *parent) :
     mGraphItem = new GraphItem(ui->tab_GraphItem);
     mHelloWorld = new HelloWorld(ui->tab_HelloWorld);
     mLabeldMesh = new LabeledMesh(ui->tab_LabeledMesh);
-    //    mMultiview =
+    mMultiview = new MultiView(ui->tab_MultiView);
+    mPiecewiseItem = new PiecewiseItem(ui->tab_PiecewiseItem);
+    mQchartTable = new QChartTable(ui->tab_QChartTable);
+    mQScalarsToColors = new QScalarsToColors(ui->tab_QScalarsToColors);
 
 
 
@@ -64,6 +67,10 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     mGraphItem->resize(ui->tab_GraphItem->size());
     mHelloWorld->resize(ui->tab_HelloWorld->size());
     mLabeldMesh->resize(ui->tab_LabeledMesh->size());
+    mMultiview->resize(ui->tab_MultiView->size());
+    mPiecewiseItem->resize(ui->tab_PiecewiseItem->size());
+    mQchartTable->resize(ui->tab_QChartTable->size());
+    mQScalarsToColors->resize(ui->tab_QScalarsToColors->size());
 }
 
 void MainWindow::on_actionAmbientSpheres_triggered()
@@ -166,4 +173,25 @@ void MainWindow::on_actionMultiView_triggered()
 
     ui->tabWidget_Main->setCurrentIndex(15);
     this->setWindowTitle("Qt&Vtk-MultiView");
+}
+
+void MainWindow::on_actionPiecewiseItem_triggered()
+{
+
+    ui->tabWidget_Main->setCurrentIndex(16);
+    this->setWindowTitle("Qt&Vtk-PiecewiseItem");
+}
+
+void MainWindow::on_actionQChartTable_triggered()
+{
+
+    ui->tabWidget_Main->setCurrentIndex(17);
+    this->setWindowTitle("Qt&Vtk-QChartTable");
+}
+
+void MainWindow::on_actionQScalarsToColors_triggered()
+{
+
+    ui->tabWidget_Main->setCurrentIndex(18);
+    this->setWindowTitle("Qt&Vtk-QScalarsToColors");
 }

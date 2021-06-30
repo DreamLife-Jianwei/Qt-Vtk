@@ -18,7 +18,7 @@
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget_Main">
       <property name="currentIndex">
-       <number>15</number>
+       <number>18</number>
       </property>
       <widget class="QWidget" name="tab_ambientSpheres">
        <attribute name="title">
@@ -100,6 +100,21 @@
         <string>页</string>
        </attribute>
       </widget>
+      <widget class="QWidget" name="tab_PiecewiseItem">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_QChartTable">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_QScalarsToColors">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -133,6 +148,9 @@
     <addaction name="actionHelloWorld"/>
     <addaction name="actionLabeledMesh"/>
     <addaction name="actionMultiView"/>
+    <addaction name="actionPiecewiseItem"/>
+    <addaction name="actionQChartTable"/>
+    <addaction name="actionQScalarsToColors"/>
    </widget>
    <addaction name="menu"/>
   </widget>
@@ -223,6 +241,21 @@
   <action name="actionMultiView">
    <property name="text">
     <string>MultiView</string>
+   </property>
+  </action>
+  <action name="actionPiecewiseItem">
+   <property name="text">
+    <string>PiecewiseItem</string>
+   </property>
+  </action>
+  <action name="actionQChartTable">
+   <property name="text">
+    <string>QChartTable</string>
+   </property>
+  </action>
+  <action name="actionQScalarsToColors">
+   <property name="text">
+    <string>QScalarsToColors</string>
    </property>
   </action>
  </widget>
