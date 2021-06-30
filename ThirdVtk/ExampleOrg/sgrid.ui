@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Cone5</class>
- <widget class="QWidget" name="Cone5">
+ <class>SGrid</class>
+ <widget class="QWidget" name="SGrid">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>985</width>
-    <height>634</height>
+    <width>400</width>
+    <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">

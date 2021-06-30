@@ -45,7 +45,11 @@ SOURCES += main.cpp\
     ExampleOrg/multiview.cpp \
     ExampleOrg/piecewiseitem.cpp \
     ExampleOrg/qcharttable.cpp \
-    ExampleOrg/qscalarstocolors.cpp
+    ExampleOrg/qscalarstocolors.cpp \
+    ExampleOrg/rgrid.cpp \
+    ExampleOrg/sgrid.cpp \
+    ExampleOrg/specularspheres.cpp \
+    ExampleOrg/theme.cpp
 
 
 HEADERS  += mainwindow.h \
@@ -68,7 +72,11 @@ HEADERS  += mainwindow.h \
     ExampleOrg/multiview.h \
     ExampleOrg/piecewiseitem.h \
     ExampleOrg/qcharttable.h \
-    ExampleOrg/qscalarstocolors.h
+    ExampleOrg/qscalarstocolors.h \
+    ExampleOrg/rgrid.h \
+    ExampleOrg/sgrid.h \
+    ExampleOrg/specularspheres.h \
+    ExampleOrg/theme.h
 
 
 FORMS    += mainwindow.ui \
@@ -90,7 +98,11 @@ FORMS    += mainwindow.ui \
     ExampleOrg/multiview.ui \
     ExampleOrg/piecewiseitem.ui \
     ExampleOrg/qcharttable.ui \
-    ExampleOrg/qscalarstocolors.ui
+    ExampleOrg/qscalarstocolors.ui \
+    ExampleOrg/rgrid.ui \
+    ExampleOrg/sgrid.ui \
+    ExampleOrg/specularspheres.ui \
+    ExampleOrg/theme.ui
 
 
 INCLUDEPATH += ./Vtk/include/vtk-8.2
@@ -221,3 +233,6 @@ LIBS += -L./Vtk/lib/ -lvtkViewsCore-8.2
 LIBS += -L./Vtk/lib/ -lvtkViewsInfovis-8.2
 LIBS += -L./Vtk/lib/ -lvtkViewsQt-8.2
 LIBS += -L./Vtk/lib/ -lvtkzlib-8.2
+
+RESOURCES += \
+    images.qrc

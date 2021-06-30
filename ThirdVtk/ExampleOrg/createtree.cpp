@@ -72,5 +72,5 @@ CreateTree::~CreateTree()
 
 void CreateTree::startInteractor()
 {
-    view->GetInteractor()->Start();
+//    view->GetInteractor()->Start();
 }

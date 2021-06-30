@@ -13,106 +13,172 @@
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true">font: 10pt &quot;黑体&quot;;</string>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
     <item row="0" column="0">
      <widget class="QTabWidget" name="tabWidget_Main">
-      <property name="currentIndex">
-       <number>18</number>
+      <property name="styleSheet">
+       <string notr="true">border-image: url(:/MainWindow/Images/MainWindow/background.jpg);</string>
       </property>
-      <widget class="QWidget" name="tab_ambientSpheres">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tab_Logo">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+      </widget>
+      <widget class="QWidget" name="tab_Example">
        <attribute name="title">
         <string>Tab 1</string>
        </attribute>
+       <widget class="QTabWidget" name="tabWidget_Example">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>30</y>
+          <width>1121</width>
+          <height>601</height>
+         </rect>
+        </property>
+        <property name="currentIndex">
+         <number>22</number>
+        </property>
+        <widget class="QWidget" name="tab_ambientSpheres">
+         <attribute name="title">
+          <string>Tab 1</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Arrays">
+         <attribute name="title">
+          <string>Tab 2</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cone">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cone2">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cone3">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cone4">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cone5">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cone6">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_CreateTree">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cube">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cylinder">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_DiffuseSpheres">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_GraphItem">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_HelloWorld">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_LabeledMesh">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_MultiView">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_PiecewiseItem">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_QChartTable">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_QScalarsToColors">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_RGrid">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_SGrid">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_SpecularSpheres">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Theme">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+       </widget>
       </widget>
-      <widget class="QWidget" name="tab_Arrays">
+      <widget class="QWidget" name="tab_ImageManage">
        <attribute name="title">
         <string>Tab 2</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_Cone">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_Cone2">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_Cone3">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_Cone4">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_Cone5">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_Cone6">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_CreateTree">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_Cube">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_Cylinder">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_DiffuseSpheres">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_GraphItem">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_HelloWorld">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_LabeledMesh">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_MultiView">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_PiecewiseItem">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_QChartTable">
-       <attribute name="title">
-        <string>页</string>
-       </attribute>
-      </widget>
-      <widget class="QWidget" name="tab_QScalarsToColors">
-       <attribute name="title">
-        <string>页</string>
        </attribute>
       </widget>
      </widget>
@@ -125,7 +191,7 @@
      <x>0</x>
      <y>0</y>
      <width>1366</width>
-     <height>23</height>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
@@ -151,7 +217,18 @@
     <addaction name="actionPiecewiseItem"/>
     <addaction name="actionQChartTable"/>
     <addaction name="actionQScalarsToColors"/>
+    <addaction name="actionRGrid"/>
+    <addaction name="actionSGrid"/>
+    <addaction name="actionSpecularSpheres"/>
+    <addaction name="actionTheme"/>
    </widget>
+   <widget class="QMenu" name="menu_2">
+    <property name="title">
+     <string>开始</string>
+    </property>
+    <addaction name="actionExit"/>
+   </widget>
+   <addaction name="menu_2"/>
    <addaction name="menu"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
@@ -256,6 +333,31 @@
   <action name="actionQScalarsToColors">
    <property name="text">
     <string>QScalarsToColors</string>
+   </property>
+  </action>
+  <action name="actionRGrid">
+   <property name="text">
+    <string>RGrid</string>
+   </property>
+  </action>
+  <action name="actionSGrid">
+   <property name="text">
+    <string>SGrid</string>
+   </property>
+  </action>
+  <action name="actionSpecularSpheres">
+   <property name="text">
+    <string>SpecularSpheres</string>
+   </property>
+  </action>
+  <action name="actionTheme">
+   <property name="text">
+    <string>Theme</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
    </property>
   </action>
  </widget>

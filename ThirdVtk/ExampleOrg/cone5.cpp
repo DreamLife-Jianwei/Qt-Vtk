@@ -34,7 +34,7 @@ Cone5::Cone5(QWidget *parent) :QWidget(parent),ui(new Ui::Cone5)
     style = vtkInteractorStyleTrackballCamera::New();
     iren->SetInteractorStyle(style);
 
-    iren->Initialize();
+//    iren->Initialize();
 //    iren->Start();                //在Qt中无法跑起来，这里需要看下Start的源码
     /*
     void vtkRenderWindowInteractor::Start()

@@ -4,6 +4,11 @@
 #include <QMainWindow>
 #include <QResizeEvent>
 #include <QTabBar>
+#include <QPaintEvent>
+#include <QPixmap>
+#include <QPainter>
+#include <QLabel>
+#include <QMouseEvent>
 
 #include "ExampleOrg/ambientspheres.h"
 #include "ExampleOrg/marrays.h"
@@ -24,6 +29,10 @@
 #include "ExampleOrg/piecewiseitem.h"
 #include "ExampleOrg/qcharttable.h"
 #include "ExampleOrg/qscalarstocolors.h"
+#include "ExampleOrg/rgrid.h"
+#include "ExampleOrg/sgrid.h"
+#include "ExampleOrg/specularspheres.h"
+#include "ExampleOrg/theme.h"
 namespace Ui {
 class MainWindow;
 }
@@ -77,6 +86,27 @@ private slots:
 
     void on_actionQScalarsToColors_triggered();
 
+    void on_actionRGrid_triggered();
+
+    void on_actionSGrid_triggered();
+
+    void on_actionSpecularSpheres_triggered();
+
+    void on_actionTheme_triggered();
+
+    void on_actionExit_triggered();
+
+protected:
+    inline void changeExample();
+    void paintEvent(QPaintEvent *event);
+    void mousePressEvent(QMouseEvent *event);
+    void mouseMoveEvent(QMouseEvent *event);
+    void mouseReleaseEvent(QMouseEvent *event);
+    bool eventFilter(QObject *watched, QEvent *event);
+
+
+
+
 private:
     Ui::MainWindow *ui;
     AmbientSpheres *mAmbintSpheres = nullptr;
@@ -98,6 +128,10 @@ private:
     PiecewiseItem *mPiecewiseItem = nullptr;
     QChartTable *mQchartTable = nullptr;
     QScalarsToColors *mQScalarsToColors = nullptr;
+    RGrid *mRGrid = nullptr;
+    SGrid *mSGrid = nullptr;
+    SpecularSpheres *mSpecularSpheres = nullptr;
+    Theme *mTheme = nullptr;
 };
 
 #endif // MAINWINDOW_H

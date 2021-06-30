@@ -53,7 +53,6 @@ Cone6::Cone6(QWidget *parent) :
     boxWidget->AddObserver(vtkCommand::InteractionEvent,callback);
     boxWidget->On();
 
-    iren->Initialize();
 
 
 }

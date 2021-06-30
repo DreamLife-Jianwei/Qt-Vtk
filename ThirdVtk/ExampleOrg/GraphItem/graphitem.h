@@ -27,6 +27,9 @@ public:
     vtkTypeMacro(GraphAnimate,vtkCommand);
     void Execute(vtkObject *caller, unsigned long eventId, void *callData) override
     {
+        Q_UNUSED(caller);
+        Q_UNUSED(eventId);
+        Q_UNUSED(callData);
         this->GraphItem->UpdatePositions();
         this->view->Render();
         this->view->GetRenderWindow()->GetInteractor()->CreateOneShotTimer(10);
