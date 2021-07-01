@@ -36,7 +36,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>2</number>
       </property>
       <widget class="QWidget" name="tab_Logo">
        <attribute name="title">
@@ -181,6 +181,7 @@
        <attribute name="title">
         <string>Tab 2</string>
        </attribute>
+       <layout class="QGridLayout" name="gridLayout_3"/>
       </widget>
      </widget>
     </item>
@@ -233,6 +234,7 @@
     <property name="title">
      <string>ImageManage</string>
     </property>
+    <addaction name="action2_2"/>
    </widget>
    <addaction name="menu_Start"/>
    <addaction name="menu_Example"/>
@@ -365,6 +367,11 @@
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="action2_2">
+   <property name="text">
+    <string>2×2 视图</string>
    </property>
   </action>
  </widget>

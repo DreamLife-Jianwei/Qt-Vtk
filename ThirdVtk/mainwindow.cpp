@@ -37,6 +37,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabWidget_Main->setCurrentIndex(0);
     ui->tabWidget_Example->setCurrentIndex(0);
     this->setWindowTitle("Qt&Vtk");
+
+    /****************官方代码示例*********************/
+
     mAmbintSpheres = new AmbientSpheres(ui->tab_ambientSpheres);
     mArrays = new MArrays(ui->tab_Arrays);
     mCone = new Cone(ui->tab_Cone);
@@ -61,12 +64,20 @@ MainWindow::MainWindow(QWidget *parent) :
     mSpecularSpheres = new SpecularSpheres(ui->tab_SpecularSpheres);
     mTheme = new Theme(ui->tab_Theme);
 
+    /****************图像管理*********************/
+
+    mImageManage = new ImageManage(ui->tab_ImageManage);
+
+
+
+
+
+
     /**
       下面这个函数没有啥实际用途，目的就是在构造完成后强制的调用resizeevent，来刷新界面
       */
     QTimer::singleShot(1,this,[=](){
-        this->resize(this->size() - QSize(1, 1));
-        this->resize(this->size() + QSize(1, 1));
+        resizeWindow();
     });
 
 
@@ -107,6 +118,8 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     mSGrid->resize(ui->tab_SGrid->size());
     mSpecularSpheres->resize(ui->tab_SpecularSpheres->size());
     mTheme->resize(ui->tab_Theme->size());
+
+    mImageManage->resize(ui->tab_ImageManage->size());
 }
 
 void MainWindow::on_actionAmbientSpheres_triggered()
@@ -114,8 +127,6 @@ void MainWindow::on_actionAmbientSpheres_triggered()
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(0);
     this->setWindowTitle("Qt&Vtk-Ambientspheres");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 
@@ -124,8 +135,6 @@ void MainWindow::on_actionArrays_triggered()
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(1);
     this->setWindowTitle("Qt&Vtk-Arrays");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionCone_triggered()
@@ -133,8 +142,6 @@ void MainWindow::on_actionCone_triggered()
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(2);
     this->setWindowTitle("Qt&Vtk-Cone");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionCone2_triggered()
@@ -142,8 +149,6 @@ void MainWindow::on_actionCone2_triggered()
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(3);
     this->setWindowTitle("Qt&Vtk-Cone2");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionCone3_triggered()
@@ -151,8 +156,6 @@ void MainWindow::on_actionCone3_triggered()
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(4);
     this->setWindowTitle("Qt&Vtk-Cone3");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionCone4_triggered()
@@ -160,8 +163,6 @@ void MainWindow::on_actionCone4_triggered()
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(5);
     this->setWindowTitle("Qt&Vtk-Cone4");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionCone5_triggered()
@@ -170,8 +171,6 @@ void MainWindow::on_actionCone5_triggered()
     ui->tabWidget_Example->setCurrentIndex(6);
     this->setWindowTitle("Qt&Vtk-Cone5");
     mCone5->startiren();
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionCone6_triggered()
@@ -180,8 +179,6 @@ void MainWindow::on_actionCone6_triggered()
     ui->tabWidget_Example->setCurrentIndex(7);
     this->setWindowTitle("Qt&Vtk-Cone6");
     mCone6->startInteractor();
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionCreateTree_triggered()
@@ -190,8 +187,6 @@ void MainWindow::on_actionCreateTree_triggered()
     ui->tabWidget_Example->setCurrentIndex(8);
     this->setWindowTitle("Qt&Vtk-CreateTree");
     mCreateTree->startInteractor();
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionCube_triggered()
@@ -199,8 +194,6 @@ void MainWindow::on_actionCube_triggered()
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(9);
     this->setWindowTitle("Qt&Vtk-Cube");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionCylinder_triggered()
@@ -208,8 +201,6 @@ void MainWindow::on_actionCylinder_triggered()
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(10);
     this->setWindowTitle("Qt&Vtk-Cylinder");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionDiffuseSpheres_triggered()
@@ -217,8 +208,6 @@ void MainWindow::on_actionDiffuseSpheres_triggered()
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(11);
     this->setWindowTitle("Qt&Vtk-DiffuseSpheres");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionGraphItem_triggered()
@@ -226,8 +215,6 @@ void MainWindow::on_actionGraphItem_triggered()
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(12);
     this->setWindowTitle("Qt&Vtk-GraphItem");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionHelloWorld_triggered()
@@ -235,17 +222,14 @@ void MainWindow::on_actionHelloWorld_triggered()
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(13);
     this->setWindowTitle("Qt&Vtk-HelloWorld");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionLabeledMesh_triggered()
 {
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(14);
-    this->setWindowTitle("Qt&Vtk-LabeldMesh");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
+   this->setWindowTitle("Qt&Vtk-LabeldMesh");
+
 }
 
 void MainWindow::on_actionMultiView_triggered()
@@ -253,8 +237,6 @@ void MainWindow::on_actionMultiView_triggered()
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(15);
     this->setWindowTitle("Qt&Vtk-MultiView");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionPiecewiseItem_triggered()
@@ -262,8 +244,6 @@ void MainWindow::on_actionPiecewiseItem_triggered()
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(16);
     this->setWindowTitle("Qt&Vtk-PiecewiseItem");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionQChartTable_triggered()
@@ -271,8 +251,6 @@ void MainWindow::on_actionQChartTable_triggered()
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(17);
     this->setWindowTitle("Qt&Vtk-QChartTable");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionQScalarsToColors_triggered()
@@ -280,8 +258,6 @@ void MainWindow::on_actionQScalarsToColors_triggered()
     changeExample();
     ui->tabWidget_Example->setCurrentIndex(18);
     this->setWindowTitle("Qt&Vtk-QScalarsToColors");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionRGrid_triggered()
@@ -289,8 +265,6 @@ void MainWindow::on_actionRGrid_triggered()
     changeExample();
     ui->tabWidget_Main->setCurrentIndex(19);
     this->setWindowTitle("Qt&Vtk-RGrid");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionSGrid_triggered()
@@ -298,8 +272,6 @@ void MainWindow::on_actionSGrid_triggered()
     changeExample();
     ui->tabWidget_Main->setCurrentIndex(20);
     this->setWindowTitle("Qt&Vtk-SGrid");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionSpecularSpheres_triggered()
@@ -307,8 +279,6 @@ void MainWindow::on_actionSpecularSpheres_triggered()
     changeExample();
     ui->tabWidget_Main->setCurrentIndex(21);
     this->setWindowTitle("Qt&Vtk-SpecularSpheres");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
 }
 
 void MainWindow::on_actionTheme_triggered()
@@ -316,8 +286,7 @@ void MainWindow::on_actionTheme_triggered()
     changeExample();
     ui->tabWidget_Main->setCurrentIndex(22);
     this->setWindowTitle("Qt&Vtk-Theme");
-    this->resize(this->size() - QSize(1, 1));
-    this->resize(this->size() + QSize(1, 1));
+
 }
 
 void MainWindow::changeExample()
@@ -326,6 +295,22 @@ void MainWindow::changeExample()
     {
         ui->tabWidget_Main->setCurrentIndex(1);
     }
+    resizeWindow();
+}
+
+void MainWindow::changeImageManage()
+{
+    if(ui->tabWidget_Main->currentIndex() != 2)
+    {
+        ui->tabWidget_Main->setCurrentIndex(2);
+    }
+    resizeWindow();
+}
+
+void MainWindow::resizeWindow()
+{
+    this->resize(this->size() - QSize(1, 1));
+    this->resize(this->size() + QSize(1, 1));
 }
 /**
  * @brief MainWindow::paintEvent
@@ -406,4 +391,10 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 void MainWindow::on_actionExit_triggered()
 {
     this->close();
+}
+
+void MainWindow::on_action2_2_triggered()
+{
+    changeImageManage();
+    mImageManage->setCurrentTab(0);
 }

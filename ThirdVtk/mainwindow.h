@@ -33,6 +33,8 @@
 #include "ExampleOrg/sgrid.h"
 #include "ExampleOrg/specularspheres.h"
 #include "ExampleOrg/theme.h"
+
+#include "ImageManage/imagemanage.h"
 namespace Ui {
 class MainWindow;
 }
@@ -96,8 +98,12 @@ private slots:
 
     void on_actionExit_triggered();
 
+    void on_action2_2_triggered();
+
 protected:
     inline void changeExample();
+    inline void changeImageManage();
+    inline void resizeWindow();
     void paintEvent(QPaintEvent *event);
     void mousePressEvent(QMouseEvent *event);
     void mouseMoveEvent(QMouseEvent *event);
@@ -132,6 +138,8 @@ private:
     SGrid *mSGrid = nullptr;
     SpecularSpheres *mSpecularSpheres = nullptr;
     Theme *mTheme = nullptr;
+
+    ImageManage *mImageManage = nullptr;
 };
 
 #endif // MAINWINDOW_H

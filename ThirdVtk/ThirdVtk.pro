@@ -29,6 +29,7 @@ SOURCES += main.cpp\
     ExampleOrg/GraphItem/graphitem.cpp \
     ExampleOrg/GraphItem/vtkgraphitem.cpp \
     ExampleOrg/cone2.cpp \
+    ImageManage/imagemanage.cpp \
         mainwindow.cpp \
     ExampleOrg/ambientspheres.cpp \
     ExampleOrg/marrays.cpp \
@@ -77,7 +78,8 @@ HEADERS  += mainwindow.h \
     ExampleOrg/rgrid.h \
     ExampleOrg/sgrid.h \
     ExampleOrg/specularspheres.h \
-    ExampleOrg/theme.h
+    ExampleOrg/theme.h \
+    ImageManage/imagemanage.h
 
 
 FORMS    += mainwindow.ui \
@@ -103,7 +105,8 @@ FORMS    += mainwindow.ui \
     ExampleOrg/rgrid.ui \
     ExampleOrg/sgrid.ui \
     ExampleOrg/specularspheres.ui \
-    ExampleOrg/theme.ui
+    ExampleOrg/theme.ui \
+    ImageManage/imagemanage.ui
 
 
 INCLUDEPATH += ./Vtk/include/vtk-8.2
