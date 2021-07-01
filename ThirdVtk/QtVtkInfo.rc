@@ -22,11 +22,11 @@ VS_VERSION_INFO VERSIONINFO
             BLOCK "080404b0"
             BEGIN
                 VALUE "CompanyName", "DreamLife"
-                VALUE "FileDescription", "Qt&Vtk"
+                VALUE "FileDescription", "Qt&Vtk¿ª·¢ÊµÀý"
                 VALUE "FileVersion", "1.0.0.0"
                 VALUE "InternalName", "Qt&Vtk.exe"
                 VALUE "LegalCopyright", "Copyright (C)2021-2023"
-                VALUE "OriginalFilename", "Qt&Vtk.exe"
+                VALUE "OriginalFilename", "ThirdVtk.exe"
                 VALUE "ProductName", "Qt&Vtk"
                 VALUE "ProductVersion", "1.0.0.0"
             END

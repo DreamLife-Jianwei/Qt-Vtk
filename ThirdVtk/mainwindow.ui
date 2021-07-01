@@ -195,7 +195,7 @@
      <height>19</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menu">
+   <widget class="QMenu" name="menu_Example">
     <property name="title">
      <string>官方实例</string>
     </property>
@@ -223,20 +223,20 @@
     <addaction name="actionSpecularSpheres"/>
     <addaction name="actionTheme"/>
    </widget>
-   <widget class="QMenu" name="menu_2">
+   <widget class="QMenu" name="menu_Start">
     <property name="title">
      <string>开始</string>
     </property>
     <addaction name="actionExit"/>
    </widget>
-   <widget class="QMenu" name="menuImageManage">
+   <widget class="QMenu" name="menu_ImageManage">
     <property name="title">
      <string>ImageManage</string>
     </property>
    </widget>
-   <addaction name="menu_2"/>
-   <addaction name="menu"/>
-   <addaction name="menuImageManage"/>
+   <addaction name="menu_Start"/>
+   <addaction name="menu_Example"/>
+   <addaction name="menu_ImageManage"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
