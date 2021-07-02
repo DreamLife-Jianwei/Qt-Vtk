@@ -73,3 +73,10 @@ void Cone5::startiren()
 {
     iren->Start();
 }
+
+void Cone5::resizeEvent(QResizeEvent *event)
+{
+    Q_UNUSED(event)
+
+
+}

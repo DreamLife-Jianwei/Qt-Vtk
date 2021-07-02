@@ -100,6 +100,8 @@ private slots:
 
     void on_action2_2_triggered();
 
+    void on_actionOpen_triggered();
+
 protected:
     inline void changeExample();
     inline void changeImageManage();

@@ -52,9 +52,6 @@ Cone6::Cone6(QWidget *parent) :
     callback = vtkMyCallBack::New();
     boxWidget->AddObserver(vtkCommand::InteractionEvent,callback);
     boxWidget->On();
-
-
-
 }
 
 Cone6::~Cone6()

@@ -10,7 +10,8 @@ int main(int argc, char *argv[])
     VTK_MODULE_INIT(vtkRenderingContextOpenGL2);
     QApplication a(argc, argv);
     a.setStyleSheet("QTabWidget::pane{border-style:outset;background:transparent;}"
-                    "QMenuBar{background-color:rgb(240,240,240);}");
+                    "QMenuBar{background-color:rgb(240,240,240);}"
+                    "QSplitter::handle{ background-color:transparent;}");
 
     MainWindow w;
     w.show();

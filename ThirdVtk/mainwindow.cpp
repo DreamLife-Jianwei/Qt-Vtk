@@ -17,6 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabWidget_Example->tabBar()->hide();
     ui->tabWidget_Example->setGeometry(0,0,ui->tab_Example->width(),ui->tab_Example->height());
     //    ui->tabWidget_Main->resize(1366,768);
+    ui->ToolBarImage->hide();
     QLabel *infor = new QLabel(this);
     infor->setText("Qt Creator版本: 5.7.1-MSVC 2015 "
                    "Visual Studio版本：VS2015 Update 3 "
@@ -124,169 +125,190 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 
 void MainWindow::on_actionAmbientSpheres_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(0);
     this->setWindowTitle("Qt&Vtk-Ambientspheres");
+    changeExample();
 }
-
 
 void MainWindow::on_actionArrays_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(1);
     this->setWindowTitle("Qt&Vtk-Arrays");
+    changeExample();
 }
 
 void MainWindow::on_actionCone_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(2);
     this->setWindowTitle("Qt&Vtk-Cone");
+    changeExample();
 }
 
 void MainWindow::on_actionCone2_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(3);
     this->setWindowTitle("Qt&Vtk-Cone2");
+    changeExample();
 }
 
 void MainWindow::on_actionCone3_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(4);
     this->setWindowTitle("Qt&Vtk-Cone3");
+    changeExample();
 }
 
 void MainWindow::on_actionCone4_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(5);
     this->setWindowTitle("Qt&Vtk-Cone4");
+    changeExample();
 }
 
 void MainWindow::on_actionCone5_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(6);
     this->setWindowTitle("Qt&Vtk-Cone5");
     mCone5->startiren();
+    changeExample();
 }
 
 void MainWindow::on_actionCone6_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(7);
     this->setWindowTitle("Qt&Vtk-Cone6");
     mCone6->startInteractor();
+    changeExample();
 }
 
 void MainWindow::on_actionCreateTree_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(8);
     this->setWindowTitle("Qt&Vtk-CreateTree");
     mCreateTree->startInteractor();
+    changeExample();
 }
 
 void MainWindow::on_actionCube_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(9);
     this->setWindowTitle("Qt&Vtk-Cube");
+    changeExample();
 }
 
 void MainWindow::on_actionCylinder_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(10);
     this->setWindowTitle("Qt&Vtk-Cylinder");
+    changeExample();
 }
 
 void MainWindow::on_actionDiffuseSpheres_triggered()
 {
-    changeExample();
     ui->tabWidget_Example->setCurrentIndex(11);
     this->setWindowTitle("Qt&Vtk-DiffuseSpheres");
+
+    changeExample();
 }
 
 void MainWindow::on_actionGraphItem_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(12);
     this->setWindowTitle("Qt&Vtk-GraphItem");
+    changeExample();
 }
 
 void MainWindow::on_actionHelloWorld_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(13);
     this->setWindowTitle("Qt&Vtk-HelloWorld");
+    changeExample();
 }
 
 void MainWindow::on_actionLabeledMesh_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(14);
-   this->setWindowTitle("Qt&Vtk-LabeldMesh");
+    this->setWindowTitle("Qt&Vtk-LabeldMesh");
+    changeExample();
 
 }
 
 void MainWindow::on_actionMultiView_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(15);
     this->setWindowTitle("Qt&Vtk-MultiView");
+    changeExample();
 }
 
 void MainWindow::on_actionPiecewiseItem_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(16);
     this->setWindowTitle("Qt&Vtk-PiecewiseItem");
+    changeExample();
 }
 
 void MainWindow::on_actionQChartTable_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(17);
     this->setWindowTitle("Qt&Vtk-QChartTable");
+    changeExample();
 }
 
 void MainWindow::on_actionQScalarsToColors_triggered()
 {
-    changeExample();
+
     ui->tabWidget_Example->setCurrentIndex(18);
     this->setWindowTitle("Qt&Vtk-QScalarsToColors");
+    changeExample();
 }
 
 void MainWindow::on_actionRGrid_triggered()
 {
-    changeExample();
-    ui->tabWidget_Main->setCurrentIndex(19);
+
+    ui->tabWidget_Example->setCurrentIndex(19);
     this->setWindowTitle("Qt&Vtk-RGrid");
+    changeExample();
 }
 
 void MainWindow::on_actionSGrid_triggered()
 {
-    changeExample();
-    ui->tabWidget_Main->setCurrentIndex(20);
+
+    ui->tabWidget_Example->setCurrentIndex(20);
     this->setWindowTitle("Qt&Vtk-SGrid");
+    changeExample();
 }
 
 void MainWindow::on_actionSpecularSpheres_triggered()
 {
-    changeExample();
-    ui->tabWidget_Main->setCurrentIndex(21);
+
+    ui->tabWidget_Example->setCurrentIndex(21);
     this->setWindowTitle("Qt&Vtk-SpecularSpheres");
+    changeExample();
 }
 
 void MainWindow::on_actionTheme_triggered()
 {
-    changeExample();
-    ui->tabWidget_Main->setCurrentIndex(22);
-    this->setWindowTitle("Qt&Vtk-Theme");
 
+    ui->tabWidget_Example->setCurrentIndex(22);
+    this->setWindowTitle("Qt&Vtk-Theme");
+    changeExample();
 }
 
 void MainWindow::changeExample()
@@ -294,6 +316,7 @@ void MainWindow::changeExample()
     if(ui->tabWidget_Main->currentIndex() != 1)
     {
         ui->tabWidget_Main->setCurrentIndex(1);
+        ui->ToolBarImage->hide();
     }
     resizeWindow();
 }
@@ -302,6 +325,7 @@ void MainWindow::changeImageManage()
 {
     if(ui->tabWidget_Main->currentIndex() != 2)
     {
+        ui->ToolBarImage->show();
         ui->tabWidget_Main->setCurrentIndex(2);
     }
     resizeWindow();
@@ -311,6 +335,7 @@ void MainWindow::resizeWindow()
 {
     this->resize(this->size() - QSize(1, 1));
     this->resize(this->size() + QSize(1, 1));
+
 }
 /**
  * @brief MainWindow::paintEvent
@@ -397,4 +422,9 @@ void MainWindow::on_action2_2_triggered()
 {
     changeImageManage();
     mImageManage->setCurrentTab(0);
+}
+
+void MainWindow::on_actionOpen_triggered()
+{
+    //打开文件
 }

@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QString>
 #include <QTextBrowser>
+#include <QResizeEvent>
 #include "QVTKOpenGLWidget.h"               //新版本，旧版QVTKWidget
 #include "vtkAutoInit.h"
 #include "vtkConeSource.h"
@@ -32,6 +33,8 @@ public:
 
     void startiren();
 
+protected:
+    void resizeEvent(QResizeEvent *event) override;
 
 private:
     Ui::Cone5 *ui;
