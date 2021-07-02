@@ -19,8 +19,8 @@ MainWindow::MainWindow(QWidget *parent) :
     //    ui->tabWidget_Main->resize(1366,768);
     ui->ToolBarImage->hide();
     QLabel *infor = new QLabel(this);
-    infor->setText("Qt Creator版本: 5.7.1-MSVC 2015 "
-                   "Visual Studio版本：VS2015 Update 3 "
+    infor->setText("Qt 版本: 5.7.1 后面更换为5.14.2  "
+                   "VS版本：2015 Update 3 "
                    "Vtk版本: 8.2.0 Release "
                    "制作：张建伟 "
                    "邮箱：jianwei1992@foxmail.com "
