@@ -24,16 +24,6 @@ ImageManage::ImageManage(QWidget *parent) :
     mSplitterMain->insertWidget(0,mSplitterVertical);
     mSplitterMain->insertWidget(1,ui->widget_5);
     mSplitterMain->setStretchFactor(0,1);               //很魔性啊
-
-
-    ui->widget_1->installEventFilter(this);
-    ui->widget_2->installEventFilter(this);
-    ui->widget_3->installEventFilter(this);
-    ui->widget_4->installEventFilter(this);
-    ui->widget_5->installEventFilter(this);
-
-    ui->label->installEventFilter(this);
-
 }
 
 ImageManage::~ImageManage()
@@ -44,6 +34,86 @@ ImageManage::~ImageManage()
 void ImageManage::setCurrentTab(int temp)
 {
     Q_UNUSED(temp);
+}
+
+void ImageManage::slot_ReaderDICOMImage(const char *fn)
+{
+    if(!imageReader)
+    {
+        imageReader = vtkSmartPointer<vtkDICOMImageReader>::New();
+    }
+    imageReader->SetFileName(fn);
+    imageReader->Update();
+    imageReader->GetOutput()->GetDimensions(imageDims);             //还不理解
+
+    for(auto i = 0;i<3;i++)
+    {
+        riw[i] = vtkSmartPointer<vtkResliceImageViewer>::New();
+    }
+
+    /*这里需要修改一下代码，不然编译会把报错*/
+    riw[0]->SetRenderWindow(ui->widget_1->GetRenderWindow());
+    riw[0]->SetupInteractor(ui->widget_1->GetRenderWindow()->GetInteractor());
+
+    riw[1]->SetRenderWindow(ui->widget_2->GetRenderWindow());
+    riw[1]->SetupInteractor(ui->widget_2->GetRenderWindow()->GetInteractor());
+
+    riw[2]->SetRenderWindow(ui->widget_3->GetRenderWindow());
+    riw[2]->SetupInteractor(ui->widget_3->GetRenderWindow()->GetInteractor());
+
+    for(auto i = 0;i<3;i++)
+    {
+        vtkResliceCursorLineRepresentation *rep = vtkResliceCursorLineRepresentation::SafeDownCast(riw[i]->GetResliceCursorWidget()->GetRepresentation());
+        riw[i]->SetResliceCursor(riw[0]->GetResliceCursor());
+        rep->GetResliceCursorActor()->GetCursorAlgorithm()->SetReslicePlaneNormal(i);
+        riw[i]->SetInputData(imageReader->GetOutput());
+        riw[i]->SetSliceOrientation(i);
+        riw[i]->SetResliceModeToAxisAligned();
+    }
+
+    picker = vtkSmartPointer<vtkCellPicker>::New();
+    picker->SetTolerance(0.005);
+
+    ipwProp = vtkSmartPointer<vtkProperty>::New();
+
+    render = vtkSmartPointer<vtkRenderer>::New();
+
+    ui->widget_4->GetRenderWindow()->AddRenderer(render);
+
+    iren = vtkSmartPointer<vtkRenderWindowInteractor>::New();
+    iren  = ui->widget_4->GetInteractor();
+
+    for(auto i = 0;i<3;i++)
+    {
+        planeWidget[i] = vtkSmartPointer<vtkImagePlaneWidget>::New();
+        planeWidget[i]->SetInteractor(iren);
+        planeWidget[i]->SetPicker(picker);
+        planeWidget[i]->RestrictPlaneToVolumeOn();
+        color[i] = 1;
+        planeWidget[i]->GetPlaneProperty()->SetColor(color);
+        color[0] /= 4.0;
+        color[1] /= 4.0;
+        color[2] /= 4.0;
+        riw[i]->GetRenderer()->SetBackground(color);
+        planeWidget[i]->SetTexturePlaneProperty(ipwProp);
+        planeWidget[i]->TextureInterpolateOn();
+        planeWidget[i]->SetResliceInterpolateToLinear();
+        planeWidget[i]->SetInputConnection(imageReader->GetOutputPort());
+        planeWidget[i]->SetPlaneOrientation(i);
+        planeWidget[i]->SetSliceIndex(imageDims[i]/2);
+        planeWidget[i]->DisplayTextOn();
+        planeWidget[i]->SetDefaultRenderer(render);
+        planeWidget[i]->SetWindowLevel(1358,-27);
+        planeWidget[i]->On();
+        planeWidget[i]->InteractionOn();
+    }
+
+    ui->widget_1->GetRenderWindow()->Render();
+    ui->widget_2->GetRenderWindow()->Render();
+    ui->widget_3->GetRenderWindow()->Render();
+    ui->widget_4->GetRenderWindow()->Render();
+
+
 }
 
 void ImageManage::resizeEvent(QResizeEvent *event)

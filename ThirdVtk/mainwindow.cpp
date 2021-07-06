@@ -427,4 +427,23 @@ void MainWindow::on_action2_2_triggered()
 void MainWindow::on_actionOpen_triggered()
 {
     //打开文件
+
+//    mImageManage->slot_ReaderDICOMImage();
+
+
+    QString filter;
+    filter = "DICM image file (*.dcm)";
+
+    QDir dir;
+
+    QString fileName = QFileDialog::getOpenFileName(this,QString(tr("打开图像")),dir.absolutePath(),filter);
+    if(fileName.isEmpty() == true)
+        return;
+    mImageManage->slot_ReaderDICOMImage(fileName.toLocal8Bit().data());
+
+}
+
+void MainWindow::on_actionStart_triggered()
+{
+    ui->tabWidget_Main->setCurrentIndex(0);
 }

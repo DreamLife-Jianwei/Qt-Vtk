@@ -9,6 +9,11 @@
 #include <QPainter>
 #include <QLabel>
 #include <QMouseEvent>
+#include <QString>
+#include <QByteArray>
+#include <QFile>
+#include <QDir>
+#include <QFileDialog>
 
 #include "ExampleOrg/ambientspheres.h"
 #include "ExampleOrg/marrays.h"
@@ -101,6 +106,8 @@ private slots:
     void on_action2_2_triggered();
 
     void on_actionOpen_triggered();
+
+    void on_actionStart_triggered();
 
 protected:
     inline void changeExample();
