@@ -1,6 +1,7 @@
 #include "imagemanage.h"
 #include "ui_imagemanage.h"
 #include <QtDebug>
+
 static QPoint lastPos;
 ImageManage::ImageManage(QWidget *parent) :
     QWidget(parent),
@@ -47,35 +48,7 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     imageReader->GetOutput()->GetDimensions(imageDims);             //还不理解,翻译为获取维度,注释掉以后三维中有影响
 
 
-    //拾取器
-    picker = vtkSmartPointer<vtkCellPicker>::New();
-    picker->SetTolerance(0.005);            //设置公差
-//    ipwProp = vtkSmartPointer<vtkProperty>::New();        //属性
-    render = vtkSmartPointer<vtkRenderer>::New();           //渲染器
-    ui->widget_4->GetRenderWindow()->AddRenderer(render);
-    for(auto i = 0;i<3;i++)
-    {
-        //VTKImagePlaneWidget 是一个3D交互部件，用来重切图像数据
-        planeWidget[i] = vtkSmartPointer<vtkImagePlaneWidget>::New();
-        planeWidget[i]->SetInteractor(ui->widget_4->GetInteractor());
-        planeWidget[i]->SetPicker(picker);
-        planeWidget[i]->RestrictPlaneToVolumeOn();
-        color[0] = color[1] = color[2] = 0;
-        color[i] = 1;
-        planeWidget[i]->GetPlaneProperty()->SetColor(color);
-//        planeWidget[i]->SetTexturePlaneProperty(ipwProp);
-        planeWidget[i]->TextureInterpolateOn();
-        planeWidget[i]->SetResliceInterpolateToLinear();
-        planeWidget[i]->SetInputConnection(imageReader->GetOutputPort());
-        planeWidget[i]->SetPlaneOrientation(i);
-        planeWidget[i]->SetSliceIndex(imageDims[i]/2);
-        planeWidget[i]->DisplayTextOn();
-        planeWidget[i]->SetDefaultRenderer(render);
-        planeWidget[i]->SetWindowLevel(1358,-27);
-        planeWidget[i]->On();
-        planeWidget[i]->InteractionOn();
 
-    }
 
     for(auto i = 0;i<3;i++)
     {
@@ -94,9 +67,8 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
 
     for(auto i = 0;i<3;i++)
     {
-//        vtkResliceCursorLineRepresentation *rep = vtkResliceCursorLineRepresentation::SafeDownCast(riw[i]->GetResliceCursorWidget()->GetRepresentation());
-//        rep->GetResliceCursorActor()->GetCursorAlgorithm()->SetReslicePlaneNormal(i);
-
+        vtkResliceCursorLineRepresentation *rep = vtkResliceCursorLineRepresentation::SafeDownCast(riw[i]->GetResliceCursorWidget()->GetRepresentation());
+        rep->GetResliceCursorActor()->GetCursorAlgorithm()->SetReslicePlaneNormal(i);
         riw[i]->SetInputData(imageReader->GetOutput());             //数据输入源
         riw[i]->SetResliceCursor(riw[0]->GetResliceCursor());       //设置为同一个对象，以便实现视图同步
         riw[i]->SetSliceOrientation(i);                             //设置切片方向
@@ -105,11 +77,57 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
 
     }
 
+    //拾取器
+    picker = vtkSmartPointer<vtkCellPicker>::New();
+    picker->SetTolerance(0.005);            //设置公差
+    //    ipwProp = vtkSmartPointer<vtkProperty>::New();        //属性
+    render = vtkSmartPointer<vtkRenderer>::New();           //渲染器
+    ui->widget_4->GetRenderWindow()->AddRenderer(render);
+    for(auto i = 0;i<3;i++)
+    {
+        //VTKImagePlaneWidget 是一个3D交互部件，用来重切图像数据
+        planeWidget[i] = vtkSmartPointer<vtkImagePlaneWidget>::New();
+        planeWidget[i]->SetInteractor(ui->widget_4->GetInteractor());
+        planeWidget[i]->SetPicker(picker);
+        planeWidget[i]->RestrictPlaneToVolumeOn();
+        color[0] = color[1] = color[2] = 0;
+        color[i] = 1;
+        planeWidget[i]->GetPlaneProperty()->SetColor(color);
+        //        planeWidget[i]->SetTexturePlaneProperty(ipwProp);
+        planeWidget[i]->TextureInterpolateOn();
+        planeWidget[i]->SetResliceInterpolateToLinear();
+        planeWidget[i]->SetInputConnection(imageReader->GetOutputPort());
+        planeWidget[i]->SetPlaneOrientation(i);
+        planeWidget[i]->SetSliceIndex(imageDims[i]/2);
+        planeWidget[i]->DisplayTextOn();
+        planeWidget[i]->SetDefaultRenderer(render);
+        planeWidget[i]->SetWindowLevel(1358,-27);
+        planeWidget[i]->On();
+        planeWidget[i]->InteractionOn();
 
-//    cbk = vtkSmartPointer<vtkResliceCursorCallback>::New();
+    }
 
-//    cbk->view[0] = riw[0];
-//    riw[0]->GetResliceCursorWidget()->AddObserver(vtkResliceCursorWidget::ResliceAxesChangedEvent,cbk);
+
+    cbk = vtkSmartPointer<vtkResliceCursorCallback>::New();
+
+    for (int i = 0; i < 3; i++)
+    {
+        cbk->IPW[i] = planeWidget[i];
+        cbk->RCW[i] = riw[i]->GetResliceCursorWidget();
+        riw[i]->GetResliceCursorWidget()->AddObserver(vtkResliceCursorWidget::ResliceAxesChangedEvent, cbk );
+        riw[i]->GetResliceCursorWidget()->AddObserver(vtkResliceCursorWidget::WindowLevelEvent, cbk );
+        riw[i]->GetResliceCursorWidget()->AddObserver(vtkResliceCursorWidget::ResliceThicknessChangedEvent, cbk );
+        riw[i]->GetResliceCursorWidget()->AddObserver(vtkResliceCursorWidget::ResetCursorEvent, cbk );
+        riw[i]->GetInteractorStyle()->AddObserver(vtkCommand::WindowLevelEvent, cbk );
+
+        // Make them all share the same color map.
+        riw[i]->SetLookupTable(riw[0]->GetLookupTable());
+        planeWidget[i]->GetColorMap()->SetLookupTable(riw[0]->GetLookupTable());
+        //planeWidget[i]->GetColorMap()->SetInput(riw[i]->GetResliceCursorWidget()->GetResliceCursorRepresentation()->GetColorMap()->GetInput());
+        planeWidget[i]->SetColorMap(riw[i]->GetResliceCursorWidget()->GetResliceCursorRepresentation()->GetColorMap());
+
+    }
+
 
 
 
@@ -164,24 +182,3 @@ bool ImageManage::eventFilter(QObject *watched, QEvent *event)
 }
 
 
-
-
-
-void vtkResliceCursorCallback::Execute(vtkObject *caller, unsigned long eventId, void *callData)
-{
-
-
-     qDebug()<< "ddd";
-
-    vtkResliceCursorWidget *rcw = dynamic_cast<vtkResliceCursorWidget*>(caller);
-    if(rcw)
-    {
-        for(auto i = 0;i<3;i++)
-        {
-//            vtkPlaneSource *ps = static_cast<vtkPlaneSource*>(view[i].GetRenderWindow()->GetInteractor()->)
-
-            qDebug()<< "ddd";
-        }
-        view4->GetRenderWindow()->Render();
-    }
-}
