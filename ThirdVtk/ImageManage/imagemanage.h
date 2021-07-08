@@ -65,7 +65,7 @@ private:
     QSplitter *mSplitterVertical = nullptr;
     QSplitter *mSplitterUp = nullptr;
     QSplitter *mSplitterDown = nullptr;
-    double color[3] = {1,1,0};
+    double color[3] = {0,1,1};
 
     vtkSmartPointer<vtkDICOMImageReader> imageReader = nullptr;
     int imageDims[3] = {0};

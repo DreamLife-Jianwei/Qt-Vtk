@@ -423,23 +423,15 @@ void MainWindow::on_action2_2_triggered()
     changeImageManage();
     mImageManage->setCurrentTab(0);
 }
-
+/**
+ * @brief MainWindow::on_actionOpen_triggered
+ * 打开文件夹
+ */
 void MainWindow::on_actionOpen_triggered()
 {
     //打开文件
-
-//    mImageManage->slot_ReaderDICOMImage();
-
-
-    QString filter;
-    filter = "DICM image file (*.dcm)";
-
-    QDir dir;
-
-    QString fileName = QFileDialog::getOpenFileName(this,QString(tr("打开图像")),dir.absolutePath(),filter);
-    if(fileName.isEmpty() == true)
-        return;
-    mImageManage->slot_ReaderDICOMImage(fileName.toLocal8Bit().data());
+   QString dir = QFileDialog::getExistingDirectory(this, tr("打开影像文件夹"),"/home",QFileDialog::ShowDirsOnly| QFileDialog::DontResolveSymlinks);
+    mImageManage->slot_ReaderDICOMImage(dir.toLocal8Bit().data());
 
 }
 

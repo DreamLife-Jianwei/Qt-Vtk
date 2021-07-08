@@ -42,7 +42,7 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     {
         imageReader = vtkSmartPointer<vtkDICOMImageReader>::New();
     }
-    imageReader->SetFileName(fn);
+    imageReader->SetDirectoryName(fn);                              //这里主要，是文件夹哈，不是文件名
     imageReader->Update();
     imageReader->GetOutput()->GetDimensions(imageDims);             //还不理解
 
@@ -67,7 +67,18 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
         riw[i]->SetResliceCursor(riw[0]->GetResliceCursor());
         rep->GetResliceCursorActor()->GetCursorAlgorithm()->SetReslicePlaneNormal(i);
         riw[i]->SetInputData(imageReader->GetOutput());
-        riw[i]->SetSliceOrientation(i);
+
+        /*
+  vtkGetMacro(SliceOrientation, int);
+  virtual void SetSliceOrientation(int orientation);
+  virtual void SetSliceOrientationToXY()
+    { this->SetSliceOrientation(vtkImageViewer2::SLICE_ORIENTATION_XY); };
+  virtual void SetSliceOrientationToYZ()
+    { this->SetSliceOrientation(vtkImageViewer2::SLICE_ORIENTATION_YZ); };
+  virtual void SetSliceOrientationToXZ()
+    { this->SetSliceOrientation(vtkImageViewer2::SLICE_ORIENTATION_XZ); };
+*/
+        riw[i]->SetSliceOrientation(i);     //设置切片方向
         riw[i]->SetResliceModeToAxisAligned();
     }
 
@@ -89,11 +100,11 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
         planeWidget[i]->SetInteractor(iren);
         planeWidget[i]->SetPicker(picker);
         planeWidget[i]->RestrictPlaneToVolumeOn();
-        color[i] = 1;
+        //        color[i] = 1;
         planeWidget[i]->GetPlaneProperty()->SetColor(color);
-        color[0] /= 4.0;
-        color[1] /= 4.0;
-        color[2] /= 4.0;
+        //        color[0] /= 4.0;
+        //        color[1] /= 4.0;
+        //        color[2] /= 4.0;
         riw[i]->GetRenderer()->SetBackground(color);
         planeWidget[i]->SetTexturePlaneProperty(ipwProp);
         planeWidget[i]->TextureInterpolateOn();
@@ -122,7 +133,13 @@ void ImageManage::resizeEvent(QResizeEvent *event)
     mSplitterMain->resize(this->size());
 
 }
-
+/**
+ * @brief ImageManage::eventFilter
+ * @param watched
+ * @param event
+ * @return
+ * Qt绘制函数，在QVTKQidget中好像不好使。
+ */
 bool ImageManage::eventFilter(QObject *watched, QEvent *event)
 {
     if(watched == ui->widget_1)
