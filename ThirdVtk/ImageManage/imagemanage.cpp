@@ -43,8 +43,39 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
         imageReader = vtkSmartPointer<vtkDICOMImageReader>::New();
     }
     imageReader->SetDirectoryName(fn);                              //这里主要，是文件夹哈，不是文件名
-    imageReader->Update();
-    imageReader->GetOutput()->GetDimensions(imageDims);             //还不理解
+    imageReader->Update();                                          //得更新呀，惰性渲染
+    imageReader->GetOutput()->GetDimensions(imageDims);             //还不理解,翻译为获取维度,注释掉以后三维中有影响
+
+
+    //拾取器
+    picker = vtkSmartPointer<vtkCellPicker>::New();
+    picker->SetTolerance(0.005);            //设置公差
+//    ipwProp = vtkSmartPointer<vtkProperty>::New();        //属性
+    render = vtkSmartPointer<vtkRenderer>::New();           //渲染器
+    ui->widget_4->GetRenderWindow()->AddRenderer(render);
+    for(auto i = 0;i<3;i++)
+    {
+        //VTKImagePlaneWidget 是一个3D交互部件，用来重切图像数据
+        planeWidget[i] = vtkSmartPointer<vtkImagePlaneWidget>::New();
+        planeWidget[i]->SetInteractor(ui->widget_4->GetInteractor());
+        planeWidget[i]->SetPicker(picker);
+        planeWidget[i]->RestrictPlaneToVolumeOn();
+        color[0] = color[1] = color[2] = 0;
+        color[i] = 1;
+        planeWidget[i]->GetPlaneProperty()->SetColor(color);
+//        planeWidget[i]->SetTexturePlaneProperty(ipwProp);
+        planeWidget[i]->TextureInterpolateOn();
+        planeWidget[i]->SetResliceInterpolateToLinear();
+        planeWidget[i]->SetInputConnection(imageReader->GetOutputPort());
+        planeWidget[i]->SetPlaneOrientation(i);
+        planeWidget[i]->SetSliceIndex(imageDims[i]/2);
+        planeWidget[i]->DisplayTextOn();
+        planeWidget[i]->SetDefaultRenderer(render);
+        planeWidget[i]->SetWindowLevel(1358,-27);
+        planeWidget[i]->On();
+        planeWidget[i]->InteractionOn();
+
+    }
 
     for(auto i = 0;i<3;i++)
     {
@@ -63,75 +94,36 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
 
     for(auto i = 0;i<3;i++)
     {
-        vtkResliceCursorLineRepresentation *rep = vtkResliceCursorLineRepresentation::SafeDownCast(riw[i]->GetResliceCursorWidget()->GetRepresentation());
-        riw[i]->SetResliceCursor(riw[0]->GetResliceCursor());
-        rep->GetResliceCursorActor()->GetCursorAlgorithm()->SetReslicePlaneNormal(i);
-        riw[i]->SetInputData(imageReader->GetOutput());
+//        vtkResliceCursorLineRepresentation *rep = vtkResliceCursorLineRepresentation::SafeDownCast(riw[i]->GetResliceCursorWidget()->GetRepresentation());
+//        rep->GetResliceCursorActor()->GetCursorAlgorithm()->SetReslicePlaneNormal(i);
 
-        /*
-  vtkGetMacro(SliceOrientation, int);
-  virtual void SetSliceOrientation(int orientation);
-  virtual void SetSliceOrientationToXY()
-    { this->SetSliceOrientation(vtkImageViewer2::SLICE_ORIENTATION_XY); };
-  virtual void SetSliceOrientationToYZ()
-    { this->SetSliceOrientation(vtkImageViewer2::SLICE_ORIENTATION_YZ); };
-  virtual void SetSliceOrientationToXZ()
-    { this->SetSliceOrientation(vtkImageViewer2::SLICE_ORIENTATION_XZ); };
-*/
-        riw[i]->SetSliceOrientation(i);     //设置切片方向
-        riw[i]->SetResliceModeToAxisAligned();
+        riw[i]->SetInputData(imageReader->GetOutput());             //数据输入源
+        riw[i]->SetResliceCursor(riw[0]->GetResliceCursor());       //设置为同一个对象，以便实现视图同步
+        riw[i]->SetSliceOrientation(i);                             //设置切片方向
+        riw[i]->GetRenderer()->SetBackground(0,0,0);                //设置背景
+        riw[i]->SetResliceModeToAxisAligned();                      //设置切片模式为轴对齐
+
     }
 
-    picker = vtkSmartPointer<vtkCellPicker>::New();
-    picker->SetTolerance(0.005);
 
-    ipwProp = vtkSmartPointer<vtkProperty>::New();
+//    cbk = vtkSmartPointer<vtkResliceCursorCallback>::New();
 
-    render = vtkSmartPointer<vtkRenderer>::New();
+//    cbk->view[0] = riw[0];
+//    riw[0]->GetResliceCursorWidget()->AddObserver(vtkResliceCursorWidget::ResliceAxesChangedEvent,cbk);
 
-    ui->widget_4->GetRenderWindow()->AddRenderer(render);
 
-    iren = vtkSmartPointer<vtkRenderWindowInteractor>::New();
-    iren  = ui->widget_4->GetInteractor();
 
-    for(auto i = 0;i<3;i++)
-    {
-        planeWidget[i] = vtkSmartPointer<vtkImagePlaneWidget>::New();
-        planeWidget[i]->SetInteractor(iren);
-        planeWidget[i]->SetPicker(picker);
-        planeWidget[i]->RestrictPlaneToVolumeOn();
-        //        color[i] = 1;
-        planeWidget[i]->GetPlaneProperty()->SetColor(color);
-        //        color[0] /= 4.0;
-        //        color[1] /= 4.0;
-        //        color[2] /= 4.0;
-        riw[i]->GetRenderer()->SetBackground(color);
-        planeWidget[i]->SetTexturePlaneProperty(ipwProp);
-        planeWidget[i]->TextureInterpolateOn();
-        planeWidget[i]->SetResliceInterpolateToLinear();
-        planeWidget[i]->SetInputConnection(imageReader->GetOutputPort());
-        planeWidget[i]->SetPlaneOrientation(i);
-        planeWidget[i]->SetSliceIndex(imageDims[i]/2);
-        planeWidget[i]->DisplayTextOn();
-        planeWidget[i]->SetDefaultRenderer(render);
-        planeWidget[i]->SetWindowLevel(1358,-27);
-        planeWidget[i]->On();
-        planeWidget[i]->InteractionOn();
-    }
 
     ui->widget_1->GetRenderWindow()->Render();
     ui->widget_2->GetRenderWindow()->Render();
     ui->widget_3->GetRenderWindow()->Render();
     ui->widget_4->GetRenderWindow()->Render();
-
-
 }
 
 void ImageManage::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
     mSplitterMain->resize(this->size());
-
 }
 /**
  * @brief ImageManage::eventFilter
@@ -174,3 +166,22 @@ bool ImageManage::eventFilter(QObject *watched, QEvent *event)
 
 
 
+
+void vtkResliceCursorCallback::Execute(vtkObject *caller, unsigned long eventId, void *callData)
+{
+
+
+     qDebug()<< "ddd";
+
+    vtkResliceCursorWidget *rcw = dynamic_cast<vtkResliceCursorWidget*>(caller);
+    if(rcw)
+    {
+        for(auto i = 0;i<3;i++)
+        {
+//            vtkPlaneSource *ps = static_cast<vtkPlaneSource*>(view[i].GetRenderWindow()->GetInteractor()->)
+
+            qDebug()<< "ddd";
+        }
+        view4->GetRenderWindow()->Render();
+    }
+}

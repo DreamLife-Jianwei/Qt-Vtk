@@ -18,6 +18,7 @@
 #include "vtkDICOMImageReader.h"
 #include "vtkSmartPointer.h"
 #include "vtkImageData.h"
+#include "vtkImageActor.h"
 #include "vtkResliceImageViewer.h"
 #include "vtkRenderer.h"
 #include "vtkRenderWindow.h"
@@ -33,6 +34,21 @@
 #include "vtkImagePlaneWidget.h"
 
 
+class vtkResliceCursorCallback : public vtkCommand
+{
+public:
+    static vtkResliceCursorCallback *New(){return new vtkResliceCursorCallback;}
+
+    void Execute(vtkObject *caller, unsigned long eventId, void *callData) override;
+    vtkResliceCursorCallback(){}
+
+    vtkResliceImageViewer *view[3];
+    QVTKOpenGLWidget *view4;
+};
+
+
+
+
 namespace Ui {
 class ImageManage;
 }
@@ -45,8 +61,6 @@ public:
     explicit ImageManage(QWidget *parent = nullptr);
     ~ImageManage();
     void setCurrentTab(int temp =0);
-
-
 public slots:
     /**
      * @brief slot_ReaderDICOMImage
@@ -54,35 +68,25 @@ public slots:
      * 读取DICOM文件
      */
     void slot_ReaderDICOMImage(const char* fn);
-
 protected:
     void resizeEvent(QResizeEvent *event) override;
     bool eventFilter(QObject *watched, QEvent *event)override;
-
 private:
     Ui::ImageManage *ui;
     QSplitter *mSplitterMain = nullptr;
     QSplitter *mSplitterVertical = nullptr;
     QSplitter *mSplitterUp = nullptr;
     QSplitter *mSplitterDown = nullptr;
-    double color[3] = {0,1,1};
-
+    double color[3] = {0,0,0};
     vtkSmartPointer<vtkDICOMImageReader> imageReader = nullptr;
     int imageDims[3] = {0};
     vtkSmartPointer<vtkResliceImageViewer> riw[3];
-
     vtkSmartPointer<vtkCellPicker> picker;
-
-    vtkSmartPointer<vtkProperty> ipwProp;
-
+//    vtkSmartPointer<vtkProperty> ipwProp;
     vtkSmartPointer<vtkRenderer> render;
-
     vtkSmartPointer<vtkRenderWindowInteractor> iren;
-
     vtkSmartPointer<vtkImagePlaneWidget> planeWidget[3];
-
-
-
+    vtkSmartPointer<vtkResliceCursorCallback> cbk = nullptr;
 };
 
 #endif // IMAGEMANAGE_H
