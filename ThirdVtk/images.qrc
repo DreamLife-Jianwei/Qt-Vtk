@@ -1,9 +1,0 @@
-<RCC>
-    <qresource prefix="/MainWindow">
-        <file>Images/MainWindow/background.jpg</file>
-        <file>Images/MainWindow/background.png</file>
-    </qresource>
-    <qresource prefix="/ImageManage">
-        <file>Images/ImageManage/Open.ico</file>
-    </qresource>
-</RCC>

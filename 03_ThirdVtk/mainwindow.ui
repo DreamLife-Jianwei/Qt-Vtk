@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1366</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font: 10pt &quot;黑体&quot;;</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabWidget_Main">
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
+      <property name="currentIndex">
+       <number>2</number>
+      </property>
+      <widget class="QWidget" name="tab_Logo">
+       <attribute name="title">
+        <string>页</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_2"/>
+      </widget>
+      <widget class="QWidget" name="tab_Example">
+       <attribute name="title">
+        <string>Tab 1</string>
+       </attribute>
+       <widget class="QTabWidget" name="tabWidget_Example">
+        <property name="geometry">
+         <rect>
+          <x>40</x>
+          <y>30</y>
+          <width>1121</width>
+          <height>601</height>
+         </rect>
+        </property>
+        <property name="currentIndex">
+         <number>22</number>
+        </property>
+        <widget class="QWidget" name="tab_ambientSpheres">
+         <attribute name="title">
+          <string>Tab 1</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Arrays">
+         <attribute name="title">
+          <string>Tab 2</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cone">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cone2">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cone3">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cone4">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cone5">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cone6">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_CreateTree">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cube">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Cylinder">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_DiffuseSpheres">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_GraphItem">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_HelloWorld">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_LabeledMesh">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_MultiView">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_PiecewiseItem">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_QChartTable">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_QScalarsToColors">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_RGrid">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_SGrid">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_SpecularSpheres">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_Theme">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+       </widget>
+      </widget>
+      <widget class="QWidget" name="tab_ImageManage">
+       <attribute name="title">
+        <string>Tab 2</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3"/>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1366</width>
+     <height>19</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_Example">
+    <property name="title">
+     <string>官方实例</string>
+    </property>
+    <addaction name="actionAmbientSpheres"/>
+    <addaction name="actionArrays"/>
+    <addaction name="actionCone"/>
+    <addaction name="actionCone2"/>
+    <addaction name="actionCone3"/>
+    <addaction name="actionCone4"/>
+    <addaction name="actionCone5"/>
+    <addaction name="actionCone6"/>
+    <addaction name="actionCreateTree"/>
+    <addaction name="actionCube"/>
+    <addaction name="actionCylinder"/>
+    <addaction name="actionDiffuseSpheres"/>
+    <addaction name="actionGraphItem"/>
+    <addaction name="actionHelloWorld"/>
+    <addaction name="actionLabeledMesh"/>
+    <addaction name="actionMultiView"/>
+    <addaction name="actionPiecewiseItem"/>
+    <addaction name="actionQChartTable"/>
+    <addaction name="actionQScalarsToColors"/>
+    <addaction name="actionRGrid"/>
+    <addaction name="actionSGrid"/>
+    <addaction name="actionSpecularSpheres"/>
+    <addaction name="actionTheme"/>
+   </widget>
+   <widget class="QMenu" name="menu_Start">
+    <property name="title">
+     <string>开始</string>
+    </property>
+    <addaction name="actionStart"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menu_ImageManage">
+    <property name="title">
+     <string>图像管理</string>
+    </property>
+    <addaction name="action2_2"/>
+   </widget>
+   <addaction name="menu_Start"/>
+   <addaction name="menu_Example"/>
+   <addaction name="menu_ImageManage"/>
+  </widget>
+  <widget class="QToolBar" name="ToolBarImage">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionOpen"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionAmbientSpheres">
+   <property name="text">
+    <string>AmbientSpheres</string>
+   </property>
+  </action>
+  <action name="actionArrays">
+   <property name="text">
+    <string>Arrays</string>
+   </property>
+  </action>
+  <action name="actionCone">
+   <property name="text">
+    <string>Cone</string>
+   </property>
+  </action>
+  <action name="actionCone2">
+   <property name="text">
+    <string>Cone2</string>
+   </property>
+  </action>
+  <action name="actionCone3">
+   <property name="text">
+    <string>Cone3</string>
+   </property>
+  </action>
+  <action name="actionCone4">
+   <property name="text">
+    <string>Cone4</string>
+   </property>
+  </action>
+  <action name="actionCone5">
+   <property name="text">
+    <string>Cone5</string>
+   </property>
+  </action>
+  <action name="actionCone6">
+   <property name="text">
+    <string>Cone6</string>
+   </property>
+  </action>
+  <action name="actionCreateTree">
+   <property name="text">
+    <string>CreateTree</string>
+   </property>
+  </action>
+  <action name="actionCube">
+   <property name="text">
+    <string>Cube</string>
+   </property>
+  </action>
+  <action name="actionCylinder">
+   <property name="text">
+    <string>Cylinder</string>
+   </property>
+  </action>
+  <action name="actionDiffuseSpheres">
+   <property name="text">
+    <string>DiffuseSpheres</string>
+   </property>
+  </action>
+  <action name="actionGraphItem">
+   <property name="text">
+    <string>GraphItem</string>
+   </property>
+  </action>
+  <action name="actionHelloWorld">
+   <property name="text">
+    <string>HelloWorld</string>
+   </property>
+  </action>
+  <action name="actionLabeledMesh">
+   <property name="text">
+    <string>LabeledMesh</string>
+   </property>
+  </action>
+  <action name="actionMultiView">
+   <property name="text">
+    <string>MultiView</string>
+   </property>
+  </action>
+  <action name="actionPiecewiseItem">
+   <property name="text">
+    <string>PiecewiseItem</string>
+   </property>
+  </action>
+  <action name="actionQChartTable">
+   <property name="text">
+    <string>QChartTable</string>
+   </property>
+  </action>
+  <action name="actionQScalarsToColors">
+   <property name="text">
+    <string>QScalarsToColors</string>
+   </property>
+  </action>
+  <action name="actionRGrid">
+   <property name="text">
+    <string>RGrid</string>
+   </property>
+  </action>
+  <action name="actionSGrid">
+   <property name="text">
+    <string>SGrid</string>
+   </property>
+  </action>
+  <action name="actionSpecularSpheres">
+   <property name="text">
+    <string>SpecularSpheres</string>
+   </property>
+  </action>
+  <action name="actionTheme">
+   <property name="text">
+    <string>Theme</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="action2_2">
+   <property name="text">
+    <string>2×2 视图</string>
+   </property>
+  </action>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/ImageManage/Images/ImageManage/Open.ico</normaloff>:/ImageManage/Images/ImageManage/Open.ico</iconset>
+   </property>
+   <property name="text">
+    <string>Open</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
+   </property>
+  </action>
+  <action name="actionStart">
+   <property name="text">
+    <string>Start</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources>
+  <include location="images.qrc"/>
+ </resources>
+ <connections/>
+</ui>
