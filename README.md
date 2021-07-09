@@ -1,4 +1,4 @@
-![动画](https://raw.githubusercontent.com/DreamLife-Jianwei/CSDNResources/master/20210709145900.gif)
+![background](https://raw.githubusercontent.com/DreamLife-Jianwei/CSDNResources/master/20210709155203.png)
 
 # Qt-Vtk
 
