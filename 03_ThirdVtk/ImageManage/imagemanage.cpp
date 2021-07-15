@@ -115,7 +115,8 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     }
     reader->SetDirectoryName(fn);                              //这里主要，是文件夹哈，不是文件名
     reader->Update();                                          //得更新呀，惰性渲染
-    reader->GetOutput()->GetDimensions(imageDims);             //还不理解,翻译为获取维度,注释掉以后三维中有影响
+//    reader->GetOutput()->GetDimensions(imageDims);             //还不理解,翻译为获取维度,注释掉以后三维中有影响
+
     for (auto i = 0; i < 3; i++)
     {
       riw[i] = vtkSmartPointer< vtkResliceImageViewer >::New();

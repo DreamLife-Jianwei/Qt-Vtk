@@ -124,6 +124,7 @@ protected:
 
 private:
     Ui::MainWindow *ui;
+    QLabel *infor = nullptr;
     AmbientSpheres *mAmbintSpheres = nullptr;
     MArrays *mArrays = nullptr;
     Cone *mCone = nullptr;

@@ -3,7 +3,7 @@
 #include "vtkOutputWindow.h"
 int main(int argc, char *argv[])
 {
-    //    vtkOutputWindow::SetGlobalWarningDisplay(0);
+    //    vtkOutputWindow::SetGlobalWarningDisplay(0);                              //关闭错误输出
     VTK_MODULE_INIT(vtkRenderingOpenGL2);
     VTK_MODULE_INIT(vtkInteractionStyle);
     VTK_MODULE_INIT(vtkRenderingFreeType);

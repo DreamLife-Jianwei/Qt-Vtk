@@ -14,11 +14,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->centralWidget->installEventFilter(this);
     ui->tab_Logo->installEventFilter(this);
     ui->tabWidget_Main->tabBar()->hide();
+    ui->tabWidget_Main->setCurrentIndex(0);
     ui->tabWidget_Example->tabBar()->hide();
     ui->tabWidget_Example->setGeometry(0,0,ui->tab_Example->width(),ui->tab_Example->height());
     //    ui->tabWidget_Main->resize(1366,768);
     ui->ToolBarImage->hide();
-    QLabel *infor = new QLabel(this);
+    infor = new QLabel(this);
     infor->setText("Qt 版本: 5.7.1 后面更换为5.14.2  "
                    "VS版本：2015 Update 3 "
                    "Vtk版本: 8.2.0 Release "
@@ -27,15 +28,6 @@ MainWindow::MainWindow(QWidget *parent) :
                    "博客：dreamlife.blog.csdn.net "
                    "GieHub地址：github.com/DreamLife-Jianwei");
     ui->statusBar->addPermanentWidget(infor);
-    /*按照下面的写法，在鼠标移动的菜单栏的时候，就会消失了*/
-    //    ui->statusBar->showMessage("Qt Creator版本: 5.7.1-MSVC 2015    "
-    //                               "Visual Studio版本：VS2015 Update 3     "
-    //                               "Vtk版本: 8.2.0 Release    "
-    //                               "制作：张建伟  "
-    //                               "邮箱：jianwei1992@foxmail.com    "
-    //                               "博客：dreamlife.blog.csdn.net    "
-    //                               "GieHub地址：github.com/DreamLife-Jianwei");
-    ui->tabWidget_Main->setCurrentIndex(0);
     ui->tabWidget_Example->setCurrentIndex(0);
     this->setWindowTitle("Qt&Vtk");
 
@@ -80,10 +72,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QTimer::singleShot(1,this,[=](){
         resizeWindow();
     });
-
-
-
-    //    this->showMaximized();                  //这句话不要写到前面，不然你得知道怎么死的
 }
 
 MainWindow::~MainWindow()
@@ -325,7 +313,6 @@ void MainWindow::changeImageManage()
 {
     if(ui->tabWidget_Main->currentIndex() != 2)
     {
-        ui->ToolBarImage->show();
         ui->tabWidget_Main->setCurrentIndex(2);
     }
     resizeWindow();
@@ -422,6 +409,7 @@ void MainWindow::on_action2_2_triggered()
 {
     changeImageManage();
     mImageManage->setCurrentTab(0);
+    ui->ToolBarImage->show();
 }
 /**
  * @brief MainWindow::on_actionOpen_triggered
@@ -430,11 +418,14 @@ void MainWindow::on_action2_2_triggered()
 void MainWindow::on_actionOpen_triggered()
 {
     //打开文件
-   QString dir = QFileDialog::getExistingDirectory(this, tr("打开影像文件夹"),"/home",QFileDialog::ShowDirsOnly| QFileDialog::DontResolveSymlinks);
+    QString dir = QFileDialog::getExistingDirectory(this, tr("打开影像文件夹"),"/home",QFileDialog::ShowDirsOnly| QFileDialog::DontResolveSymlinks);
     mImageManage->slot_ReaderDICOMImage(dir.toLocal8Bit().data());
 
 }
-
+/**
+ * @brief MainWindow::on_actionStart_triggered
+ * 返回开始界面，没有啥实际作用，仅仅为了返回为返回
+ */
 void MainWindow::on_actionStart_triggered()
 {
     ui->tabWidget_Main->setCurrentIndex(0);
