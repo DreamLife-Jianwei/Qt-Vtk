@@ -16,7 +16,7 @@ public:
         this->RCW[i]->Render();
       }
       this->IPW[0]->GetInteractor()->GetRenderWindow()->Render();
-//      return;                                                                 //这里需要注释掉，不然呵呵呵，返回了，还搞个毛线
+      return;
     }
     vtkImagePlaneWidget* ipw = dynamic_cast< vtkImagePlaneWidget* >( caller );
 //    qDebug() << "11" << caller << ipw;
@@ -75,8 +75,6 @@ public:
 };
 
 
-
-static QPoint lastPos;
 ImageManage::ImageManage(QWidget *parent) :QWidget(parent),ui(new Ui::ImageManage)
 {
     ui->setupUi(this);
@@ -96,6 +94,7 @@ ImageManage::ImageManage(QWidget *parent) :QWidget(parent),ui(new Ui::ImageManag
     mSplitterMain->insertWidget(0,mSplitterVertical);
     mSplitterMain->insertWidget(1,ui->widget_5);
     mSplitterMain->setStretchFactor(0,1);               //很魔性啊
+    update();
 }
 
 ImageManage::~ImageManage()
@@ -114,8 +113,9 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
         reader = vtkSmartPointer<vtkDICOMImageReader>::New();
     }
     reader->SetDirectoryName(fn);                              //这里主要，是文件夹哈，不是文件名
+    reader->SetDataByteOrderToLittleEndian();
     reader->Update();                                          //得更新呀，惰性渲染
-//    reader->GetOutput()->GetDimensions(imageDims);             //还不理解,翻译为获取维度,注释掉以后三维中有影响
+    reader->GetOutput()->GetDimensions(imageDims);             //还不理解,翻译为获取维度,注释掉以后三维中有影响
 
     for (auto i = 0; i < 3; i++)
     {
@@ -150,7 +150,7 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     for (int i = 0; i < 3; i++)
     {
       planeWidget[i] = vtkSmartPointer<vtkImagePlaneWidget>::New();
-      planeWidget[i]->SetInteractor( ui->widget_4->GetInteractor() );
+      planeWidget[i]->SetInteractor( ui->widget_4->GetInteractor());
       planeWidget[i]->SetPicker(picker);
       planeWidget[i]->RestrictPlaneToVolumeOn();
       color[0] = 0;
@@ -170,7 +170,7 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
       planeWidget[i]->SetSliceIndex(imageDims[i]/2);
       planeWidget[i]->DisplayTextOn();
       planeWidget[i]->SetDefaultRenderer(ren);
-      planeWidget[i]->SetWindowLevel(1358, -27);
+      planeWidget[i]->SetWindowLevel(1358, 0);
       planeWidget[i]->On();
       planeWidget[i]->InteractionOn();
     }

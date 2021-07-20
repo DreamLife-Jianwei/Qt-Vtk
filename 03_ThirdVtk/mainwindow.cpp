@@ -84,6 +84,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     Q_UNUSED(event)
 
     ui->tabWidget_Example->resize(ui->tab_Example->size());
+    //官方实例演示
     mAmbintSpheres->resize(ui->tab_ambientSpheres->size());
     mArrays->resize(ui->tab_Arrays->size());
     mCone->resize(ui->tab_Cone->size());
@@ -107,7 +108,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     mSGrid->resize(ui->tab_SGrid->size());
     mSpecularSpheres->resize(ui->tab_SpecularSpheres->size());
     mTheme->resize(ui->tab_Theme->size());
-
+    //图像管理
     mImageManage->resize(ui->tab_ImageManage->size());
 }
 
@@ -322,7 +323,6 @@ void MainWindow::resizeWindow()
 {
     this->resize(this->size() - QSize(1, 1));
     this->resize(this->size() + QSize(1, 1));
-
 }
 /**
  * @brief MainWindow::paintEvent
@@ -410,6 +410,7 @@ void MainWindow::on_action2_2_triggered()
     changeImageManage();
     mImageManage->setCurrentTab(0);
     ui->ToolBarImage->show();
+    mImageManage->update();
 }
 /**
  * @brief MainWindow::on_actionOpen_triggered
