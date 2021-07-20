@@ -1,0 +1,13 @@
+set(ITKClassifiers_LOADED 1)
+set(ITKClassifiers_ENABLE_SHARED "0")
+set(ITKClassifiers_DEPENDS "ITKConnectedComponents;ITKImageGrid;ITKStatistics")
+set(ITKClassifiers_PUBLIC_DEPENDS "ITKConnectedComponents;ITKImageGrid;ITKStatistics")
+set(ITKClassifiers_TRANSITIVE_DEPENDS "ITKConnectedComponents;ITKImageGrid;ITKStatistics")
+set(ITKClassifiers_PRIVATE_DEPENDS "")
+set(ITKClassifiers_LIBRARIES "ITKCommon;ITKStatistics;ITKTransform;ITKSpatialObjects;ITKPath")
+set(ITKClassifiers_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2")
+set(ITKClassifiers_LIBRARY_DIRS "")
+set(ITKClassifiers_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKClassifiers_TARGETS_FILE "")
+set(ITKClassifiers_FACTORY_NAMES "")
+

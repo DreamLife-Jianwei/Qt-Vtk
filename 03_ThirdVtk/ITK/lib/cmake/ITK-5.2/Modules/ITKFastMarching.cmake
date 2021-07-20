@@ -1,0 +1,13 @@
+set(ITKFastMarching_LOADED 1)
+set(ITKFastMarching_ENABLE_SHARED "1")
+set(ITKFastMarching_DEPENDS "ITKConnectedComponents;ITKMesh;ITKQuadEdgeMesh")
+set(ITKFastMarching_PUBLIC_DEPENDS "")
+set(ITKFastMarching_TRANSITIVE_DEPENDS "ITKConnectedComponents;ITKMesh;ITKQuadEdgeMesh")
+set(ITKFastMarching_PRIVATE_DEPENDS "")
+set(ITKFastMarching_LIBRARIES "ITKFastMarching")
+set(ITKFastMarching_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2")
+set(ITKFastMarching_LIBRARY_DIRS "")
+set(ITKFastMarching_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKFastMarching_TARGETS_FILE "")
+set(ITKFastMarching_FACTORY_NAMES "")
+

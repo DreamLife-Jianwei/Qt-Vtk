@@ -1,0 +1,13 @@
+set(ITKConnectedComponents_LOADED 1)
+set(ITKConnectedComponents_ENABLE_SHARED "0")
+set(ITKConnectedComponents_DEPENDS "ITKImageGrid;ITKImageIntensity;ITKImageLabel;ITKThresholding")
+set(ITKConnectedComponents_PUBLIC_DEPENDS "ITKImageGrid;ITKImageIntensity;ITKImageLabel;ITKThresholding")
+set(ITKConnectedComponents_TRANSITIVE_DEPENDS "ITKImageGrid;ITKImageIntensity;ITKImageLabel;ITKThresholding")
+set(ITKConnectedComponents_PRIVATE_DEPENDS "")
+set(ITKConnectedComponents_LIBRARIES "ITKCommon;ITKStatistics;ITKTransform;ITKSpatialObjects;ITKPath")
+set(ITKConnectedComponents_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2")
+set(ITKConnectedComponents_LIBRARY_DIRS "")
+set(ITKConnectedComponents_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKConnectedComponents_TARGETS_FILE "")
+set(ITKConnectedComponents_FACTORY_NAMES "")
+

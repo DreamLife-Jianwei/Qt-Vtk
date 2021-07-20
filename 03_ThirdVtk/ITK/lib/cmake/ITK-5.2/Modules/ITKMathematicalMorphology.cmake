@@ -1,0 +1,13 @@
+set(ITKMathematicalMorphology_LOADED 1)
+set(ITKMathematicalMorphology_ENABLE_SHARED "1")
+set(ITKMathematicalMorphology_DEPENDS "ITKConnectedComponents;ITKImageFilterBase;ITKImageGrid;ITKImageIntensity;ITKThresholding")
+set(ITKMathematicalMorphology_PUBLIC_DEPENDS "ITKImageIntensity")
+set(ITKMathematicalMorphology_TRANSITIVE_DEPENDS "ITKConnectedComponents;ITKImageFilterBase;ITKImageGrid;ITKImageIntensity;ITKThresholding")
+set(ITKMathematicalMorphology_PRIVATE_DEPENDS "")
+set(ITKMathematicalMorphology_LIBRARIES "ITKMathematicalMorphology")
+set(ITKMathematicalMorphology_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2")
+set(ITKMathematicalMorphology_LIBRARY_DIRS "")
+set(ITKMathematicalMorphology_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKMathematicalMorphology_TARGETS_FILE "")
+set(ITKMathematicalMorphology_FACTORY_NAMES "")
+

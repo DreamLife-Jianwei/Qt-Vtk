@@ -1,0 +1,13 @@
+set(ITKGoogleTest_LOADED 1)
+set(ITKGoogleTest_ENABLE_SHARED "0")
+set(ITKGoogleTest_DEPENDS "")
+set(ITKGoogleTest_PUBLIC_DEPENDS "")
+set(ITKGoogleTest_TRANSITIVE_DEPENDS "")
+set(ITKGoogleTest_PRIVATE_DEPENDS "")
+set(ITKGoogleTest_LIBRARIES "")
+set(ITKGoogleTest_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2")
+set(ITKGoogleTest_LIBRARY_DIRS "")
+set(ITKGoogleTest_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKGoogleTest_TARGETS_FILE "")
+set(ITKGoogleTest_FACTORY_NAMES "")
+

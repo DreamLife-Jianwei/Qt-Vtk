@@ -1,0 +1,13 @@
+set(ITKSuperPixel_LOADED 1)
+set(ITKSuperPixel_ENABLE_SHARED "0")
+set(ITKSuperPixel_DEPENDS "ITKCommon;ITKImageGrid;ITKImageSources;ITKStatistics")
+set(ITKSuperPixel_PUBLIC_DEPENDS "ITKCommon;ITKImageGrid;ITKStatistics")
+set(ITKSuperPixel_TRANSITIVE_DEPENDS "ITKCommon;ITKImageGrid;ITKImageSources;ITKStatistics")
+set(ITKSuperPixel_PRIVATE_DEPENDS "")
+set(ITKSuperPixel_LIBRARIES "ITKCommon;ITKStatistics;ITKTransform")
+set(ITKSuperPixel_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2")
+set(ITKSuperPixel_LIBRARY_DIRS "")
+set(ITKSuperPixel_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKSuperPixel_TARGETS_FILE "")
+set(ITKSuperPixel_FACTORY_NAMES "")
+

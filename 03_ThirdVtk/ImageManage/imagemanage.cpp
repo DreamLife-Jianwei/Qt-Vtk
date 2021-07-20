@@ -16,7 +16,7 @@ public:
         this->RCW[i]->Render();
       }
       this->IPW[0]->GetInteractor()->GetRenderWindow()->Render();
-      return;
+      return;                                                                 //这里需要注释掉，不然呵呵呵，返回了，还搞个毛线
     }
     vtkImagePlaneWidget* ipw = dynamic_cast< vtkImagePlaneWidget* >( caller );
 //    qDebug() << "11" << caller << ipw;

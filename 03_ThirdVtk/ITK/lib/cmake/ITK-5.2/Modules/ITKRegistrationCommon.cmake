@@ -1,0 +1,13 @@
+set(ITKRegistrationCommon_LOADED 1)
+set(ITKRegistrationCommon_ENABLE_SHARED "0")
+set(ITKRegistrationCommon_DEPENDS "ITKDisplacementField;ITKFiniteDifference;ITKImageFeature;ITKImageFunction;ITKImageGradient;ITKImageGrid;ITKImageIntensity;ITKOptimizers;ITKSmoothing;ITKSpatialObjects;ITKStatistics")
+set(ITKRegistrationCommon_PUBLIC_DEPENDS "ITKDisplacementField;ITKFiniteDifference;ITKImageFeature;ITKImageFunction;ITKImageGradient;ITKImageGrid;ITKImageIntensity;ITKOptimizers;ITKSmoothing;ITKSpatialObjects;ITKStatistics")
+set(ITKRegistrationCommon_TRANSITIVE_DEPENDS "ITKDisplacementField;ITKFiniteDifference;ITKImageFeature;ITKImageFunction;ITKImageGradient;ITKImageGrid;ITKImageIntensity;ITKOptimizers;ITKSmoothing;ITKSpatialObjects;ITKStatistics")
+set(ITKRegistrationCommon_PRIVATE_DEPENDS "")
+set(ITKRegistrationCommon_LIBRARIES "ITKCommon;ITKStatistics;ITKTransform;ITKSpatialObjects;ITKPath;ITKSmoothing;ITKImageFeature;ITKOptimizers")
+set(ITKRegistrationCommon_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2")
+set(ITKRegistrationCommon_LIBRARY_DIRS "")
+set(ITKRegistrationCommon_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKRegistrationCommon_TARGETS_FILE "")
+set(ITKRegistrationCommon_FACTORY_NAMES "")
+

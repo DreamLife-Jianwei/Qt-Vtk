@@ -1,0 +1,13 @@
+set(ITKImageFunction_LOADED 1)
+set(ITKImageFunction_ENABLE_SHARED "0")
+set(ITKImageFunction_DEPENDS "ITKImageAdaptors;ITKStatistics;ITKTransform")
+set(ITKImageFunction_PUBLIC_DEPENDS "")
+set(ITKImageFunction_TRANSITIVE_DEPENDS "ITKImageAdaptors;ITKStatistics;ITKTransform")
+set(ITKImageFunction_PRIVATE_DEPENDS "")
+set(ITKImageFunction_LIBRARIES "ITKCommon;ITKStatistics;ITKTransform")
+set(ITKImageFunction_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2")
+set(ITKImageFunction_LIBRARY_DIRS "")
+set(ITKImageFunction_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKImageFunction_TARGETS_FILE "")
+set(ITKImageFunction_FACTORY_NAMES "")
+

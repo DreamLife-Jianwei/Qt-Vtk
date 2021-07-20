@@ -1,0 +1,13 @@
+set(ITKGPUThresholding_LOADED 1)
+set(ITKGPUThresholding_ENABLE_SHARED "0")
+set(ITKGPUThresholding_DEPENDS "ITKCommon;ITKGPUCommon;ITKThresholding")
+set(ITKGPUThresholding_PUBLIC_DEPENDS "ITKCommon;ITKGPUCommon")
+set(ITKGPUThresholding_TRANSITIVE_DEPENDS "ITKCommon;ITKGPUCommon;ITKThresholding")
+set(ITKGPUThresholding_PRIVATE_DEPENDS "")
+set(ITKGPUThresholding_LIBRARIES "ITKGPUThresholding")
+set(ITKGPUThresholding_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include")
+set(ITKGPUThresholding_LIBRARY_DIRS "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/lib/x64/OpenCL.lib")
+set(ITKGPUThresholding_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKGPUThresholding_TARGETS_FILE "")
+set(ITKGPUThresholding_FACTORY_NAMES "")
+

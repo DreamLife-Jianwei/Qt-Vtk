@@ -1,0 +1,13 @@
+set(ITKVoronoi_LOADED 1)
+set(ITKVoronoi_ENABLE_SHARED "0")
+set(ITKVoronoi_DEPENDS "ITKImageFilterBase;ITKMesh")
+set(ITKVoronoi_PUBLIC_DEPENDS "ITKImageFilterBase;ITKMesh")
+set(ITKVoronoi_TRANSITIVE_DEPENDS "ITKImageFilterBase;ITKMesh")
+set(ITKVoronoi_PRIVATE_DEPENDS "")
+set(ITKVoronoi_LIBRARIES "ITKCommon;ITKMesh")
+set(ITKVoronoi_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2")
+set(ITKVoronoi_LIBRARY_DIRS "")
+set(ITKVoronoi_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKVoronoi_TARGETS_FILE "")
+set(ITKVoronoi_FACTORY_NAMES "")
+

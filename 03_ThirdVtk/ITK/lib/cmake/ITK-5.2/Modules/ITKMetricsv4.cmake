@@ -1,0 +1,13 @@
+set(ITKMetricsv4_LOADED 1)
+set(ITKMetricsv4_ENABLE_SHARED "0")
+set(ITKMetricsv4_DEPENDS "ITKCommon;ITKOptimizersv4;ITKRegistrationCommon")
+set(ITKMetricsv4_PUBLIC_DEPENDS "ITKCommon;ITKOptimizersv4;ITKRegistrationCommon")
+set(ITKMetricsv4_TRANSITIVE_DEPENDS "ITKCommon;ITKOptimizersv4;ITKRegistrationCommon")
+set(ITKMetricsv4_PRIVATE_DEPENDS "")
+set(ITKMetricsv4_LIBRARIES "ITKCommon;ITKOptimizersv4;ITKStatistics;ITKTransform;ITKSpatialObjects;ITKPath;ITKSmoothing;ITKImageFeature;ITKOptimizers")
+set(ITKMetricsv4_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2")
+set(ITKMetricsv4_LIBRARY_DIRS "")
+set(ITKMetricsv4_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKMetricsv4_TARGETS_FILE "")
+set(ITKMetricsv4_FACTORY_NAMES "")
+

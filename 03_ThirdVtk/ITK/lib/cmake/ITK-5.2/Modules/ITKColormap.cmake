@@ -1,0 +1,13 @@
+set(ITKColormap_LOADED 1)
+set(ITKColormap_ENABLE_SHARED "1")
+set(ITKColormap_DEPENDS "ITKCommon")
+set(ITKColormap_PUBLIC_DEPENDS "")
+set(ITKColormap_TRANSITIVE_DEPENDS "ITKCommon")
+set(ITKColormap_PRIVATE_DEPENDS "")
+set(ITKColormap_LIBRARIES "ITKColormap")
+set(ITKColormap_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2")
+set(ITKColormap_LIBRARY_DIRS "")
+set(ITKColormap_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKColormap_TARGETS_FILE "")
+set(ITKColormap_FACTORY_NAMES "")
+

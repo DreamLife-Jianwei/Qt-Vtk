@@ -1,0 +1,13 @@
+set(ITKPDEDeformableRegistration_LOADED 1)
+set(ITKPDEDeformableRegistration_ENABLE_SHARED "1")
+set(ITKPDEDeformableRegistration_DEPENDS "ITKFiniteDifference;ITKRegistrationCommon")
+set(ITKPDEDeformableRegistration_PUBLIC_DEPENDS "ITKFiniteDifference;ITKRegistrationCommon")
+set(ITKPDEDeformableRegistration_TRANSITIVE_DEPENDS "ITKFiniteDifference;ITKRegistrationCommon")
+set(ITKPDEDeformableRegistration_PRIVATE_DEPENDS "")
+set(ITKPDEDeformableRegistration_LIBRARIES "ITKPDEDeformableRegistration")
+set(ITKPDEDeformableRegistration_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2")
+set(ITKPDEDeformableRegistration_LIBRARY_DIRS "")
+set(ITKPDEDeformableRegistration_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKPDEDeformableRegistration_TARGETS_FILE "")
+set(ITKPDEDeformableRegistration_FACTORY_NAMES "")
+

@@ -1,0 +1,13 @@
+set(ITKImageLabel_LOADED 1)
+set(ITKImageLabel_ENABLE_SHARED "0")
+set(ITKImageLabel_DEPENDS "ITKImageIntensity")
+set(ITKImageLabel_PUBLIC_DEPENDS "ITKImageIntensity")
+set(ITKImageLabel_TRANSITIVE_DEPENDS "ITKImageIntensity")
+set(ITKImageLabel_PRIVATE_DEPENDS "")
+set(ITKImageLabel_LIBRARIES "ITKCommon;ITKStatistics;ITKTransform;ITKSpatialObjects;ITKPath")
+set(ITKImageLabel_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2")
+set(ITKImageLabel_LIBRARY_DIRS "")
+set(ITKImageLabel_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKImageLabel_TARGETS_FILE "")
+set(ITKImageLabel_FACTORY_NAMES "")
+

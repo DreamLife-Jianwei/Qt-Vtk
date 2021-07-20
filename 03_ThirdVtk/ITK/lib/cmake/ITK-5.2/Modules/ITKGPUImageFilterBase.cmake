@@ -1,0 +1,13 @@
+set(ITKGPUImageFilterBase_LOADED 1)
+set(ITKGPUImageFilterBase_ENABLE_SHARED "0")
+set(ITKGPUImageFilterBase_DEPENDS "ITKCommon;ITKGPUCommon;ITKImageFilterBase")
+set(ITKGPUImageFilterBase_PUBLIC_DEPENDS "ITKCommon;ITKGPUCommon")
+set(ITKGPUImageFilterBase_TRANSITIVE_DEPENDS "ITKCommon;ITKGPUCommon;ITKImageFilterBase")
+set(ITKGPUImageFilterBase_PRIVATE_DEPENDS "")
+set(ITKGPUImageFilterBase_LIBRARIES "ITKGPUImageFilterBase")
+set(ITKGPUImageFilterBase_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include")
+set(ITKGPUImageFilterBase_LIBRARY_DIRS "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/lib/x64/OpenCL.lib")
+set(ITKGPUImageFilterBase_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKGPUImageFilterBase_TARGETS_FILE "")
+set(ITKGPUImageFilterBase_FACTORY_NAMES "")
+

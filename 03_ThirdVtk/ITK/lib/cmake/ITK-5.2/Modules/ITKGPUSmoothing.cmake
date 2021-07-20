@@ -1,0 +1,13 @@
+set(ITKGPUSmoothing_LOADED 1)
+set(ITKGPUSmoothing_ENABLE_SHARED "0")
+set(ITKGPUSmoothing_DEPENDS "ITKCommon;ITKGPUCommon;ITKGPUImageFilterBase;ITKSmoothing")
+set(ITKGPUSmoothing_PUBLIC_DEPENDS "ITKCommon;ITKGPUCommon;ITKGPUImageFilterBase;ITKSmoothing")
+set(ITKGPUSmoothing_TRANSITIVE_DEPENDS "ITKCommon;ITKGPUCommon;ITKGPUImageFilterBase;ITKSmoothing")
+set(ITKGPUSmoothing_PRIVATE_DEPENDS "")
+set(ITKGPUSmoothing_LIBRARIES "ITKGPUSmoothing")
+set(ITKGPUSmoothing_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2;C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/include")
+set(ITKGPUSmoothing_LIBRARY_DIRS "C:/Program Files/NVIDIA GPU Computing Toolkit/CUDA/v11.1/lib/x64/OpenCL.lib")
+set(ITKGPUSmoothing_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKGPUSmoothing_TARGETS_FILE "")
+set(ITKGPUSmoothing_FACTORY_NAMES "")
+

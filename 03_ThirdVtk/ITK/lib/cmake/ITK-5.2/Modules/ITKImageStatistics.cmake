@@ -1,0 +1,13 @@
+set(ITKImageStatistics_LOADED 1)
+set(ITKImageStatistics_ENABLE_SHARED "0")
+set(ITKImageStatistics_DEPENDS "ITKImageCompose;ITKImageFilterBase;ITKSpatialObjects;ITKTransform")
+set(ITKImageStatistics_PUBLIC_DEPENDS "")
+set(ITKImageStatistics_TRANSITIVE_DEPENDS "ITKImageCompose;ITKImageFilterBase;ITKSpatialObjects;ITKTransform")
+set(ITKImageStatistics_PRIVATE_DEPENDS "")
+set(ITKImageStatistics_LIBRARIES "ITKCommon;ITKSpatialObjects;ITKTransform")
+set(ITKImageStatistics_INCLUDE_DIRS "${ITK_INSTALL_PREFIX}/include/ITK-5.2")
+set(ITKImageStatistics_LIBRARY_DIRS "")
+set(ITKImageStatistics_RUNTIME_LIBRARY_DIRS "${ITK_INSTALL_PREFIX}/bin")
+set(ITKImageStatistics_TARGETS_FILE "")
+set(ITKImageStatistics_FACTORY_NAMES "")
+
