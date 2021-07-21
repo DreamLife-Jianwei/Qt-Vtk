@@ -19,6 +19,7 @@
 #include "vtkBoundedPlanePointPlacer.h"
 #include "vtkCellPicker.h"
 #include "vtkCommand.h"
+#include "vtkCamera.h"
 #include "vtkDICOMImageReader.h"
 #include "vtkDistanceRepresentation.h"
 #include "vtkDistanceRepresentation2D.h"
@@ -35,6 +36,7 @@
 #include "vtkPointHandleRepresentation2D.h"
 #include "vtkPointHandleRepresentation3D.h"
 #include "vtkProperty.h"
+#include "vtkPolyDataMapper.h"
 #include <vtkRenderer.h>
 #include <vtkRenderWindow.h>
 #include "vtkRenderWindowInteractor.h"
@@ -77,6 +79,10 @@ private:
     QSplitter *mSplitterVertical = nullptr;
     QSplitter *mSplitterUp = nullptr;
     QSplitter *mSplitterDown = nullptr;
+
+
+
+/**********************************1.0版本************************************/
     double color[3] = {0,0,0};                                              //颜色
     vtkSmartPointer<vtkDICOMImageReader> reader = nullptr;                  //读取DICOM文件
     int imageDims[3] = {0};                                                 //暂时不理解
@@ -84,7 +90,6 @@ private:
     vtkSmartPointer< vtkImagePlaneWidget > planeWidget[3];
     vtkSmartPointer< vtkDistanceWidget > DistanceWidget[3];                 //测试距离的，暂时没有移植，无用
     vtkSmartPointer< vtkResliceImageViewerMeasurements > ResliceMeasurements;   //不知道干啥，没有用到
-
     vtkSmartPointer<vtkProperty> ipwProp;                                       //属性
     vtkSmartPointer<vtkCellPicker> picker;                                      //拾取器
     vtkSmartPointer< vtkRenderer > ren;                                         //3D渲染器

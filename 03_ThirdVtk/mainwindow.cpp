@@ -373,7 +373,7 @@ void MainWindow::mouseReleaseEvent(QMouseEvent *event)
  * @param watched
  * @param event
  * @return
- * 事件过滤器，组后还是没有用上
+ * 事件过滤器，最后还是没有用上
  */
 bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 {

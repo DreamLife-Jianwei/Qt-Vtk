@@ -88,13 +88,16 @@
         <property name="bottomMargin">
          <number>0</number>
         </property>
+        <item row="3" column="0">
+         <widget class="QLineEdit" name="lineEdit_windowlevel_2"/>
+        </item>
+        <item row="2" column="0">
+         <widget class="QLineEdit" name="lineEdit_windowlevel_1"/>
+        </item>
         <item row="0" column="0">
-         <widget class="QLabel" name="label">
-          <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 0, 0);</string>
-          </property>
-          <property name="text">
-           <string>窗宽 窗位</string>
+         <widget class="QSlider" name="verticalSlider">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
           </property>
          </widget>
         </item>
