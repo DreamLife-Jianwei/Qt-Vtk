@@ -73,6 +73,11 @@ public slots:
     void slot_ReaderDICOMImage(const char* fn);
 protected:
     void resizeEvent(QResizeEvent *event) override;
+private slots:
+    void on_verticalSlider_colorlevel_valueChanged(int value);
+
+    void on_verticalSlider_colorwindow_valueChanged(int value);
+
 private:
     Ui::ImageManage *ui;
     QSplitter *mSplitterMain = nullptr;

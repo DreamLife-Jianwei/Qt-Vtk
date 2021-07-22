@@ -224,5 +224,37 @@ void ImageManage::resizeEvent(QResizeEvent *event)
     mSplitterMain->resize(this->size());
 }
 
+/**
+ * @brief ImageManage::on_verticalSlider_colorlevel_valueChanged
+ * @param value
+ * SetColorLevel
+ */
+void ImageManage::on_verticalSlider_colorlevel_valueChanged(int value)
+{
+    for (auto i = 0; i < 3; i++)
+    {
+        riw[i]->SetColorLevel(value);
+    }
+    ui->widget_1->GetRenderWindow()->Render();
+    ui->widget_2->GetRenderWindow()->Render();
+    ui->widget_3->GetRenderWindow()->Render();
+    ui->widget_4->GetRenderWindow()->Render();
+}
 
+/**
+ * @brief ImageManage::on_verticalSlider_colorwindow_valueChanged
+ * @param value
+ * SetColorWindow
+ */
+void ImageManage::on_verticalSlider_colorwindow_valueChanged(int value)
+{
+    for (auto i = 0; i < 3; i++)
+    {
+        riw[i]->SetColorWindow(value);
+    }
+    ui->widget_1->GetRenderWindow()->Render();
+    ui->widget_2->GetRenderWindow()->Render();
+    ui->widget_3->GetRenderWindow()->Render();
+    ui->widget_4->GetRenderWindow()->Render();
+}
 
