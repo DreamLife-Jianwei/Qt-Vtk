@@ -115,10 +115,10 @@
          </widget>
         </item>
         <item row="2" column="0" colspan="2">
-         <widget class="QLineEdit" name="lineEdit_windowlevel_1"/>
+         <widget class="QLineEdit" name="lineEdit_colorlevel"/>
         </item>
         <item row="3" column="0" colspan="2">
-         <widget class="QLineEdit" name="lineEdit_windowlevel_2"/>
+         <widget class="QLineEdit" name="lineEdit_colorwindow"/>
         </item>
        </layout>
       </widget>

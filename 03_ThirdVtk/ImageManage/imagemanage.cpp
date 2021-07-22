@@ -117,9 +117,8 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
             riw[i] = vtkSmartPointer< vtkResliceImageViewer >::New();
             vtkNew<vtkGenericOpenGLRenderWindow> renderWindow;
             riw[i]->SetRenderWindow(renderWindow);
-            riw[i]->SetColorLevel(128);
-            riw[i]->SetColorWindow(256);
         }
+
         riw[0]->SetRenderWindow(ui->widget_1->GetRenderWindow());
         riw[0]->SetupInteractor(ui->widget_1->GetRenderWindow()->GetInteractor());
 
@@ -130,14 +129,16 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
         riw[2]->SetRenderWindow(ui->widget_3->GetRenderWindow());
         riw[2]->SetupInteractor(ui->widget_3->GetRenderWindow()->GetInteractor());
 
+
         for (int i = 0; i < 3; i++)
         {
-            vtkResliceCursorLineRepresentation *rep =vtkResliceCursorLineRepresentation::SafeDownCast(riw[i]->GetResliceCursorWidget()->GetRepresentation());
+            vtkResliceCursorLineRepresentation *rep =
+                    vtkResliceCursorLineRepresentation::SafeDownCast(riw[i]->GetResliceCursorWidget()->GetRepresentation());
             riw[i]->SetResliceCursor(riw[0]->GetResliceCursor());
             rep->GetResliceCursorActor()->GetCursorAlgorithm()->SetReslicePlaneNormal(i);
             riw[i]->SetInputData(reader->GetOutput());
             riw[i]->SetSliceOrientation(i);
-//            riw[i]->SetResliceModeToAxisAligned();
+            riw[i]->SetResliceModeToAxisAligned();
             riw[i]->SetResliceModeToOblique();
 
         }
@@ -145,7 +146,7 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
         picker = vtkSmartPointer<vtkCellPicker>::New();
         picker->SetTolerance(0.005);
         ipwProp = vtkSmartPointer<vtkProperty>::New();
-        ren = vtkSmartPointer< vtkRenderer >::New();
+        ren = vtkSmartPointer<vtkRenderer>::New();
         ui->widget_4->GetRenderWindow()->AddRenderer(ren);
         for (int i = 0; i < 3; i++)
         {
