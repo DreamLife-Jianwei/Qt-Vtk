@@ -63,9 +63,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
 
-
-
-
     /**
       下面这个函数没有啥实际用途，目的就是在构造完成后强制的调用resizeevent，来刷新界面
       */
@@ -411,6 +408,7 @@ void MainWindow::on_action2_2_triggered()
     mImageManage->setCurrentTab(0);
     ui->ToolBarImage->show();
     mImageManage->update();
+    resizeWindow();
 }
 /**
  * @brief MainWindow::on_actionOpen_triggered
@@ -422,8 +420,6 @@ void MainWindow::on_actionOpen_triggered()
     QString dir = QFileDialog::getExistingDirectory(this, tr("打开影像文件夹"),"/home",QFileDialog::ShowDirsOnly| QFileDialog::DontResolveSymlinks);
     if(!dir.isEmpty())
         mImageManage->slot_ReaderDICOMImage(dir.toLocal8Bit().data());
-
-
 }
 /**
  * @brief MainWindow::on_actionStart_triggered
