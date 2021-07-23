@@ -110,6 +110,8 @@ private slots:
     void on_actionStart_triggered();
     void on_actionFullScreen_triggered();
 
+    void on_actionexit_ImageManage_triggered();
+
 protected:
     inline void changeExample();
     inline void changeImageManage();

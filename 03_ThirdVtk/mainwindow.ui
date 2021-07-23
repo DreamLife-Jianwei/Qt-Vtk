@@ -252,6 +252,8 @@
     <bool>false</bool>
    </attribute>
    <addaction name="actionOpen"/>
+   <addaction name="separator"/>
+   <addaction name="actionexit_ImageManage"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAmbientSpheres">
@@ -387,6 +389,9 @@
    <property name="text">
     <string>Open</string>
    </property>
+   <property name="toolTip">
+    <string>打开图像</string>
+   </property>
    <property name="shortcut">
     <string>Ctrl+O</string>
    </property>
@@ -399,6 +404,18 @@
   <action name="actionFullScreen">
    <property name="text">
     <string>FullScreen</string>
+   </property>
+  </action>
+  <action name="actionexit_ImageManage">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/ImageManage/Images/ImageManage/Exit.ico</normaloff>:/ImageManage/Images/ImageManage/Exit.ico</iconset>
+   </property>
+   <property name="text">
+    <string>exit_ImageManage</string>
+   </property>
+   <property name="toolTip">
+    <string>退出图像浏览</string>
    </property>
   </action>
  </widget>

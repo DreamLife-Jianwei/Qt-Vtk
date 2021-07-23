@@ -447,7 +447,17 @@ void MainWindow::on_actionFullScreen_triggered()
     {
         this->showFullScreen();
         ui->actionFullScreen->setText("ShowNormal");
-//        ui->menuBar->hide();
+        //        ui->menuBar->hide();
     }
+}
+
+/**
+ * @brief MainWindow::on_actionexit_ImageManage_triggered
+ * 退出图片浏览模式，返回到开始模式
+ */
+void MainWindow::on_actionexit_ImageManage_triggered()
+{
+    ui->tabWidget_Main->setCurrentIndex(0);
+    ui->ToolBarImage->hide();
 }
 
