@@ -36,7 +36,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>2</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="tab_Logo">
        <attribute name="title">
@@ -51,10 +51,10 @@
        <widget class="QTabWidget" name="tabWidget_Example">
         <property name="geometry">
          <rect>
-          <x>40</x>
-          <y>30</y>
-          <width>1121</width>
-          <height>601</height>
+          <x>0</x>
+          <y>60</y>
+          <width>1311</width>
+          <height>281</height>
          </rect>
         </property>
         <property name="currentIndex">
@@ -229,6 +229,9 @@
      <string>开始</string>
     </property>
     <addaction name="actionStart"/>
+    <addaction name="separator"/>
+    <addaction name="actionFullScreen"/>
+    <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menu_ImageManage">
@@ -391,6 +394,11 @@
   <action name="actionStart">
    <property name="text">
     <string>Start</string>
+   </property>
+  </action>
+  <action name="actionFullScreen">
+   <property name="text">
+    <string>FullScreen</string>
    </property>
   </action>
  </widget>

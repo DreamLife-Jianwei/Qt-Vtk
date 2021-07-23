@@ -315,7 +315,10 @@ void MainWindow::changeImageManage()
     }
     resizeWindow();
 }
-
+/**
+ * @brief MainWindow::resizeWindow
+ * 强制改变窗口大小，用来触发窗框自动刷新
+ */
 void MainWindow::resizeWindow()
 {
     this->resize(this->size() - QSize(1, 1));
@@ -429,3 +432,22 @@ void MainWindow::on_actionStart_triggered()
 {
     ui->tabWidget_Main->setCurrentIndex(0);
 }
+/**
+ * @brief MainWindow::on_actionFullScreen_triggered
+ * ShowFullScreen
+ */
+void MainWindow::on_actionFullScreen_triggered()
+{
+    if(this->isFullScreen())
+    {
+        this->showNormal();
+        ui->actionFullScreen->setText("ShowFullScreen");
+    }
+    else
+    {
+        this->showFullScreen();
+        ui->actionFullScreen->setText("ShowNormal");
+//        ui->menuBar->hide();
+    }
+}
+

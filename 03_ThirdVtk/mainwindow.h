@@ -108,6 +108,7 @@ private slots:
     void on_actionOpen_triggered();
 
     void on_actionStart_triggered();
+    void on_actionFullScreen_triggered();
 
 protected:
     inline void changeExample();

@@ -48,6 +48,8 @@
 #include "vtkResliceCursorPolyDataAlgorithm.h"
 #include "vtkResliceCursor.h"
 #include "vtkResliceImageViewerMeasurements.h"
+#include "vtkOpenGLTextActor.h"
+#include "vtkRendererCollection.h"
 
 
 class vtkResliceCursorCallback;
@@ -99,6 +101,7 @@ private:
     vtkSmartPointer<vtkCellPicker> picker;                                      //拾取器
     vtkSmartPointer< vtkRenderer > ren;                                         //3D渲染器
     vtkSmartPointer<vtkResliceCursorCallback> cbk;                              //回调类
+    vtkSmartPointer<vtkOpenGLTextActor> text_axial = nullptr;                       //冠状面文字
 
 };
 

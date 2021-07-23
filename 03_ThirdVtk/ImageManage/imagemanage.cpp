@@ -100,121 +100,122 @@ void ImageManage::setCurrentTab(int temp)
 void ImageManage::slot_ReaderDICOMImage(const char *fn)
 {
 
-
-
     /***************************************************1.0版本****************************************/
 
-        if(!reader)
-        {
-            reader = vtkSmartPointer<vtkDICOMImageReader>::New();
-        }
-        reader->SetDirectoryName(fn);                              //这里主要，是文件夹哈，不是文件名
-        reader->Update();                                          //得更新呀，惰性渲染
-        reader->GetOutput()->GetDimensions(imageDims);             //还不理解,翻译为获取维度,注释掉以后三维中有影响
+    if(!reader)
+    {
+        reader = vtkSmartPointer<vtkDICOMImageReader>::New();
+    }
+    reader->SetDirectoryName(fn);                              //这里主要，是文件夹哈，不是文件名
+    reader->Update();                                          //得更新呀，惰性渲染
+    reader->GetOutput()->GetDimensions(imageDims);             //还不理解,翻译为获取维度,注释掉以后三维中有影响
 
-        for (auto i = 0; i < 3; i++)
-        {
-            riw[i] = vtkSmartPointer< vtkResliceImageViewer >::New();
-            vtkNew<vtkGenericOpenGLRenderWindow> renderWindow;
-            riw[i]->SetRenderWindow(renderWindow);
-        }
+    for (auto i = 0; i < 3; i++)
+    {
+        riw[i] = vtkSmartPointer< vtkResliceImageViewer >::New();
+        //            vtkNew<vtkGenericOpenGLRenderWindow> renderWindow;
+        //            riw[i]->SetRenderWindow(renderWindow);
+    }
 
-        riw[0]->SetRenderWindow(ui->widget_1->GetRenderWindow());
-        riw[0]->SetupInteractor(ui->widget_1->GetRenderWindow()->GetInteractor());
-
-
-        riw[1]->SetRenderWindow(ui->widget_2->GetRenderWindow());
-        riw[1]->SetupInteractor(ui->widget_2->GetRenderWindow()->GetInteractor());
-
-        riw[2]->SetRenderWindow(ui->widget_3->GetRenderWindow());
-        riw[2]->SetupInteractor(ui->widget_3->GetRenderWindow()->GetInteractor());
+    //        widget_1 水平;
+    //        widget_2 矢状;
+    //        widget_3 冠状;
 
 
-        for (int i = 0; i < 3; i++)
-        {
-            vtkResliceCursorLineRepresentation *rep =
-                    vtkResliceCursorLineRepresentation::SafeDownCast(riw[i]->GetResliceCursorWidget()->GetRepresentation());
-            riw[i]->SetResliceCursor(riw[0]->GetResliceCursor());
-            rep->GetResliceCursorActor()->GetCursorAlgorithm()->SetReslicePlaneNormal(i);
-            riw[i]->SetInputData(reader->GetOutput());
-            riw[i]->SetSliceOrientation(i);
-            riw[i]->SetResliceModeToAxisAligned();
-            riw[i]->SetResliceModeToOblique();
+    riw[0]->SetRenderWindow(ui->widget_2->GetRenderWindow());
+    riw[0]->SetupInteractor(ui->widget_2->GetRenderWindow()->GetInteractor());
 
-        }
+    riw[1]->SetRenderWindow(ui->widget_3->GetRenderWindow());
+    riw[1]->SetupInteractor(ui->widget_3->GetRenderWindow()->GetInteractor());
 
-        picker = vtkSmartPointer<vtkCellPicker>::New();
-        picker->SetTolerance(0.005);
-        ipwProp = vtkSmartPointer<vtkProperty>::New();
-        ren = vtkSmartPointer<vtkRenderer>::New();
-        ui->widget_4->GetRenderWindow()->AddRenderer(ren);
-        for (int i = 0; i < 3; i++)
-        {
-            planeWidget[i] = vtkSmartPointer<vtkImagePlaneWidget>::New();
-            planeWidget[i]->SetInteractor( ui->widget_4->GetInteractor());
-            planeWidget[i]->SetPicker(picker);
-            planeWidget[i]->RestrictPlaneToVolumeOn();
-            color[0] = 0;
-            color[1] = 0;
-            color[2] = 0;
-            color[i] = 1;
-            planeWidget[i]->GetPlaneProperty()->SetColor(color);
-            color[0] = 0;
-            color[1] = 0;
-            color[2] = 0;
-            riw[i]->GetRenderer()->SetBackground( color );
-            planeWidget[i]->SetTexturePlaneProperty(ipwProp);
-            planeWidget[i]->TextureInterpolateOff();
-            planeWidget[i]->SetResliceInterpolateToLinear();
-            planeWidget[i]->SetInputConnection(reader->GetOutputPort());
-            planeWidget[i]->SetPlaneOrientation(i);
-            planeWidget[i]->SetSliceIndex(imageDims[i]/2);
-            planeWidget[i]->DisplayTextOn();
-            planeWidget[i]->SetDefaultRenderer(ren);
-            planeWidget[i]->SetWindowLevel(7358, -300);
-            planeWidget[i]->On();
-            planeWidget[i]->InteractionOn();
-        }
-        cbk = vtkSmartPointer<vtkResliceCursorCallback>::New();
-        for (int i = 0; i < 3; i++)
-        {
-            cbk->IPW[i] = planeWidget[i];
-            cbk->RCW[i] = riw[i]->GetResliceCursorWidget();
-            riw[i]->GetResliceCursorWidget()->AddObserver(vtkResliceCursorWidget::ResliceAxesChangedEvent, cbk );
-            riw[i]->GetResliceCursorWidget()->AddObserver(vtkResliceCursorWidget::WindowLevelEvent, cbk );
-            riw[i]->GetResliceCursorWidget()->AddObserver(vtkResliceCursorWidget::ResliceThicknessChangedEvent, cbk );
-            riw[i]->GetResliceCursorWidget()->AddObserver(vtkResliceCursorWidget::ResetCursorEvent, cbk );
-            riw[i]->GetInteractorStyle()->AddObserver(vtkCommand::WindowLevelEvent, cbk );
-            // Make them all share the same color map.
-            riw[i]->SetLookupTable(riw[0]->GetLookupTable());
-            planeWidget[i]->GetColorMap()->SetLookupTable(riw[0]->GetLookupTable());
-            //planeWidget[i]->GetColorMap()->SetInput(riw[i]->GetResliceCursorWidget()->GetResliceCursorRepresentation()->GetColorMap()->GetInput());
-            planeWidget[i]->SetColorMap(riw[i]->GetResliceCursorWidget()->GetResliceCursorRepresentation()->GetColorMap());
+    riw[2]->SetRenderWindow(ui->widget_1->GetRenderWindow());
+    riw[2]->SetupInteractor(ui->widget_1->GetRenderWindow()->GetInteractor());
 
-        }
+    for (int i = 0; i < 3; i++)
+    {
+        vtkResliceCursorLineRepresentation *rep =
+                vtkResliceCursorLineRepresentation::SafeDownCast(
+                    riw[i]->GetResliceCursorWidget()->GetRepresentation());
+        riw[i]->SetResliceCursor(riw[0]->GetResliceCursor());
+        rep->GetResliceCursorActor()->GetCursorAlgorithm()->SetReslicePlaneNormal(i);
+        riw[i]->SetInputData(reader->GetOutput());
+        riw[i]->SetSliceOrientation(i);
+        riw[i]->SetResliceModeToAxisAligned();
+        riw[i]->SetResliceModeToOblique();
+    }
 
-        //十字线
-        for (int i = 0; i < 3; i++)
-        {
-            riw[i]->SetResliceMode(1);
-            riw[i]->GetRenderer()->ResetCamera();
-            riw[i]->Render();
-        }
-        // 还不知道干啥
-        //    for (int i = 0; i < 3; i++)
-        //      {
-        //        riw[i]->SetThickMode(1);
-        //        riw[i]->Render();
-        //      }
+    picker = vtkSmartPointer<vtkCellPicker>::New();
+    picker->SetTolerance(0.005);
+    ipwProp = vtkSmartPointer<vtkProperty>::New();
+    ren = vtkSmartPointer<vtkRenderer>::New();
+    ui->widget_4->GetRenderWindow()->AddRenderer(ren);
+    for (int i = 0; i < 3; i++)
+    {
+        planeWidget[i] = vtkSmartPointer<vtkImagePlaneWidget>::New();
+        planeWidget[i]->SetInteractor( ui->widget_4->GetInteractor());
+        planeWidget[i]->SetPicker(picker);
+        planeWidget[i]->RestrictPlaneToVolumeOn();
+        color[0] = 0;
+        color[1] = 0;
+        color[2] = 0;
+        color[i] = 1;
+        planeWidget[i]->GetPlaneProperty()->SetColor(color);
+        color[0] = 0;
+        color[1] = 0;
+        color[2] = 0;
+        riw[i]->GetRenderer()->SetBackground( color );
+        planeWidget[i]->SetTexturePlaneProperty(ipwProp);
+        planeWidget[i]->TextureInterpolateOff();
+        planeWidget[i]->SetResliceInterpolateToLinear();
+        planeWidget[i]->SetInputConnection(reader->GetOutputPort());
+        planeWidget[i]->SetPlaneOrientation(i);
+        planeWidget[i]->SetSliceIndex(imageDims[i]/2);
+        planeWidget[i]->DisplayTextOn();
+        planeWidget[i]->SetDefaultRenderer(ren);
+        planeWidget[i]->SetWindowLevel(7358, -300);
+        planeWidget[i]->On();
+        planeWidget[i]->InteractionOn();
+    }
+    cbk = vtkSmartPointer<vtkResliceCursorCallback>::New();
+    for (int i = 0; i < 3; i++)
+    {
+        cbk->IPW[i] = planeWidget[i];
+        cbk->RCW[i] = riw[i]->GetResliceCursorWidget();
+        riw[i]->GetResliceCursorWidget()->AddObserver(vtkResliceCursorWidget::ResliceAxesChangedEvent, cbk );
+        riw[i]->GetResliceCursorWidget()->AddObserver(vtkResliceCursorWidget::WindowLevelEvent, cbk );
+        riw[i]->GetResliceCursorWidget()->AddObserver(vtkResliceCursorWidget::ResliceThicknessChangedEvent, cbk );
+        riw[i]->GetResliceCursorWidget()->AddObserver(vtkResliceCursorWidget::ResetCursorEvent, cbk );
+        riw[i]->GetInteractorStyle()->AddObserver(vtkCommand::WindowLevelEvent, cbk );
+        // Make them all share the same color map.
+        riw[i]->SetLookupTable(riw[0]->GetLookupTable());
+        planeWidget[i]->GetColorMap()->SetLookupTable(riw[0]->GetLookupTable());
+        //planeWidget[i]->GetColorMap()->SetInput(riw[i]->GetResliceCursorWidget()->GetResliceCursorRepresentation()->GetColorMap()->GetInput());
+        planeWidget[i]->SetColorMap(riw[i]->GetResliceCursorWidget()->GetResliceCursorRepresentation()->GetColorMap());
 
-        //    for (int i = 0; i < 3; i++)
-        //      {
-        //        vtkImageSlabReslice *thickSlabReslice = vtkImageSlabReslice::SafeDownCast(
-        //            vtkResliceCursorThickLineRepresentation::SafeDownCast(
-        //              riw[i]->GetResliceCursorWidget()->GetRepresentation())->GetReslice());
-        //        thickSlabReslice->SetBlendMode(1);
-        //        riw[i]->Render();
-        //      }
+    }
+
+    //十字线
+    for (int i = 0; i < 3; i++)
+    {
+        riw[i]->SetResliceMode(1);
+        riw[i]->GetRenderer()->ResetCamera();
+        riw[i]->Render();
+    }
+    // 还不知道干啥
+    //    for (int i = 0; i < 3; i++)
+    //      {
+    //        riw[i]->SetThickMode(1);
+    //        riw[i]->Render();
+    //      }
+
+    //    for (int i = 0; i < 3; i++)
+    //      {
+    //        vtkImageSlabReslice *thickSlabReslice = vtkImageSlabReslice::SafeDownCast(
+    //            vtkResliceCursorThickLineRepresentation::SafeDownCast(
+    //              riw[i]->GetResliceCursorWidget()->GetRepresentation())->GetReslice());
+    //        thickSlabReslice->SetBlendMode(1);
+    //        riw[i]->Render();
+    //      }
     /***************************************************1.0版本****************************************/
 
 }
