@@ -409,6 +409,7 @@ void MainWindow::on_action2_2_triggered()
 {
     changeImageManage();
     mImageManage->setCurrentTab(0);
+    this->setWindowTitle("Qt&Vtk-图像管理2×2");
     ui->ToolBarImage->show();
     mImageManage->update();
     resizeWindow();
