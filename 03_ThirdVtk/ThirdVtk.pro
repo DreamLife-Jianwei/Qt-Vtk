@@ -29,6 +29,7 @@ SOURCES += main.cpp\
     ExampleOrg/GraphItem/graphitem.cpp \
     ExampleOrg/GraphItem/vtkgraphitem.cpp \
     ExampleOrg/cone2.cpp \
+    ImageManage/bestopenglwidget.cpp \
     ImageManage/imagemanage.cpp \
         mainwindow.cpp \
     ExampleOrg/ambientspheres.cpp \
@@ -79,6 +80,7 @@ HEADERS  += mainwindow.h \
     ExampleOrg/sgrid.h \
     ExampleOrg/specularspheres.h \
     ExampleOrg/theme.h \
+    ImageManage/bestopenglwidget.h \
     ImageManage/imagemanage.h
 
 

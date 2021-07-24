@@ -432,6 +432,7 @@ void MainWindow::on_actionOpen_triggered()
 void MainWindow::on_actionStart_triggered()
 {
     ui->tabWidget_Main->setCurrentIndex(0);
+    ui->ToolBarImage->hide();
 }
 /**
  * @brief MainWindow::on_actionFullScreen_triggered

@@ -9,6 +9,8 @@
 #include <QResizeEvent>
 #include <QtDebug>
 
+#include "ImageManage/bestopenglwidget.h"
+
 #include "QVTKOpenGLWidget.h"               //新版本，旧版QVTKWidget
 #include "vtkAutoInit.h"
 #include "vtkSmartPointer.h"
@@ -50,6 +52,8 @@
 #include "vtkResliceImageViewerMeasurements.h"
 #include "vtkOpenGLTextActor.h"
 #include "vtkRendererCollection.h"
+#include "vtkTextActor.h"
+#include "vtkTextProperty.h"
 
 
 class vtkResliceCursorCallback;
@@ -102,7 +106,7 @@ private:
     vtkSmartPointer< vtkRenderer > ren;                                         //3D渲染器
     vtkSmartPointer<vtkResliceCursorCallback> cbk;                              //回调类
     vtkSmartPointer<vtkOpenGLTextActor> text_axial = nullptr;                       //冠状面文字
-
+    vtkSmartPointer<vtkTextActor> textActor[4];
 };
 
 #endif // IMAGEMANAGE_H

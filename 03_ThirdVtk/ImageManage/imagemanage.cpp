@@ -85,6 +85,15 @@ ImageManage::ImageManage(QWidget *parent) :QWidget(parent),ui(new Ui::ImageManag
     mSplitterMain->insertWidget(0,mSplitterVertical);
     mSplitterMain->insertWidget(1,ui->widget_5);
     mSplitterMain->setStretchFactor(0,1);               //很魔性啊
+
+
+    ui->widget_1->SetWindowPaintColor(1);
+    ui->widget_2->SetWindowPaintColor(2);
+    ui->widget_3->SetWindowPaintColor(3);
+    ui->widget_4->SetWindowPaintColor(4);
+
+
+
     update();
 }
 
@@ -110,9 +119,24 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     reader->Update();                                          //得更新呀，惰性渲染
     reader->GetOutput()->GetDimensions(imageDims);             //还不理解,翻译为获取维度,注释掉以后三维中有影响
 
+    double range[2];
+    reader->GetOutput()->GetScalarRange(range);         //获取范围
+
+
+    for (auto i=0;i<4;i++) {
+        textActor[i] = vtkSmartPointer<vtkTextActor>::New();
+        textActor[i]->SetDisplayPosition(10, 10);
+        textActor[i]->SetInput(reader->GetPatientName());
+        textActor[i]->GetTextProperty()->SetFontSize(18);
+        textActor[i]->GetTextProperty()->SetColor(1, 0, 0);
+
+    }
+
+
     for (auto i = 0; i < 3; i++)
     {
         riw[i] = vtkSmartPointer< vtkResliceImageViewer >::New();
+        riw[i]->GetRenderer()->AddActor(textActor[i]);
         //            vtkNew<vtkGenericOpenGLRenderWindow> renderWindow;
         //            riw[i]->SetRenderWindow(renderWindow);
     }
@@ -133,6 +157,7 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
 
     for (int i = 0; i < 3; i++)
     {
+
         vtkResliceCursorLineRepresentation *rep =
                 vtkResliceCursorLineRepresentation::SafeDownCast(
                     riw[i]->GetResliceCursorWidget()->GetRepresentation());
@@ -148,6 +173,7 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     picker->SetTolerance(0.005);
     ipwProp = vtkSmartPointer<vtkProperty>::New();
     ren = vtkSmartPointer<vtkRenderer>::New();
+    ren->AddActor(textActor[3]);
     ui->widget_4->GetRenderWindow()->AddRenderer(ren);
     for (int i = 0; i < 3; i++)
     {

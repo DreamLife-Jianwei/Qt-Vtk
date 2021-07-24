@@ -51,10 +51,14 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QVTKOpenGLWidget" name="widget_1" native="true"/>
+          <widget class="BESTOpenGLWidget" name="widget_1" native="true">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+          </widget>
          </item>
          <item>
-          <widget class="QVTKOpenGLWidget" name="widget_2" native="true"/>
+          <widget class="BESTOpenGLWidget" name="widget_2" native="true"/>
          </item>
         </layout>
        </item>
@@ -64,10 +68,10 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QVTKOpenGLWidget" name="widget_3" native="true"/>
+          <widget class="BESTOpenGLWidget" name="widget_3" native="true"/>
          </item>
          <item>
-          <widget class="QVTKOpenGLWidget" name="widget_4" native="true"/>
+          <widget class="BESTOpenGLWidget" name="widget_4" native="true"/>
          </item>
         </layout>
        </item>
@@ -129,9 +133,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>QVTKOpenGLWidget</class>
+   <class>BESTOpenGLWidget</class>
    <extends>QWidget</extends>
-   <header location="global">qvtkopenglwidget.h</header>
+   <header location="global">ImageManage\bestopenglwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

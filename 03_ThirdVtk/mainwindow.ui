@@ -372,11 +372,19 @@
    </property>
   </action>
   <action name="actionExit">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/MainWindow/Images/MainWindow/exit.ico</normaloff>:/MainWindow/Images/MainWindow/exit.ico</iconset>
+   </property>
    <property name="text">
     <string>Exit</string>
    </property>
   </action>
   <action name="action2_2">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/ImageManage/Images/ImageManage/fourImage.ico</normaloff>:/ImageManage/Images/ImageManage/fourImage.ico</iconset>
+   </property>
    <property name="text">
     <string>2×2 视图</string>
    </property>
@@ -397,11 +405,19 @@
    </property>
   </action>
   <action name="actionStart">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/MainWindow/Images/MainWindow/start.ico</normaloff>:/MainWindow/Images/MainWindow/start.ico</iconset>
+   </property>
    <property name="text">
     <string>Start</string>
    </property>
   </action>
   <action name="actionFullScreen">
+   <property name="icon">
+    <iconset resource="images.qrc">
+     <normaloff>:/MainWindow/Images/MainWindow/fullScreen.ico</normaloff>:/MainWindow/Images/MainWindow/fullScreen.ico</iconset>
+   </property>
    <property name="text">
     <string>FullScreen</string>
    </property>

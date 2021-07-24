@@ -2,9 +2,16 @@
     <qresource prefix="/MainWindow">
         <file>Images/MainWindow/background.jpg</file>
         <file>Images/MainWindow/background.png</file>
+        <file>Images/MainWindow/exit.ico</file>
+        <file>Images/MainWindow/fullScreen.ico</file>
+        <file>Images/MainWindow/start.ico</file>
     </qresource>
     <qresource prefix="/ImageManage">
         <file>Images/ImageManage/Open.ico</file>
         <file>Images/ImageManage/Exit.ico</file>
+        <file>Images/ImageManage/fourImage.ico</file>
+    </qresource>
+    <qresource prefix="/Test">
+        <file>Images/test.png</file>
     </qresource>
 </RCC>
