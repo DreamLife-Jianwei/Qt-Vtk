@@ -76,9 +76,6 @@ BESTOpenGLWidget::BESTOpenGLWidget(vtkGenericOpenGLRenderWindow* w,
     grabGesture(Qt::TapGesture);
     grabGesture(Qt::TapAndHoldGesture);
     grabGesture(Qt::SwipeGesture);
-
-
-
 }
 
 //-----------------------------------------------------------------------------
@@ -175,41 +172,19 @@ bool BESTOpenGLWidget::event(QEvent* e)
 
 void BESTOpenGLWidget::paintEvent(QPaintEvent *)
 {
-
     QPainter p(this);
     p.setPen(Qt::NoPen);
-    switch (mPaintType) {
-    case MBackGroundColor::Normal:
-        p.setBrush(Qt::black);
-        break;
-    case MBackGroundColor::Axial:
-        p.setBrush(Qt::red);
-        break;
-    case MBackGroundColor::Sagittal:
-        p.setBrush(Qt::green);
-        break;
-    case MBackGroundColor::Coronal:
-        p.setBrush(Qt::blue);
-        break;
-    case MBackGroundColor::ThreeD:
-        p.setBrush(Qt::yellow);
-        break;
-
+    switch (mPaintType){
+    case MBackGroundColor::Normal:p.setBrush(Qt::black);break;
+    case MBackGroundColor::Axial:p.setBrush(Qt::red);break;
+    case MBackGroundColor::Sagittal:p.setBrush(Qt::green);break;
+    case MBackGroundColor::Coronal:p.setBrush(Qt::blue);break;
+    case MBackGroundColor::ThreeD:p.setBrush(Qt::yellow);break;
     }
     p.drawRect(rect());
-
-
-    //    QPainter painter_back(this);
-    //    QPixmap image(":/Test/Images/test.png");
-    //    QPixmap imageN = image.scaled(this->width(),this->height(),Qt::KeepAspectRatio,Qt::SmoothTransformation);
-    //    painter_back.translate(this->width()/2,this->height()/2);
-    //    painter_back.drawPixmap(0-imageN.width()/2,0-imageN.height()/2,imageN);
-
-
-
 }
 
-//-----------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------
 void BESTOpenGLWidget::resizeEvent(QResizeEvent* event)
 {
     Superclass::resizeEvent(event);
@@ -273,7 +248,7 @@ bool BESTOpenGLWidget::testingEvent(QEvent* e)
 //-----------------------------------------------------------------------------
 QSurfaceFormat BESTOpenGLWidget::defaultFormat()
 {
-    return BESTOpenGLWidget::defaultFormat();
+    return QVTKOpenGLWindow::defaultFormat();
 }
 
 //-----------------------------------------------------------------------------

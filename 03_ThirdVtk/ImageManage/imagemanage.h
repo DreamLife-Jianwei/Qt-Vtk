@@ -7,6 +7,7 @@
 #include <QVBoxLayout>
 #include <QGridLayout>
 #include <QResizeEvent>
+#include <QPaintEvent>
 #include <QtDebug>
 
 #include "ImageManage/bestopenglwidget.h"
@@ -54,7 +55,7 @@
 #include "vtkRendererCollection.h"
 #include "vtkTextActor.h"
 #include "vtkTextProperty.h"
-
+#include "vtkImageFlip.h"
 
 class vtkResliceCursorCallback;
 
@@ -79,6 +80,8 @@ public slots:
     void slot_ReaderDICOMImage(const char* fn);
 protected:
     void resizeEvent(QResizeEvent *event) override;
+
+    void paintEvent(QPaintEvent *event) override;
 private slots:
     void on_verticalSlider_colorlevel_valueChanged(int value);
 
@@ -91,22 +94,21 @@ private:
     QSplitter *mSplitterUp = nullptr;
     QSplitter *mSplitterDown = nullptr;
 
-
-
 /**********************************1.0版本************************************/
-    double color[3] = {0,0,0};                                              //颜色
-    vtkSmartPointer<vtkDICOMImageReader> reader = nullptr;                  //读取DICOM文件
-    int imageDims[3] = {0};                                                 //暂时不理解
-    vtkSmartPointer< vtkResliceImageViewer > riw[3];                        //三个二维视图
+    double color[3] = {0,0,0};                                                      //颜色
+    vtkSmartPointer<vtkDICOMImageReader> reader = nullptr;                          //读取DICOM文件
+    int imageDims[3] = {0};                                                         //暂时不理解
+    vtkSmartPointer< vtkResliceImageViewer > riw[3];                                //三个二维视图
     vtkSmartPointer< vtkImagePlaneWidget > planeWidget[3];
-    vtkSmartPointer< vtkDistanceWidget > DistanceWidget[3];                 //测试距离的，暂时没有移植，无用
-    vtkSmartPointer< vtkResliceImageViewerMeasurements > ResliceMeasurements;   //不知道干啥，没有用到
-    vtkSmartPointer<vtkProperty> ipwProp;                                       //属性
-    vtkSmartPointer<vtkCellPicker> picker;                                      //拾取器
-    vtkSmartPointer< vtkRenderer > ren;                                         //3D渲染器
-    vtkSmartPointer<vtkResliceCursorCallback> cbk;                              //回调类
+    vtkSmartPointer< vtkDistanceWidget > DistanceWidget[3];                         //测试距离的，暂时没有移植，无用
+    vtkSmartPointer< vtkResliceImageViewerMeasurements > ResliceMeasurements;       //不知道干啥，没有用到
+    vtkSmartPointer<vtkProperty> ipwProp;                                           //属性
+    vtkSmartPointer<vtkCellPicker> picker;                                          //拾取器
+    vtkSmartPointer< vtkRenderer > ren;                                             //3D渲染器
+    vtkSmartPointer<vtkResliceCursorCallback> cbk;                                  //回调类
     vtkSmartPointer<vtkOpenGLTextActor> text_axial = nullptr;                       //冠状面文字
     vtkSmartPointer<vtkTextActor> textActor[4];
+    vtkSmartPointer<vtkTextActor> peopleInforTextActor[4];
 };
 
 #endif // IMAGEMANAGE_H
