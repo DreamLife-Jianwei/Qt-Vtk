@@ -7,12 +7,14 @@
 #include <QPaintEvent>
 #include <QStyleOption>
 #include <QPainter>
+#include <QPushButton>
+#include <QLabel>
 // Forward Qt class declarations
 class QSurfaceFormat;
 class QOpenGLContext;
 //class QVTKInteractor;
 class QVTKInteractorAdapter;
-class QVTKOpenGLWindow;
+class BESTOpenGLWindow;
 class vtkGenericOpenGLRenderWindow;
 class vtkRenderWindow;
 class vtkRenderWindowInteractor;
@@ -136,12 +138,14 @@ private slots:
 protected:
     virtual void resizeEvent(QResizeEvent* event) Q_DECL_OVERRIDE;
     virtual bool event(QEvent* e) Q_DECL_OVERRIDE;
-    void paintEvent(QPaintEvent *);
+    void paintEvent(QPaintEvent *) override;
     bool EnableHiDPI = true;
 
 private:
-    QVTKOpenGLWindow* qVTKOpenGLWindowInternal;
+    BESTOpenGLWindow* qBestOpenGLWindowInternal;
     int mPaintType = MBackGroundColor::Normal;
+    QWidget* container = nullptr;
+    QPushButton *pushbutton_Test = nullptr;
 
 };
 

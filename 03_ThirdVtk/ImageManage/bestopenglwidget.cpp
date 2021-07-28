@@ -2,7 +2,7 @@
 
 #include "QVTKInteractor.h"
 #include "QVTKInteractorAdapter.h"
-#include "QVTKOpenGLWindow.h"
+#include "ImageManage/bestopenglwindow.h"
 #include "vtkGenericOpenGLRenderWindow.h"
 #include "vtkRenderWindowInteractor.h"
 
@@ -12,6 +12,7 @@
 #include <QMouseEvent>
 #include <QResizeEvent>
 #include <QSurfaceFormat>
+
 #include <QtDebug>
 
 //-----------------------------------------------------------------------------
@@ -32,27 +33,33 @@ BESTOpenGLWidget::BESTOpenGLWidget(vtkGenericOpenGLRenderWindow* w,
 {}
 
 //-----------------------------------------------------------------------------
-BESTOpenGLWidget::BESTOpenGLWidget(vtkGenericOpenGLRenderWindow* w,
-                                   QOpenGLContext *shareContext, QWidget* parent, Qt::WindowFlags f)
+BESTOpenGLWidget::BESTOpenGLWidget(vtkGenericOpenGLRenderWindow* w,QOpenGLContext *shareContext, QWidget* parent, Qt::WindowFlags f)
     : QWidget(parent, f)
 {
     // Internal QVTKOpenGLWindow creation
-    this->qVTKOpenGLWindowInternal = new QVTKOpenGLWindow(w, shareContext);
-    QVBoxLayout* vBoxLayout = new QVBoxLayout(this);
-    QWidget* container = QWidget::createWindowContainer(this->qVTKOpenGLWindowInternal, this, f);
+    this->qBestOpenGLWindowInternal = new BESTOpenGLWindow(w, shareContext);
+//    QVBoxLayout* vBoxLayout = new QVBoxLayout(this);
+    container = QWidget::createWindowContainer(this->qBestOpenGLWindowInternal, this, f);
     container->setAttribute(Qt::WA_TransparentForMouseEvents);
     container->setMouseTracking(true);
 
-    vBoxLayout->addWidget(container);
+    container->move(10,10);
+    container->resize(80,80);
+    container->lower();
 
-    vBoxLayout->setContentsMargins(2,2,2,2);
+    pushbutton_Test = new QPushButton(container);
+    pushbutton_Test->setGeometry(5,5,100,100);
+    pushbutton_Test->raise();
+    pushbutton_Test->show();
+
+
+//    vBoxLayout->addWidget(container);
+//    vBoxLayout->setContentsMargins(2,2,2,2);
 
     // Forward signals triggered by the internal QVTKOpenGLWindow
-    this->connect(this->qVTKOpenGLWindowInternal, SIGNAL(windowEvent(QEvent*)),
-                  this, SLOT(windowEvent(QEvent*)));
+    this->connect(this->qBestOpenGLWindowInternal, SIGNAL(windowEvent(QEvent*)),this, SLOT(windowEvent(QEvent*)));
 
-    this->connect(this, SIGNAL(widgetEvent(QEvent*)),
-                  this->qVTKOpenGLWindowInternal, SLOT(widgetEvent(QEvent*)));
+    this->connect(this, SIGNAL(widgetEvent(QEvent*)),this->qBestOpenGLWindowInternal, SLOT(widgetEvent(QEvent*)));
 
     // enable mouse tracking to process mouse events
     this->setMouseTracking(true);
@@ -92,8 +99,8 @@ void BESTOpenGLWidget::SetWindowPaintColor(int type)
 //-----------------------------------------------------------------------------
 void BESTOpenGLWidget::SetRenderWindow(vtkGenericOpenGLRenderWindow* renWin)
 {
-    this->qVTKOpenGLWindowInternal->SetRenderWindow(renWin);
-    this->qVTKOpenGLWindowInternal->setEnableHiDPI(this->EnableHiDPI);
+    this->qBestOpenGLWindowInternal->SetRenderWindow(renWin);
+    this->qBestOpenGLWindowInternal->setEnableHiDPI(this->EnableHiDPI);
 }
 
 //-----------------------------------------------------------------------------
@@ -107,13 +114,13 @@ void BESTOpenGLWidget::SetRenderWindow(vtkRenderWindow* win)
         qDebug() << "QVTKOpenGLWidget requires a `vtkGenericOpenGLRenderWindow`. `"
              << win->GetClassName() << "` is not supported.";
     }
-    this->qVTKOpenGLWindowInternal->setEnableHiDPI(this->EnableHiDPI);
+    this->qBestOpenGLWindowInternal->setEnableHiDPI(this->EnableHiDPI);
 }
 
 //-----------------------------------------------------------------------------
 vtkRenderWindow* BESTOpenGLWidget::GetRenderWindow()
 {
-    return this->qVTKOpenGLWindowInternal->GetRenderWindow();
+    return this->qBestOpenGLWindowInternal->GetRenderWindow();
 }
 
 //-----------------------------------------------------------------------------
@@ -125,26 +132,26 @@ vtkRenderWindowInteractor* BESTOpenGLWidget::GetInteractor()
 //-----------------------------------------------------------------------------
 QVTKInteractorAdapter* BESTOpenGLWidget::GetInteractorAdapter()
 {
-    return this->qVTKOpenGLWindowInternal->GetInteractorAdapter();
+    return this->qBestOpenGLWindowInternal->GetInteractorAdapter();
 }
 
 //-----------------------------------------------------------------------------
 void BESTOpenGLWidget::setFormat(const QSurfaceFormat& format)
 {
-    this->qVTKOpenGLWindowInternal->setFormat(format);
+    this->qBestOpenGLWindowInternal->setFormat(format);
 }
 
 //-----------------------------------------------------------------------------
 void BESTOpenGLWidget::setEnableHiDPI(bool enable)
 {
     this->EnableHiDPI = enable;
-    this->qVTKOpenGLWindowInternal->setEnableHiDPI(this->EnableHiDPI);
+    this->qBestOpenGLWindowInternal->setEnableHiDPI(this->EnableHiDPI);
 }
 
 //-----------------------------------------------------------------------------
 void BESTOpenGLWidget::setQVTKCursor(const QCursor &cursor)
 {
-    this->qVTKOpenGLWindowInternal->setCursor(cursor);
+    this->qBestOpenGLWindowInternal->setCursor(cursor);
 }
 
 //-----------------------------------------------------------------------------
@@ -188,14 +195,12 @@ void BESTOpenGLWidget::paintEvent(QPaintEvent *)
 void BESTOpenGLWidget::resizeEvent(QResizeEvent* event)
 {
     Superclass::resizeEvent(event);
-
     emit(resized());
-
-    const qreal devicePixelRatio_ = this->EnableHiDPI ? this->qVTKOpenGLWindowInternal->devicePixelRatio() : 1.;
+    const qreal devicePixelRatio_ = this->EnableHiDPI ? this->qBestOpenGLWindowInternal->devicePixelRatio() : 1.;
     const QSize widgetSize = this->size();
     const QSize deviceSize = widgetSize * devicePixelRatio_;
 
-    this->qVTKOpenGLWindowInternal->GetInteractorAdapter()->SetDevicePixelRatio(devicePixelRatio_);
+    this->qBestOpenGLWindowInternal->GetInteractorAdapter()->SetDevicePixelRatio(devicePixelRatio_);
 
     // pass the new size to the internal window
     if (this->GetInteractor())
@@ -219,7 +224,7 @@ void BESTOpenGLWidget::resizeEvent(QResizeEvent* event)
     {
         this->GetRenderWindow()->GetInteractor()->Render();
         // Release the context for other windows to use it.
-        this->qVTKOpenGLWindowInternal->doneCurrent();
+        this->qBestOpenGLWindowInternal->doneCurrent();
     }
 
     // Having this widget as a native widget can cause undesirable stacking
@@ -248,17 +253,17 @@ bool BESTOpenGLWidget::testingEvent(QEvent* e)
 //-----------------------------------------------------------------------------
 QSurfaceFormat BESTOpenGLWidget::defaultFormat()
 {
-    return QVTKOpenGLWindow::defaultFormat();
+    return BESTOpenGLWindow::defaultFormat();
 }
 
 //-----------------------------------------------------------------------------
 bool BESTOpenGLWidget::isValid()
 {
-    return this->qVTKOpenGLWindowInternal->isValid();
+    return this->qBestOpenGLWindowInternal->isValid();
 }
 
 //-----------------------------------------------------------------------------
 QImage BESTOpenGLWidget::grabFramebuffer()
 {
-    return this->qVTKOpenGLWindowInternal->grabFramebuffer();
+    return this->qBestOpenGLWindowInternal->grabFramebuffer();
 }

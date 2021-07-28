@@ -30,6 +30,7 @@ SOURCES += main.cpp\
     ExampleOrg/GraphItem/vtkgraphitem.cpp \
     ExampleOrg/cone2.cpp \
     ImageManage/bestopenglwidget.cpp \
+    ImageManage/bestopenglwindow.cpp \
     ImageManage/imagemanage.cpp \
         mainwindow.cpp \
     ExampleOrg/ambientspheres.cpp \
@@ -81,6 +82,7 @@ HEADERS  += mainwindow.h \
     ExampleOrg/specularspheres.h \
     ExampleOrg/theme.h \
     ImageManage/bestopenglwidget.h \
+    ImageManage/bestopenglwindow.h \
     ImageManage/imagemanage.h
 
 
