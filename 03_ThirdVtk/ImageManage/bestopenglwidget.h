@@ -9,6 +9,7 @@
 #include <QPainter>
 #include <QPushButton>
 #include <QLabel>
+#include <QHBoxLayout>
 // Forward Qt class declarations
 class QSurfaceFormat;
 class QOpenGLContext;
@@ -145,8 +146,6 @@ private:
     BESTOpenGLWindow* qBestOpenGLWindowInternal;
     int mPaintType = MBackGroundColor::Normal;
     QWidget* container = nullptr;
-    QPushButton *pushbutton_Test = nullptr;
-
 };
 
 #endif // BESTOPENGLWIDGET_H

@@ -38,24 +38,12 @@ BESTOpenGLWidget::BESTOpenGLWidget(vtkGenericOpenGLRenderWindow* w,QOpenGLContex
 {
     // Internal QVTKOpenGLWindow creation
     this->qBestOpenGLWindowInternal = new BESTOpenGLWindow(w, shareContext);
-//    QVBoxLayout* vBoxLayout = new QVBoxLayout(this);
+    QVBoxLayout* vBoxLayout = new QVBoxLayout(this);
     container = QWidget::createWindowContainer(this->qBestOpenGLWindowInternal, this, f);
     container->setAttribute(Qt::WA_TransparentForMouseEvents);
     container->setMouseTracking(true);
-
-    container->move(10,10);
-    container->resize(80,80);
-    container->lower();
-
-    pushbutton_Test = new QPushButton(container);
-    pushbutton_Test->setGeometry(5,5,100,100);
-    pushbutton_Test->raise();
-    pushbutton_Test->show();
-
-
-//    vBoxLayout->addWidget(container);
-//    vBoxLayout->setContentsMargins(2,2,2,2);
-
+    vBoxLayout->addWidget(container);
+    vBoxLayout->setContentsMargins(2,2,2,2);
     // Forward signals triggered by the internal QVTKOpenGLWindow
     this->connect(this->qBestOpenGLWindowInternal, SIGNAL(windowEvent(QEvent*)),this, SLOT(windowEvent(QEvent*)));
 
