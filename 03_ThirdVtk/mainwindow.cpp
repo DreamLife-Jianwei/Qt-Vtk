@@ -10,6 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowFlag(Qt::CustomizeWindowHint);
     //    this->setWindowFlags(Qt::FramelessWindowHint);
     ui->centralWidget->installEventFilter(this);
     ui->tab_Logo->installEventFilter(this);

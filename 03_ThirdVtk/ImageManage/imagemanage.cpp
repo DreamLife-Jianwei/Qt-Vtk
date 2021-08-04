@@ -164,17 +164,22 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
         peopleInforTextActor[i]->GetTextProperty()->SetFontSize(14);
         peopleInforTextActor[i]->GetTextProperty()->SetFontFamily(VTK_FONT_FILE);
         peopleInforTextActor[i]->GetTextProperty()->SetFontFile(QString("./Fonts/simhei.ttf").toUtf8());
-        peopleInforTextActor[i]->SetInput(reader->GetPatientName());
+
+
+
+        peopleInforTextActor[i]->SetInput(QString::fromUtf8("患者姓名：").toUtf8()+reader->GetPatientName()+"\r\n"+"UID:"+reader->GetStudyUID());
     }
 
+    qDebug()  << peopleInforTextActor[0]->GetHeight()<< peopleInforTextActor[0]->GetAlignmentPoint();
+
     peopleInforTextActor[0]->GetTextProperty()->SetColor(0, 1, 0);
-    peopleInforTextActor[0]->SetDisplayPosition(5,ui->widget_1->height()-20);
+    peopleInforTextActor[0]->SetDisplayPosition(5,ui->widget_1->height()-40);
     peopleInforTextActor[1]->GetTextProperty()->SetColor(0, 0, 1);
-    peopleInforTextActor[1]->SetDisplayPosition(5,ui->widget_2->height()-20);
+    peopleInforTextActor[1]->SetDisplayPosition(5,ui->widget_2->height()-40);
     peopleInforTextActor[2]->GetTextProperty()->SetColor(1, 0, 0);
-    peopleInforTextActor[2]->SetDisplayPosition(5,ui->widget_3->height()-20);
+    peopleInforTextActor[2]->SetDisplayPosition(5,ui->widget_3->height()-40);
     peopleInforTextActor[3]->GetTextProperty()->SetColor(1, 1, 0);
-    peopleInforTextActor[3]->SetDisplayPosition(5,ui->widget_4->height()-20);
+    peopleInforTextActor[3]->SetDisplayPosition(5,ui->widget_4->height()-40);
 
 
 

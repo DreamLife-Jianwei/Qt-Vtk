@@ -1,0 +1,59 @@
+/*=========================================================================
+
+  Program:   Visualization Toolkit
+  Module:    @_vtk_object_factory_library_name@ObjectFactory.cxx
+
+  Copyright (c) Ken Martin, Will Schroeder, Bill Lorensen
+  All rights reserved.
+  See Copyright.txt or http://www.kitware.com/Copyright.htm for details.
+
+     This software is distributed WITHOUT ANY WARRANTY; without even
+     the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR
+     PURPOSE.  See the above copyright notice for more information.
+
+=========================================================================*/
+
+#include "@_vtk_object_factory_library_name@ObjectFactory.h"
+#include "vtkVersion.h"
+
+// Include all of the classes we want to create overrides for.
+@_vtk_object_factory_includes@
+
+vtkStandardNewMacro(@_vtk_object_factory_library_name@ObjectFactory);
+
+// Now create the functions to create overrides with.
+@_vtk_object_factory_functions@
+
+@_vtk_object_factory_library_name@ObjectFactory::@_vtk_object_factory_library_name@ObjectFactory()
+{
+@_vtk_object_factory_calls@
+}
+
+const char * @_vtk_object_factory_library_name@ObjectFactory::GetVTKSourceVersion()
+{
+  return VTK_SOURCE_VERSION;
+}
+
+void @_vtk_object_factory_library_name@ObjectFactory::PrintSelf(ostream &os, vtkIndent indent)
+{
+  this->Superclass::PrintSelf(os, indent);
+}
+
+// Registration of object factories.
+static unsigned int @_vtk_object_factory_library_name@Count = 0;
+
+@_vtk_object_factory_configure_EXPORT_MACRO@ void @_vtk_object_factory_library_name@_AutoInit_Construct()
+{
+  if(++@_vtk_object_factory_library_name@Count == 1)
+  {
+@_vtk_object_factory_configure_INITIAL_CODE@
+
+    @_vtk_object_factory_library_name@ObjectFactory* factory = @_vtk_object_factory_library_name@ObjectFactory::New();
+    if (factory)
+    {
+      // vtkObjectFactory keeps a reference to the "factory",
+      vtkObjectFactory::RegisterFactory(factory);
+      factory->Delete();
+    }
+  }
+}
