@@ -71,6 +71,8 @@ public:
     explicit ImageManage(QWidget *parent = nullptr);
     ~ImageManage();
     void setCurrentTab(int temp =0);
+
+    void SetResliceMode();
 public slots:
     /**
      * @brief slot_ReaderDICOMImage

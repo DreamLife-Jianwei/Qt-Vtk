@@ -112,6 +112,8 @@ private slots:
 
     void on_actionexit_ImageManage_triggered();
 
+    void on_actionSetResliceMode_triggered();
+
 protected:
     inline void changeExample();
     inline void changeImageManage();

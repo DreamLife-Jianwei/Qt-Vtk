@@ -108,6 +108,34 @@ void ImageManage::setCurrentTab(int temp)
 {
     Q_UNUSED(temp);
 }
+/**
+ * @brief ImageManage::SetResliceMode
+ * 开关十字线
+ * 目前还有问题，没有实现开关
+ */
+void ImageManage::SetResliceMode()
+{
+    if(riw[0]->GetResliceMode())
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            riw[i]->SetResliceMode(0);
+            riw[i]->GetRenderer()->ResetCamera();
+            riw[i]->Render();
+        }
+    }
+    else
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            riw[i]->SetResliceMode(1);
+            riw[i]->GetRenderer()->ResetCamera();
+            riw[i]->Render();
+        }
+    }
+
+
+}
 void ImageManage::slot_ReaderDICOMImage(const char *fn)
 {
 
@@ -218,7 +246,7 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
         riw[i]->SetInputData(reader->GetOutput());
         riw[i]->SetSliceOrientation(i);
         riw[i]->SetResliceModeToAxisAligned();
-        riw[i]->SetResliceModeToOblique();
+//        riw[i]->SetResliceModeToOblique();
     }
 
     picker = vtkSmartPointer<vtkCellPicker>::New();

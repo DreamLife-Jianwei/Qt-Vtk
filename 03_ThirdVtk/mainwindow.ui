@@ -254,6 +254,7 @@
    <addaction name="actionOpen"/>
    <addaction name="separator"/>
    <addaction name="actionexit_ImageManage"/>
+   <addaction name="actionSetResliceMode"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAmbientSpheres">
@@ -432,6 +433,11 @@
    </property>
    <property name="toolTip">
     <string>退出图像浏览</string>
+   </property>
+  </action>
+  <action name="actionSetResliceMode">
+   <property name="text">
+    <string>十</string>
    </property>
   </action>
  </widget>

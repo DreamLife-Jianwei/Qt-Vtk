@@ -464,3 +464,9 @@ void MainWindow::on_actionexit_ImageManage_triggered()
     ui->ToolBarImage->hide();
 }
 
+
+void MainWindow::on_actionSetResliceMode_triggered()
+{
+
+}
+
