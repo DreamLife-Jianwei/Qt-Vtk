@@ -24,7 +24,7 @@ Cone::Cone(QWidget *parent) :
     coneRender->AddActor(coneActor);
     coneRender->SetBackground(0.1,0.2,0.3);
     //获取渲染窗口
-    ui->widget->GetRenderWindow()->AddRenderer(coneRender);
+    ui->openGLWidget->renderWindow()->AddRenderer(coneRender);
 
 
     //    while (1) {
@@ -35,7 +35,7 @@ Cone::Cone(QWidget *parent) :
     rotationTimer = new QTimer();
     connect(rotationTimer,&QTimer::timeout,this,[=](){
         coneRender->GetActiveCamera()->Azimuth(1);
-        ui->widget->GetRenderWindow()->Render();            //注意这句话，要加上呀，不然人不给你转，惰性渲染。
+        ui->openGLWidget->renderWindow()->Render();            //注意这句话，要加上呀，不然人不给你转，惰性渲染。
     });
 
     rotationTimer->start(25);

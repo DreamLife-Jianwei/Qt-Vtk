@@ -101,7 +101,7 @@ LabeledMesh::LabeledMesh(QWidget *parent) :
     vtkSmartPointer<vtkActor2D> cellLabels = vtkSmartPointer<vtkActor2D>::New();
     cellLabels->SetMapper(cellmapper);
 
-    ui->widget->GetRenderWindow()->AddRenderer(ren1);
+    ui->openGLWidget->renderWindow()->AddRenderer(ren1);
 
     ren1->AddActor(sphereActor);
     ren1->AddActor2D(rectActor);

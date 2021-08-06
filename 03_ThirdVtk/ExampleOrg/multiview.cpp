@@ -37,7 +37,7 @@ MultiView::MultiView(QWidget *parent) :
     }
 
     view = vtkGraphLayoutView::New();
-    view->SetRenderWindow(ui->widget->GetRenderWindow());
+    view->SetRenderWindow(ui->openGLWidget->renderWindow());
     vtkDataRepresentation* rep =view->SetRepresentationFromInput(tree);
     vtkViewTheme* theme = vtkViewTheme::CreateMellowTheme();
     view->ApplyViewTheme(theme);

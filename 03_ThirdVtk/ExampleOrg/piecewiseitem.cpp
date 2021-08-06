@@ -9,7 +9,7 @@ PiecewiseItem::PiecewiseItem(QWidget *parent) :
 
 
     view = vtkSmartPointer<vtkContextView>::New();
-    view->SetRenderWindow(ui->widget->GetRenderWindow());
+    view->SetRenderWindow(ui->openGLWidget->renderWindow());
     view->GetRenderer()->SetBackground(0,0,1);
 
     source = vtkSmartPointer<vtkPiecewiseFunction>::New();

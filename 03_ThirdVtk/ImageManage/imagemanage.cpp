@@ -73,13 +73,13 @@ ImageManage::ImageManage(QWidget *parent) :QWidget(parent),ui(new Ui::ImageManag
     mSplitterMain = new QSplitter(Qt::Horizontal,this);
     mSplitterVertical = new QSplitter(Qt::Vertical,mSplitterMain);
     mSplitterUp = new QSplitter(Qt::Horizontal,mSplitterVertical);
-    mSplitterUp->addWidget(ui->widget_1);
-    mSplitterUp->addWidget(ui->widget_2);
+    mSplitterUp->addWidget(ui->openGLWidget_1);
+    mSplitterUp->addWidget(ui->openGLWidget_2);
     mSplitterUp->setStretchFactor(0,1);
     mSplitterUp->setStretchFactor(1,1);
     mSplitterDown = new QSplitter(Qt::Horizontal,mSplitterVertical);
-    mSplitterDown->addWidget(ui->widget_3);
-    mSplitterDown->addWidget(ui->widget_4);
+    mSplitterDown->addWidget(ui->openGLWidget_3);
+    mSplitterDown->addWidget(ui->openGLWidget_4);
     mSplitterDown->setStretchFactor(0,1);
     mSplitterDown->setStretchFactor(1,1);
     mSplitterMain->insertWidget(0,mSplitterVertical);
@@ -87,10 +87,10 @@ ImageManage::ImageManage(QWidget *parent) :QWidget(parent),ui(new Ui::ImageManag
     mSplitterMain->setStretchFactor(0,1);               //很魔性啊
 
 
-    ui->widget_1->SetWindowPaintColor(1);
-    ui->widget_2->SetWindowPaintColor(2);
-    ui->widget_3->SetWindowPaintColor(3);
-    ui->widget_4->SetWindowPaintColor(4);
+//    ui->openGLWidget_1->SetWindowPaintColor(1);
+//    ui->openGLWidget_2->SetWindowPaintColor(2);
+//    ui->openGLWidget_3->SetWindowPaintColor(3);
+//    ui->openGLWidget_4->SetWindowPaintColor(4);
 
 
 
@@ -201,13 +201,13 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     qDebug()  << peopleInforTextActor[0]->GetHeight()<< peopleInforTextActor[0]->GetAlignmentPoint();
 
     peopleInforTextActor[0]->GetTextProperty()->SetColor(0, 1, 0);
-    peopleInforTextActor[0]->SetDisplayPosition(5,ui->widget_1->height()-40);
+    peopleInforTextActor[0]->SetDisplayPosition(5,ui->openGLWidget_1->height()-40);
     peopleInforTextActor[1]->GetTextProperty()->SetColor(0, 0, 1);
-    peopleInforTextActor[1]->SetDisplayPosition(5,ui->widget_2->height()-40);
+    peopleInforTextActor[1]->SetDisplayPosition(5,ui->openGLWidget_2->height()-40);
     peopleInforTextActor[2]->GetTextProperty()->SetColor(1, 0, 0);
-    peopleInforTextActor[2]->SetDisplayPosition(5,ui->widget_3->height()-40);
+    peopleInforTextActor[2]->SetDisplayPosition(5,ui->openGLWidget_3->height()-40);
     peopleInforTextActor[3]->GetTextProperty()->SetColor(1, 1, 0);
-    peopleInforTextActor[3]->SetDisplayPosition(5,ui->widget_4->height()-40);
+    peopleInforTextActor[3]->SetDisplayPosition(5,ui->openGLWidget_4->height()-40);
 
 
 
@@ -227,14 +227,14 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     //        widget_1 水平;
     //        widget_2 矢状;
     //        widget_3 冠状;
-    riw[0]->SetRenderWindow(ui->widget_2->GetRenderWindow());
-    riw[0]->SetupInteractor(ui->widget_2->GetRenderWindow()->GetInteractor());
+    riw[0]->SetRenderWindow(ui->openGLWidget_2->renderWindow());
+    riw[0]->SetupInteractor(ui->openGLWidget_2->renderWindow()->GetInteractor());
 
-    riw[1]->SetRenderWindow(ui->widget_3->GetRenderWindow());
-    riw[1]->SetupInteractor(ui->widget_3->GetRenderWindow()->GetInteractor());
+    riw[1]->SetRenderWindow(ui->openGLWidget_3->renderWindow());
+    riw[1]->SetupInteractor(ui->openGLWidget_3->renderWindow()->GetInteractor());
 
-    riw[2]->SetRenderWindow(ui->widget_1->GetRenderWindow());
-    riw[2]->SetupInteractor(ui->widget_1->GetRenderWindow()->GetInteractor());
+    riw[2]->SetRenderWindow(ui->openGLWidget_1->renderWindow());
+    riw[2]->SetupInteractor(ui->openGLWidget_1->renderWindow()->GetInteractor());
 
     for (int i = 0; i < 3; i++)
     {
@@ -255,11 +255,11 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     ren = vtkSmartPointer<vtkRenderer>::New();
     ren->AddActor(textActor[3]);
     ren->AddActor(peopleInforTextActor[3]);
-    ui->widget_4->GetRenderWindow()->AddRenderer(ren);
+    ui->openGLWidget_4->renderWindow()->AddRenderer(ren);
     for (int i = 0; i < 3; i++)
     {
         planeWidget[i] = vtkSmartPointer<vtkImagePlaneWidget>::New();
-        planeWidget[i]->SetInteractor( ui->widget_4->GetInteractor());
+        planeWidget[i]->SetInteractor( ui->openGLWidget_4->interactor());
         planeWidget[i]->SetPicker(picker);
         planeWidget[i]->RestrictPlaneToVolumeOn();
         color[0] = 0;
@@ -357,10 +357,10 @@ void ImageManage::on_verticalSlider_colorlevel_valueChanged(int value)
     {
         riw[i]->SetColorLevel(value);
     }
-    ui->widget_1->GetRenderWindow()->Render();
-    ui->widget_2->GetRenderWindow()->Render();
-    ui->widget_3->GetRenderWindow()->Render();
-    ui->widget_4->GetRenderWindow()->Render();
+    ui->openGLWidget_1->renderWindow()->Render();
+    ui->openGLWidget_2->renderWindow()->Render();
+    ui->openGLWidget_3->renderWindow()->Render();
+    ui->openGLWidget_4->renderWindow()->Render();
 }
 
 /**
@@ -374,9 +374,9 @@ void ImageManage::on_verticalSlider_colorwindow_valueChanged(int value)
     {
         riw[i]->SetColorWindow(value);
     }
-    ui->widget_1->GetRenderWindow()->Render();
-    ui->widget_2->GetRenderWindow()->Render();
-    ui->widget_3->GetRenderWindow()->Render();
-    ui->widget_4->GetRenderWindow()->Render();
+    ui->openGLWidget_1->renderWindow()->Render();
+    ui->openGLWidget_2->renderWindow()->Render();
+    ui->openGLWidget_3->renderWindow()->Render();
+    ui->openGLWidget_4->renderWindow()->Render();
 }
 

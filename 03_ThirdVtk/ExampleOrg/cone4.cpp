@@ -33,11 +33,11 @@ Cone4::Cone4(QWidget *parent) :
     render->AddActor(actor1);
     render->AddActor(actor2);
     render->SetBackground(0,0,0);
-    ui->widget->GetRenderWindow()->AddRenderer(render);
+    ui->openGLWidget->renderWindow()->AddRenderer(render);
     rotateTimer = new QTimer;
     connect(rotateTimer,&QTimer::timeout,this,[=](){
         render->GetActiveCamera()->Azimuth(1);
-        ui->widget->GetRenderWindow()->Render();
+        ui->openGLWidget->renderWindow()->Render();
     });
     rotateTimer->start(10);
 

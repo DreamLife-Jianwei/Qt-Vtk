@@ -61,7 +61,7 @@ CreateTree::CreateTree(QWidget *parent) :
     view->SetVertexLabelVisibility(true);
     view->Update();
     view->ResetCamera();
-    view->SetRenderWindow(ui->widget->GetRenderWindow());       //设置渲染窗口
+    view->SetRenderWindow(ui->openGLWidget->renderWindow());       //设置渲染窗口
 
 }
 

@@ -24,11 +24,11 @@ Cone5::Cone5(QWidget *parent) :QWidget(parent),ui(new Ui::Cone5)
     render->SetBackground(0,1,0);
 
 
-    ui->widget->GetRenderWindow()->AddRenderer(render);
+    ui->openGLWidget->renderWindow()->AddRenderer(render);
 
 
     iren = vtkRenderWindowInteractor::New();
-    iren->SetRenderWindow(ui->widget->GetRenderWindow());
+    iren->SetRenderWindow(ui->openGLWidget->renderWindow());
 
 
     style = vtkInteractorStyleTrackballCamera::New();

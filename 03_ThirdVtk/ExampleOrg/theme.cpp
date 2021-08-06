@@ -12,7 +12,7 @@ Theme::Theme(QWidget *parent) :
     theme = vtkViewTheme::CreateMellowTheme();
     view->ApplyViewTheme(theme);
     theme->Delete();
-    view->SetRenderWindow(ui->widget->GetRenderWindow());
+    view->SetRenderWindow(ui->openGLWidget->renderWindow());
     view->SetVertexColorArrayName("VertexDegree");
     view->SetColorVertices(true);
     view->SetVertexLabelArrayName("VertexDegree");

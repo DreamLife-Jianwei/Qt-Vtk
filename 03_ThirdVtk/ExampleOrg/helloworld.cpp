@@ -11,7 +11,7 @@ HelloWorld::HelloWorld(QWidget *parent) :
 
     vtkGraphLayoutView *view = vtkGraphLayoutView::New();
     view->SetRepresentationFromInputConnection(source->GetOutputPort());
-    view->SetRenderWindow(ui->widget->GetRenderWindow());
+    view->SetRenderWindow(ui->openGLWidget->renderWindow());
     view->ResetCamera();
     view->Render();
 

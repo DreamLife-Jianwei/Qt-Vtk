@@ -27,16 +27,15 @@
     <number>0</number>
    </property>
    <item row="0" column="0">
-    <widget class="QVTKOpenGLWidget" name="widget" native="true"/>
+    <widget class="QVTKOpenGLNativeWidget" name="openGLWidget"/>
    </item>
   </layout>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>QVTKOpenGLWidget</class>
-   <extends>QWidget</extends>
-   <header location="global">qvtkopenglwidget.h</header>
-   <container>1</container>
+   <class>QVTKOpenGLNativeWidget</class>
+   <extends>QOpenGLWidget</extends>
+   <header location="global">qvtkopenglnativewidget.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

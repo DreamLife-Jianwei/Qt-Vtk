@@ -26,7 +26,7 @@ Cylinder::Cylinder(QWidget *parent) :
     render = vtkRenderer::New();
     render->AddActor(actor);
 
-    ui->widget->GetRenderWindow()->AddRenderer(render);
+    ui->openGLWidget->renderWindow()->AddRenderer(render);
 
 }
 

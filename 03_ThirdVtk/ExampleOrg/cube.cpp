@@ -60,7 +60,7 @@ Cube::Cube(QWidget *parent) :
     render->SetBackground(colors->GetColor3d("black").GetData());
 
 
-    ui->widget->GetRenderWindow()->AddRenderer(render);
+    ui->openGLWidget->renderWindow()->AddRenderer(render);
 
 
 

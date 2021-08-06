@@ -3,7 +3,7 @@
 
 #include <QWidget>
 #include <QTimer>
-#include "QVTKOpenGLWidget.h"               //新版本，旧版QVTKWidget
+#include "QVTKOpenGLNativeWidget.h"               //新版本，旧版QVTKWidget
 #include "vtkAutoInit.h"
 
 #include "vtkConeSource.h"

@@ -2,10 +2,9 @@
 #define QSCALARSTOCOLORS_H
 
 #include <QWidget>
-#include "QVTKOpenGLWidget.h"               //新版本，旧版QVTKWidget
+#include "QVTKOpenGLNativeWidget.h"               //新版本，旧版QVTKWidget
 #include "vtkAutoInit.h"
 
-#include "QVTKOpenGLWidget.h"
 #include "vtkChartXY.h"
 #include "vtkColorTransferFunction.h"
 #include "vtkCompositeTransferFunctionItem.h"
@@ -40,7 +39,7 @@ public:
 private:
     Ui::QScalarsToColors *ui;
 
-    QVTKOpenGLWidget *qvtkWidget = nullptr;
+    QVTKOpenGLNativeWidget *qvtkWidget = nullptr;
 
     vtkNew<vtkGenericOpenGLRenderWindow> renderWindow;
 

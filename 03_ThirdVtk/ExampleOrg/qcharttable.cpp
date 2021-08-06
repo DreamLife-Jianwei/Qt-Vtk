@@ -7,9 +7,9 @@ QChartTable::QChartTable(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    qvtkWidget = new QVTKOpenGLWidget(ui->widget);
+    qvtkWidget = new QVTKOpenGLNativeWidget(ui->openGLWidget);
 
-    qvtkWidget->SetRenderWindow(renderWidow);
+    qvtkWidget->setRenderWindow(renderWidow);
 
 
     view->SetRenderWindow(renderWidow);
@@ -52,7 +52,7 @@ QChartTable::QChartTable(QWidget *parent) :
     tableview->SetSplitMultiComponentColumns(true);
     tableview->AddRepresentationFromInput(table);
     tableview->Update();
-    QHBoxLayout *layout = new QHBoxLayout(ui->widget);
+    QHBoxLayout *layout = new QHBoxLayout(ui->openGLWidget);
     layout->addWidget(qvtkWidget, 2);
     layout->addWidget(tableview->GetWidget());
 

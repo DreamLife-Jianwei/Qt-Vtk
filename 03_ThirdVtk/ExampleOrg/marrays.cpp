@@ -52,7 +52,7 @@ MArrays::MArrays(QWidget *parent) :
     render->AddActor(actor);                //添加actor
     render->SetBackground(colors->GetColor3d("TestColor").GetData());   //设置渲染背景
 
-    ui->widget->GetRenderWindow()->AddRenderer(render);         //添加渲染器
+    ui->openGLWidget->renderWindow()->AddRenderer(render);         //添加渲染器
 
 }
 

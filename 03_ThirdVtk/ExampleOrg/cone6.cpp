@@ -29,11 +29,11 @@ Cone6::Cone6(QWidget *parent) :
     render->SetBackground(0,0,1);
 
 
-    ui->widget->GetRenderWindow()->AddRenderer(render);
+    ui->openGLWidget->renderWindow()->AddRenderer(render);
 
 
     iren = vtkRenderWindowInteractor::New();
-    iren->SetRenderWindow(ui->widget->GetRenderWindow());
+    iren->SetRenderWindow(ui->openGLWidget->renderWindow());
 
 
 

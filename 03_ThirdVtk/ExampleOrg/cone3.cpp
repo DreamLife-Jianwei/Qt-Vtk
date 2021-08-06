@@ -32,14 +32,14 @@ Cone3::Cone3(QWidget *parent) :
     coneRender2->SetViewport(0.5,0.0,1.0,1.0);
     //获取渲染窗口
 
-    ui->widget_Cone1->GetRenderWindow()->AddRenderer(coneRender1);
-    ui->widget_Cone1->GetRenderWindow()->AddRenderer(coneRender2);
+    ui->openGLWidget->renderWindow()->AddRenderer(coneRender1);
+    ui->openGLWidget->renderWindow()->AddRenderer(coneRender2);
     //旋转椎体
     rotationTimer = new QTimer();
     connect(rotationTimer,&QTimer::timeout,this,[=](){
         coneRender1->GetActiveCamera()->Azimuth(1);
         coneRender2->GetActiveCamera()->Azimuth(2);
-        ui->widget_Cone1->GetRenderWindow()->Render();//注意这句话，要加上呀，不然人不给你转，惰性渲染。
+        ui->openGLWidget->renderWindow()->Render();//注意这句话，要加上呀，不然人不给你转，惰性渲染。
     });
 
     rotationTimer->start(25);

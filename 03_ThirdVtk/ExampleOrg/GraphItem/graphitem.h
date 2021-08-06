@@ -2,7 +2,7 @@
 #define GRAPHITEM_H
 
 #include <QWidget>
-#include "QVTKOpenGLWidget.h"               //新版本，旧版QVTKWidget
+#include "QVTKOpenGLNativeWidget.h"               //新版本，旧版QVTKWidget
 #include "vtkAutoInit.h"
 
 

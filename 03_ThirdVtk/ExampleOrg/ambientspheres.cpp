@@ -100,7 +100,7 @@ AmbientSpheres::AmbientSpheres(QWidget *parent) :QWidget(parent),ui(new Ui::Ambi
     renderer->AddActor(sphere7);
     renderer->AddActor(sphere8);
     renderer->SetBackground(0.1,0.2,0.4);               //设置背景颜色
-    ui->widget->GetRenderWindow()->AddRenderer(renderer);   //
+    ui->openGLWidget->renderWindow()->AddRenderer(renderer);   //
 
     light = vtkSmartPointer<vtkLight>::New();               //创建光照
     light->SetFocalPoint(1.875,0.6125,0);                   //设置灯光焦点

@@ -48,7 +48,7 @@ SGrid::SGrid(QWidget *parent) :
     renderer->GetActiveCamera()->Elevation(60.0);
     renderer->GetActiveCamera()->Azimuth(30.0);
     renderer->GetActiveCamera()->Zoom(1.0);
-    ui->widget->GetRenderWindow()->AddRenderer(renderer);
+    ui->openGLWidget->renderWindow()->AddRenderer(renderer);
 }
 
 SGrid::~SGrid()

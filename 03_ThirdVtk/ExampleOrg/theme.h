@@ -2,6 +2,8 @@
 #define THEME_H
 
 #include <QWidget>
+#include "QVTKOpenGLNativeWidget.h"               //新版本，旧版QVTKWidget
+#include "vtkAutoInit.h"
 #include "vtkGraphLayoutView.h"
 #include "vtkRandomGraphSource.h"
 #include "vtkRenderWindow.h"

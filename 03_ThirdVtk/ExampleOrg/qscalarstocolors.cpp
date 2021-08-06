@@ -8,13 +8,13 @@ QScalarsToColors::QScalarsToColors(QWidget *parent) :
     ui->setupUi(this);
 
 
-    qvtkWidget = new QVTKOpenGLWidget(ui->widget);
+    qvtkWidget = new QVTKOpenGLNativeWidget(ui->openGLWidget);
 
 
-    qvtkWidget->SetRenderWindow(renderWindow);
+    qvtkWidget->setRenderWindow(renderWindow);
 
-    view->SetRenderWindow(qvtkWidget->GetRenderWindow());
-    view->SetInteractor(qvtkWidget->GetInteractor());
+    view->SetRenderWindow(qvtkWidget->renderWindow());
+    view->SetInteractor(qvtkWidget->interactor());
 
 
     vtkNew<vtkChartXY> chart;
@@ -48,5 +48,5 @@ QScalarsToColors::~QScalarsToColors()
 void QScalarsToColors::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
-    qvtkWidget->resize(ui->widget->size());
+    qvtkWidget->resize(ui->openGLWidget->size());
 }

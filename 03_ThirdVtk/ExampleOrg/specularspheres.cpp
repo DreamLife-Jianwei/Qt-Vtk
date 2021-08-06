@@ -109,7 +109,7 @@ SpecularSpheres::SpecularSpheres(QWidget *parent) :
     render->ResetCamera();
     render->GetActiveCamera()->SetParallelScale(3.0);
 
-    ui->widget->GetRenderWindow()->AddRenderer(render);
+    ui->openGLWidget->renderWindow()->AddRenderer(render);
 
 }
 

@@ -96,7 +96,7 @@ DiffuseSpheres::DiffuseSpheres(QWidget *parent) :
     render->AddActor(sphere8);
 
 
-    ui->widget->GetRenderWindow()->AddRenderer(render);
+    ui->openGLWidget->renderWindow()->AddRenderer(render);
 
 
 

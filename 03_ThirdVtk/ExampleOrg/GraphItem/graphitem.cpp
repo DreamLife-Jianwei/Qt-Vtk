@@ -24,7 +24,7 @@ GraphItem::GraphItem(QWidget *parent) :
 
     anim->view = mview;
     anim->GraphItem = item;
-    mview->SetRenderWindow(ui->widget->GetRenderWindow());
+    mview->SetRenderWindow(ui->openGLWidget->renderWindow());
     mview->GetRenderWindow()->GetInteractor()->Initialize();
     mview->GetRenderWindow()->GetInteractor()->CreateOneShotTimer(10);
     mview->GetRenderWindow()->GetInteractor()->AddObserver(vtkCommand::TimerEvent, anim);

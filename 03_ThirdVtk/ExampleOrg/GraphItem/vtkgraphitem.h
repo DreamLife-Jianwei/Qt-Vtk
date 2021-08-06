@@ -1,7 +1,8 @@
 #ifndef VTKGRAPHITEM_H
 #define VTKGRAPHITEM_H
 
-
+#include "QVTKOpenGLNativeWidget.h"               //新版本，旧版QVTKWidget
+#include "vtkAutoInit.h"
 #include "vtkContextItem.h"
 
 #include "vtkEdgeListIterator.h"
