@@ -186,21 +186,12 @@ void MyQVTKOpenGLNativeWidget::initializeGL()
     {
         Q_ASSERT(this->RenderWindowAdapter.data() == nullptr);
 
-        // When a QOpenGLWidget is told to use a QSurfaceFormat with samples > 0,
-        // QOpenGLWidget doesn't actually create a context with multi-samples and
-        // internally changes the QSurfaceFormat to be samples=0. Thus, we can't
-        // rely on the QSurfaceFormat to indicate to us if multisampling is being
-        // used. We should use glGetRenderbufferParameteriv(..) to get
-        // GL_RENDERBUFFER_SAMPLES to determine the samples used. This is done by
-        // in recreateFBO().
-        this->RenderWindowAdapter.reset(
-                    new QVTKRenderWindowAdapter(this->context(), this->RenderWindow, this));
+        this->RenderWindowAdapter.reset(new QVTKRenderWindowAdapter(this->context(), this->RenderWindow, this));
         this->RenderWindowAdapter->setDefaultCursor(this->defaultCursor());
         this->RenderWindowAdapter->setEnableHiDPI(this->EnableHiDPI);
         this->RenderWindowAdapter->setUnscaledDPI(this->UnscaledDPI);
     }
-    this->connect(this->context(), SIGNAL(aboutToBeDestroyed()), SLOT(cleanupContext()),
-                  static_cast<Qt::ConnectionType>(Qt::UniqueConnection | Qt::DirectConnection));
+    this->connect(this->context(), SIGNAL(aboutToBeDestroyed()), SLOT(cleanupContext()),static_cast<Qt::ConnectionType>(Qt::UniqueConnection | Qt::DirectConnection));
 }
 
 void MyQVTKOpenGLNativeWidget::paintGL()
@@ -217,13 +208,11 @@ void MyQVTKOpenGLNativeWidget::paintGL()
         // before proceeding with blit-ing.
         this->makeCurrent();
 
-        QOpenGLFunctions_3_2_Core* f =
-                QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_3_2_Core>();
+        QOpenGLFunctions_3_2_Core* f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_3_2_Core>();
         if (f)
         {
             const QSize deviceSize = this->size() * this->devicePixelRatioF();
-            this->RenderWindowAdapter->blit(
-                        this->defaultFramebufferObject(), GL_COLOR_ATTACHMENT0, QRect(QPoint(0, 0), deviceSize));
+            this->RenderWindowAdapter->blit(this->defaultFramebufferObject(), GL_COLOR_ATTACHMENT0, QRect(QPoint(0, 0), deviceSize));
         }
     }
     else
