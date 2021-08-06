@@ -11,7 +11,6 @@
 #include <QtDebug>
 #include <QPainter>
 
-
 #include "QVTKOpenGLNativeWidget.h"               //新版本，旧版QVTKWidget
 #include "vtkAutoInit.h"
 #include "vtkSmartPointer.h"
@@ -56,6 +55,8 @@
 #include "vtkTextActor.h"
 #include "vtkTextProperty.h"
 #include "vtkImageFlip.h"
+#include "myqvtkopenglnativewidget.h"
+
 
 class vtkResliceCursorCallback;
 
@@ -109,8 +110,8 @@ private:
     vtkSmartPointer< vtkRenderer > ren;                                             //3D渲染器
     vtkSmartPointer<vtkResliceCursorCallback> cbk;                                  //回调类
     vtkSmartPointer<vtkOpenGLTextActor> text_axial = nullptr;                       //冠状面文字
-    vtkSmartPointer<vtkTextActor> textActor[4];
-    vtkSmartPointer<vtkTextActor> peopleInforTextActor[4];
+    vtkSmartPointer<vtkTextActor> textActor[4];                                     //文本信息
+    vtkSmartPointer<vtkTextActor> peopleInforTextActor[4];                          //文本信息
 };
 
 #endif // IMAGEMANAGE_H

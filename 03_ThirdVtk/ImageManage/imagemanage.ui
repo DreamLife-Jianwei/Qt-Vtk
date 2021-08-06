@@ -51,10 +51,10 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QVTKOpenGLNativeWidget" name="openGLWidget_1"/>
+          <widget class="MyQVTKOpenGLNativeWidget" name="openGLWidget_1"/>
          </item>
          <item>
-          <widget class="QVTKOpenGLNativeWidget" name="openGLWidget_2"/>
+          <widget class="MyQVTKOpenGLNativeWidget" name="openGLWidget_2"/>
          </item>
         </layout>
        </item>
@@ -64,10 +64,10 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QVTKOpenGLNativeWidget" name="openGLWidget_3"/>
+          <widget class="MyQVTKOpenGLNativeWidget" name="openGLWidget_3"/>
          </item>
          <item>
-          <widget class="QVTKOpenGLNativeWidget" name="openGLWidget_4"/>
+          <widget class="MyQVTKOpenGLNativeWidget" name="openGLWidget_4"/>
          </item>
         </layout>
        </item>
@@ -129,9 +129,9 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>QVTKOpenGLNativeWidget</class>
+   <class>MyQVTKOpenGLNativeWidget</class>
    <extends>QOpenGLWidget</extends>
-   <header location="global">qvtkopenglnativewidget.h</header>
+   <header>myqvtkopenglnativewidget.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

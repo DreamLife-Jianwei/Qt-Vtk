@@ -30,6 +30,7 @@ SOURCES += main.cpp\
     ExampleOrg/GraphItem/vtkgraphitem.cpp \
     ExampleOrg/cone2.cpp \
     ImageManage/imagemanage.cpp \
+    ImageManage/myqvtkopenglnativewidget.cpp \
         mainwindow.cpp \
     ExampleOrg/ambientspheres.cpp \
     ExampleOrg/marrays.cpp \
@@ -79,7 +80,8 @@ HEADERS  += mainwindow.h \
     ExampleOrg/sgrid.h \
     ExampleOrg/specularspheres.h \
     ExampleOrg/theme.h \
-    ImageManage/imagemanage.h
+    ImageManage/imagemanage.h \
+    ImageManage/myqvtkopenglnativewidget.h
 
 
 FORMS    += mainwindow.ui \
