@@ -54,7 +54,7 @@
 
 > 演示程序，欢迎体验
 
-## 1.10 10_VTK9.0.3源码+2017编译文件+运行库
+### 1.10 10_VTK9.0.3源码+2017编译文件+运行库
 
 > 编译好的Vtk9.0.3库文件、源码和2017工程文件
 >
@@ -64,11 +64,13 @@
 >
 > VTK-9.0.3：源码文件
 
-## 1.11 11_QtVtk9ReadDicomDemo
+### 1.11 11_QtVtk9ReadDicomDemoCmake
 
 > Qt下使用Cmake结合Vtk9.0.3 读取Dicom文件示例，暂时还未实现。
 
+### 1.12 12_Vtk9ReadDicomDemoQmake
 
+> 使用QMake调用Vtk9.0.3，仅实现一个Cone用于测试，测试通过后将计划更新ThirdVtk
 
 
 
