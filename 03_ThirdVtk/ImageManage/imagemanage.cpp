@@ -87,15 +87,6 @@ ImageManage::ImageManage(QWidget *parent) :QWidget(parent),ui(new Ui::ImageManag
     mSplitterMain->setStretchFactor(0,1);               //很魔性啊
 
 
-//    ui->openGLWidget_1->SetWindowPaintColor(1);
-//    ui->openGLWidget_2->SetWindowPaintColor(2);
-//    ui->openGLWidget_3->SetWindowPaintColor(3);
-//    ui->openGLWidget_4->SetWindowPaintColor(4);
-
-
-
-
-
     update();
 }
 
@@ -152,15 +143,6 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     double range[2];
     reader->GetOutput()->GetScalarRange(range);                 //获取灰度范围
 
-    qDebug() << reader->GetWidth() << reader->GetHeight();
-
-//    flipYFilter = vtkSmartPointer<vtkImageFlip>::New();
-//    flipYFilter->SetFilteredAxis(0);
-//    flipYFilter->SetFilteredAxis(1);
-//    flipYFilter->SetFilteredAxis(2);
-//    flipYFilter->SetInputConnection(reader->GetOutputPort());
-//    flipYFilter->Update();
-
     //HUD 2D文字**************************************************************
 
     for (auto i=0;i<4;i++)
@@ -188,18 +170,11 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     for (auto i=0;i<4;i++)
     {
         peopleInforTextActor[i] = vtkSmartPointer<vtkTextActor>::New();
-
         peopleInforTextActor[i]->GetTextProperty()->SetFontSize(14);
         peopleInforTextActor[i]->GetTextProperty()->SetFontFamily(VTK_FONT_FILE);
         peopleInforTextActor[i]->GetTextProperty()->SetFontFile(QString("./Fonts/simhei.ttf").toUtf8());
-
-
-
         peopleInforTextActor[i]->SetInput(QString::fromUtf8("患者姓名：").toUtf8()+reader->GetPatientName()+"\r\n"+"UID:"+reader->GetStudyUID());
     }
-
-    qDebug()  << peopleInforTextActor[0]->GetHeight()<< peopleInforTextActor[0]->GetAlignmentPoint();
-
     peopleInforTextActor[0]->GetTextProperty()->SetColor(0, 1, 0);
     peopleInforTextActor[0]->SetDisplayPosition(5,ui->openGLWidget_1->height()-40);
     peopleInforTextActor[1]->GetTextProperty()->SetColor(0, 0, 1);
@@ -209,19 +184,12 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     peopleInforTextActor[3]->GetTextProperty()->SetColor(1, 1, 0);
     peopleInforTextActor[3]->SetDisplayPosition(5,ui->openGLWidget_4->height()-40);
 
-
-
-
     //**********************************************************************
-
-
     for (auto i = 0; i < 3; i++)
     {
         riw[i] = vtkSmartPointer< vtkResliceImageViewer >::New();
         riw[i]->GetRenderer()->AddActor(textActor[i]);
         riw[i]->GetRenderer()->AddActor(peopleInforTextActor[i]);
-        //            vtkNew<vtkGenericOpenGLRenderWindow> renderWindow;
-        //            riw[i]->SetRenderWindow(renderWindow);
     }
 
     //        widget_1 水平;

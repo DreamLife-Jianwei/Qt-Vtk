@@ -56,6 +56,7 @@
 #include "vtkTextProperty.h"
 #include "vtkImageFlip.h"
 #include "myqvtkopenglnativewidget.h"
+#include "vtkPolyDataMapper2D.h"
 
 
 class vtkResliceCursorCallback;

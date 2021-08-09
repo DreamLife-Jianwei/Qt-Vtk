@@ -51,7 +51,11 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="MyQVTKOpenGLNativeWidget" name="openGLWidget_1"/>
+          <widget class="MyQVTKOpenGLNativeWidget" name="openGLWidget_1">
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+          </widget>
          </item>
          <item>
           <widget class="MyQVTKOpenGLNativeWidget" name="openGLWidget_2"/>

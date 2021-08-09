@@ -8,6 +8,7 @@
 #include <QOpenGLTexture>
 #include <QPointer>
 #include <QScopedValueRollback>
+#include <QSize>
 #include <QtDebug>
 
 #include "QVTKInteractor.h"
@@ -20,7 +21,6 @@
 #include "vtkObjectFactory.h"
 #include "vtkOpenGLState.h"
 
-
 MyQVTKOpenGLNativeWidget::MyQVTKOpenGLNativeWidget(QWidget* parentWdg, Qt::WindowFlags f) : MyQVTKOpenGLNativeWidget(vtkSmartPointer<vtkGenericOpenGLRenderWindow>::New().GetPointer(), parentWdg, f)
 {
 
@@ -32,20 +32,11 @@ MyQVTKOpenGLNativeWidget::MyQVTKOpenGLNativeWidget(vtkGenericOpenGLRenderWindow*
   , UnscaledDPI(72)
   , DefaultCursor(QCursor(Qt::ArrowCursor))
 {
-    // default to strong focus
     this->setFocusPolicy(Qt::StrongFocus);
     this->setUpdateBehavior(QOpenGLWidget::NoPartialUpdate);
     this->setMouseTracking(true);
-
-    // we use `QOpenGLWidget::resized` instead of `resizeEvent` or `resizeGL` as
-    // an indicator to resize our internal buffer size. This is done, since in
-    // addition to widget resize,  `resized` gets fired when screen is changed
-    // which causes devicePixelRatio changes.
     this->connect(this, SIGNAL(resized()), SLOT(updateSize()));
-
     this->setRenderWindow(renderWin);
-
-    // enable qt gesture events
     this->grabGesture(Qt::PinchGesture);
     this->grabGesture(Qt::PanGesture);
     this->grabGesture(Qt::TapGesture);
@@ -64,9 +55,6 @@ void MyQVTKOpenGLNativeWidget::setRenderWindow(vtkGenericOpenGLRenderWindow *win
     {
         return;
     }
-
-    // this will release all OpenGL resources associated with the old render
-    // window, if any.
     if (this->RenderWindowAdapter)
     {
         this->makeCurrent();
@@ -76,27 +64,17 @@ void MyQVTKOpenGLNativeWidget::setRenderWindow(vtkGenericOpenGLRenderWindow *win
     if (this->RenderWindow)
     {
         this->RenderWindow->SetReadyForRendering(false);
-
-        // if an interactor wasn't provided, we'll make one by default
         if (!this->RenderWindow->GetInteractor())
         {
-            // create a default interactor
             vtkNew<QVTKInteractor> iren;
-            // iren->SetUseTDx(this->UseTDx);
             this->RenderWindow->SetInteractor(iren);
             iren->Initialize();
-
-            // now set the default style
             vtkNew<vtkInteractorStyleTrackballCamera> style;
             iren->SetInteractorStyle(style);
         }
 
         if (this->isValid())
         {
-            // this typically means that the render window is being changed after the
-            // QVTKOpenGLNativeWidget has initialized itself in a previous update
-            // pass, so we emulate the steps to ensure that the new vtkRenderWindow is
-            // brought to the same state (minus the actual render).
             this->makeCurrent();
             this->initializeGL();
             this->updateSize();
@@ -185,7 +163,6 @@ void MyQVTKOpenGLNativeWidget::initializeGL()
     if (this->RenderWindow)
     {
         Q_ASSERT(this->RenderWindowAdapter.data() == nullptr);
-
         this->RenderWindowAdapter.reset(new QVTKRenderWindowAdapter(this->context(), this->RenderWindow, this));
         this->RenderWindowAdapter->setDefaultCursor(this->defaultCursor());
         this->RenderWindowAdapter->setEnableHiDPI(this->EnableHiDPI);
@@ -201,13 +178,7 @@ void MyQVTKOpenGLNativeWidget::paintGL()
     {
         Q_ASSERT(this->RenderWindowAdapter);
         this->RenderWindowAdapter->paint();
-
-        // If render was triggered by above calls, that may change the current context
-        // due to things like progress events triggering updates on other widgets
-        // (e.g. progress bar). Hence we need to make sure to call makeCurrent()
-        // before proceeding with blit-ing.
         this->makeCurrent();
-
         QOpenGLFunctions_3_2_Core* f = QOpenGLContext::currentContext()->versionFunctions<QOpenGLFunctions_3_2_Core>();
         if (f)
         {
@@ -217,7 +188,6 @@ void MyQVTKOpenGLNativeWidget::paintGL()
     }
     else
     {
-        // no render window set, just fill with white.
         QOpenGLFunctions* f = QOpenGLContext::currentContext()->functions();
         f->glClearColor(1.0f, 1.0f, 1.0f, 1.0f);
         f->glClear(GL_COLOR_BUFFER_BIT);
