@@ -51,14 +51,14 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="MyQVTKOpenGLNativeWidget" name="openGLWidget_1">
+          <widget class="VTKRenderWidget" name="widget_1" native="true"/>
+         </item>
+         <item>
+          <widget class="VTKRenderWidget" name="widget_2" native="true">
            <property name="styleSheet">
             <string notr="true"/>
            </property>
           </widget>
-         </item>
-         <item>
-          <widget class="MyQVTKOpenGLNativeWidget" name="openGLWidget_2"/>
          </item>
         </layout>
        </item>
@@ -68,10 +68,10 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="MyQVTKOpenGLNativeWidget" name="openGLWidget_3"/>
+          <widget class="VTKRenderWidget" name="widget_3" native="true"/>
          </item>
          <item>
-          <widget class="MyQVTKOpenGLNativeWidget" name="openGLWidget_4"/>
+          <widget class="VTKRenderWidget" name="widget_4" native="true"/>
          </item>
         </layout>
        </item>
@@ -133,9 +133,10 @@
  </widget>
  <customwidgets>
   <customwidget>
-   <class>MyQVTKOpenGLNativeWidget</class>
-   <extends>QOpenGLWidget</extends>
-   <header>myqvtkopenglnativewidget.h</header>
+   <class>VTKRenderWidget</class>
+   <extends>QWidget</extends>
+   <header>vtkrenderwidget.h</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>

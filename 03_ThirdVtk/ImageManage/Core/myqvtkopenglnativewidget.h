@@ -4,7 +4,7 @@
 #include <QObject>
 #include <QOpenGLWidget>
 #include <QScopedPointer> // for QScopedPointer.
-
+#include <QMouseEvent>
 #include "QVTKInteractor.h"        // needed for QVTKInteractor
 #include "vtkGUISupportQtModule.h" // for export macro
 #include "vtkNew.h"                // needed for vtkNew
@@ -56,6 +56,10 @@ public:
 
     VTK_LEGACY(void setDefaultQVTKCursor(const QCursor& cursor));
 
+signals:
+    void signal_mouseDoubleClicked();
+
+
 protected slots:
     virtual void cleanupContext();
     void updateSize();
@@ -64,6 +68,7 @@ protected:
     bool event(QEvent* evt) override;
     void initializeGL() override;
     void paintGL() override;
+    void mouseDoubleClickEvent(QMouseEvent *event)override;
 
 protected:
     vtkSmartPointer<vtkGenericOpenGLRenderWindow> RenderWindow;

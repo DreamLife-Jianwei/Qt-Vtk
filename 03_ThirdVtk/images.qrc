@@ -10,6 +10,12 @@
         <file>Images/ImageManage/Open.ico</file>
         <file>Images/ImageManage/Exit.ico</file>
         <file>Images/ImageManage/fourImage.ico</file>
+        <file>Images/ImageManage/btn_n_1.png</file>
+        <file>Images/ImageManage/btn_n_2.png</file>
+        <file>Images/ImageManage/btn_n_3.png</file>
+        <file>Images/ImageManage/btn_p_1.png</file>
+        <file>Images/ImageManage/btn_p_2.png</file>
+        <file>Images/ImageManage/btn_p_3.png</file>
     </qresource>
     <qresource prefix="/Test">
         <file>Images/test.png</file>

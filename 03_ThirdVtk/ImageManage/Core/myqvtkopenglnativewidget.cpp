@@ -42,6 +42,7 @@ MyQVTKOpenGLNativeWidget::MyQVTKOpenGLNativeWidget(vtkGenericOpenGLRenderWindow*
     this->grabGesture(Qt::TapGesture);
     this->grabGesture(Qt::TapAndHoldGesture);
     this->grabGesture(Qt::SwipeGesture);
+
 }
 
 MyQVTKOpenGLNativeWidget::~MyQVTKOpenGLNativeWidget()
@@ -193,19 +194,27 @@ void MyQVTKOpenGLNativeWidget::paintGL()
         f->glClear(GL_COLOR_BUFFER_BIT);
     }
 }
+
+void MyQVTKOpenGLNativeWidget::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    Q_UNUSED(event);
+    emit signal_mouseDoubleClicked();
+
+}
+
 //-----------------------------------------------------------------------------
 #if !defined(VTK_LEGACY_REMOVE)
 void MyQVTKOpenGLNativeWidget::SetRenderWindow(vtkRenderWindow* win)
 {
-  VTK_LEGACY_REPLACED_BODY(
-    QVTKOpenGLNativeWidget::SetRenderWindow, "VTK 9.0", QVTKOpenGLNativeWidget::setRenderWindow);
-  vtkGenericOpenGLRenderWindow* gwin = vtkGenericOpenGLRenderWindow::SafeDownCast(win);
-  if (gwin == nullptr && win != nullptr)
-  {
-    qDebug() << "QVTKOpenGLNativeWidget requires a `vtkGenericOpenGLRenderWindow`. `"
+    VTK_LEGACY_REPLACED_BODY(
+                QVTKOpenGLNativeWidget::SetRenderWindow, "VTK 9.0", QVTKOpenGLNativeWidget::setRenderWindow);
+    vtkGenericOpenGLRenderWindow* gwin = vtkGenericOpenGLRenderWindow::SafeDownCast(win);
+    if (gwin == nullptr && win != nullptr)
+    {
+        qDebug() << "QVTKOpenGLNativeWidget requires a `vtkGenericOpenGLRenderWindow`. `"
              << win->GetClassName() << "` is not supported.";
-  }
-  this->setRenderWindow(gwin);
+    }
+    this->setRenderWindow(gwin);
 }
 #endif
 
@@ -213,9 +222,9 @@ void MyQVTKOpenGLNativeWidget::SetRenderWindow(vtkRenderWindow* win)
 #if !defined(VTK_LEGACY_REMOVE)
 void MyQVTKOpenGLNativeWidget::SetRenderWindow(vtkGenericOpenGLRenderWindow* win)
 {
-  VTK_LEGACY_REPLACED_BODY(
-    QVTKOpenGLNativeWidget::SetRenderWindow, "VTK 9.0", QVTKOpenGLNativeWidget::setRenderWindow);
-  this->setRenderWindow(win);
+    VTK_LEGACY_REPLACED_BODY(
+                QVTKOpenGLNativeWidget::SetRenderWindow, "VTK 9.0", QVTKOpenGLNativeWidget::setRenderWindow);
+    this->setRenderWindow(win);
 }
 #endif
 
@@ -223,9 +232,9 @@ void MyQVTKOpenGLNativeWidget::SetRenderWindow(vtkGenericOpenGLRenderWindow* win
 #if !defined(VTK_LEGACY_REMOVE)
 vtkRenderWindow* MyQVTKOpenGLNativeWidget::GetRenderWindow()
 {
-  VTK_LEGACY_REPLACED_BODY(
-    QVTKOpenGLNativeWidget::GetRenderWindow, "VTK 9.0", QVTKOpenGLNativeWidget::renderWindow);
-  return this->renderWindow();
+    VTK_LEGACY_REPLACED_BODY(
+                QVTKOpenGLNativeWidget::GetRenderWindow, "VTK 9.0", QVTKOpenGLNativeWidget::renderWindow);
+    return this->renderWindow();
 }
 #endif
 
@@ -233,8 +242,8 @@ vtkRenderWindow* MyQVTKOpenGLNativeWidget::GetRenderWindow()
 #if !defined(VTK_LEGACY_REMOVE)
 QVTKInteractorAdapter* MyQVTKOpenGLNativeWidget::GetInteractorAdapter()
 {
-  VTK_LEGACY_BODY(QVTKOpenGLNativeWidget::GetInteractorAdapter, "VTK 9.0");
-  return nullptr;
+    VTK_LEGACY_BODY(QVTKOpenGLNativeWidget::GetInteractorAdapter, "VTK 9.0");
+    return nullptr;
 }
 #endif
 
@@ -242,9 +251,9 @@ QVTKInteractorAdapter* MyQVTKOpenGLNativeWidget::GetInteractorAdapter()
 #if !defined(VTK_LEGACY_REMOVE)
 QVTKInteractor* MyQVTKOpenGLNativeWidget::GetInteractor()
 {
-  VTK_LEGACY_REPLACED_BODY(
-    QVTKOpenGLNativeWidget::GetInteractor, "VTK 9.0", QVTKOpenGLNativeWidget::interactor);
-  return this->interactor();
+    VTK_LEGACY_REPLACED_BODY(
+                QVTKOpenGLNativeWidget::GetInteractor, "VTK 9.0", QVTKOpenGLNativeWidget::interactor);
+    return this->interactor();
 }
 #endif
 
@@ -252,9 +261,9 @@ QVTKInteractor* MyQVTKOpenGLNativeWidget::GetInteractor()
 #if !defined(VTK_LEGACY_REMOVE)
 void MyQVTKOpenGLNativeWidget::setQVTKCursor(const QCursor& cursor)
 {
-  VTK_LEGACY_REPLACED_BODY(
-    QVTKOpenGLNativeWidget::setQVTKCursor, "VTK 9.0", QVTKOpenGLNativeWidget::setCursor);
-  this->setCursor(cursor);
+    VTK_LEGACY_REPLACED_BODY(
+                QVTKOpenGLNativeWidget::setQVTKCursor, "VTK 9.0", QVTKOpenGLNativeWidget::setCursor);
+    this->setCursor(cursor);
 }
 #endif
 
@@ -262,8 +271,8 @@ void MyQVTKOpenGLNativeWidget::setQVTKCursor(const QCursor& cursor)
 #if !defined(VTK_LEGACY_REMOVE)
 void MyQVTKOpenGLNativeWidget::setDefaultQVTKCursor(const QCursor& cursor)
 {
-  VTK_LEGACY_REPLACED_BODY(QVTKOpenGLNativeWidget::setDefaultQVTKCursor, "VTK 9.0",
-    QVTKOpenGLNativeWidget::setDefaultCursor);
-  this->setDefaultCursor(cursor);
+    VTK_LEGACY_REPLACED_BODY(QVTKOpenGLNativeWidget::setDefaultQVTKCursor, "VTK 9.0",
+                             QVTKOpenGLNativeWidget::setDefaultCursor);
+    this->setDefaultCursor(cursor);
 }
 #endif

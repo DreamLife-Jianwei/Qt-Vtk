@@ -71,21 +71,40 @@ ImageManage::ImageManage(QWidget *parent) :QWidget(parent),ui(new Ui::ImageManag
     ui->setupUi(this);
     /******************窗口大小分割*************************/
     mSplitterMain = new QSplitter(Qt::Horizontal,this);
+    mSplitterMain->setStyleSheet("QSplitter::handle { background-color: black }");
+    mSplitterMain->setHandleWidth(2);
     mSplitterVertical = new QSplitter(Qt::Vertical,mSplitterMain);
+    mSplitterVertical->setStyleSheet("QSplitter::handle { background-color: black }");
+    mSplitterVertical->setHandleWidth(2);
     mSplitterUp = new QSplitter(Qt::Horizontal,mSplitterVertical);
-    mSplitterUp->addWidget(ui->openGLWidget_1);
-    mSplitterUp->addWidget(ui->openGLWidget_2);
+    mSplitterUp->setStyleSheet("QSplitter::handle { background-color: black }");
+    mSplitterUp->setHandleWidth(2);
+    mSplitterUp->addWidget(ui->widget_1);
+    mSplitterUp->addWidget(ui->widget_2);
     mSplitterUp->setStretchFactor(0,1);
     mSplitterUp->setStretchFactor(1,1);
     mSplitterDown = new QSplitter(Qt::Horizontal,mSplitterVertical);
-    mSplitterDown->addWidget(ui->openGLWidget_3);
-    mSplitterDown->addWidget(ui->openGLWidget_4);
+    mSplitterDown->setStyleSheet("QSplitter::handle { background-color: black }");
+    mSplitterDown->setHandleWidth(2);
+    mSplitterDown->addWidget(ui->widget_3);
+    mSplitterDown->addWidget(ui->widget_4);
     mSplitterDown->setStretchFactor(0,1);
     mSplitterDown->setStretchFactor(1,1);
     mSplitterMain->insertWidget(0,mSplitterVertical);
     mSplitterMain->insertWidget(1,ui->widget_5);
     mSplitterMain->setStretchFactor(0,1);               //很魔性啊
 
+    /******************关联四窗口鼠标双击信号*************************/
+    connect(ui->widget_1,&VTKRenderWidget::signal_mouseDoubleClicked,this,[=](){qDebug() <<"dsadas";});
+    connect(ui->widget_2,&VTKRenderWidget::signal_mouseDoubleClicked,this,[=](){qDebug() <<"dsadas";});
+    connect(ui->widget_3,&VTKRenderWidget::signal_mouseDoubleClicked,this,[=](){qDebug() <<"dsadas";});
+    connect(ui->widget_4,&VTKRenderWidget::signal_mouseDoubleClicked,this,[=](){qDebug() <<"dsadas";});
+
+    /******************设置四窗口背景颜色*************************/
+    ui->widget_1->set_BackGroundColor(255,0,0);
+    ui->widget_2->set_BackGroundColor(0,255,0);
+    ui->widget_3->set_BackGroundColor(0,0,255);
+    ui->widget_4->set_BackGroundColor(255,255,0);
 
     update();
 }
@@ -176,13 +195,13 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
         peopleInforTextActor[i]->SetInput(QString::fromUtf8("患者姓名：").toUtf8()+reader->GetPatientName()+"\r\n"+"UID:"+reader->GetStudyUID());
     }
     peopleInforTextActor[0]->GetTextProperty()->SetColor(0, 1, 0);
-    peopleInforTextActor[0]->SetDisplayPosition(5,ui->openGLWidget_1->height()-40);
+    peopleInforTextActor[0]->SetDisplayPosition(5,ui->widget_1->height()-40);
     peopleInforTextActor[1]->GetTextProperty()->SetColor(0, 0, 1);
-    peopleInforTextActor[1]->SetDisplayPosition(5,ui->openGLWidget_2->height()-40);
+    peopleInforTextActor[1]->SetDisplayPosition(5,ui->widget_2->height()-40);
     peopleInforTextActor[2]->GetTextProperty()->SetColor(1, 0, 0);
-    peopleInforTextActor[2]->SetDisplayPosition(5,ui->openGLWidget_3->height()-40);
+    peopleInforTextActor[2]->SetDisplayPosition(5,ui->widget_3->height()-40);
     peopleInforTextActor[3]->GetTextProperty()->SetColor(1, 1, 0);
-    peopleInforTextActor[3]->SetDisplayPosition(5,ui->openGLWidget_4->height()-40);
+    peopleInforTextActor[3]->SetDisplayPosition(5,ui->widget_4->height()-40);
 
     //**********************************************************************
     for (auto i = 0; i < 3; i++)
@@ -195,14 +214,14 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     //        widget_1 水平;
     //        widget_2 矢状;
     //        widget_3 冠状;
-    riw[0]->SetRenderWindow(ui->openGLWidget_2->renderWindow());
-    riw[0]->SetupInteractor(ui->openGLWidget_2->renderWindow()->GetInteractor());
+    riw[0]->SetRenderWindow(ui->widget_2->renderWindow());
+    riw[0]->SetupInteractor(ui->widget_2->renderWindow()->GetInteractor());
 
-    riw[1]->SetRenderWindow(ui->openGLWidget_3->renderWindow());
-    riw[1]->SetupInteractor(ui->openGLWidget_3->renderWindow()->GetInteractor());
+    riw[1]->SetRenderWindow(ui->widget_3->renderWindow());
+    riw[1]->SetupInteractor(ui->widget_3->renderWindow()->GetInteractor());
 
-    riw[2]->SetRenderWindow(ui->openGLWidget_1->renderWindow());
-    riw[2]->SetupInteractor(ui->openGLWidget_1->renderWindow()->GetInteractor());
+    riw[2]->SetRenderWindow(ui->widget_1->renderWindow());
+    riw[2]->SetupInteractor(ui->widget_1->renderWindow()->GetInteractor());
 
     for (int i = 0; i < 3; i++)
     {
@@ -214,7 +233,7 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
         riw[i]->SetInputData(reader->GetOutput());
         riw[i]->SetSliceOrientation(i);
         riw[i]->SetResliceModeToAxisAligned();
-//        riw[i]->SetResliceModeToOblique();
+        //        riw[i]->SetResliceModeToOblique();
     }
 
     picker = vtkSmartPointer<vtkCellPicker>::New();
@@ -223,11 +242,11 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     ren = vtkSmartPointer<vtkRenderer>::New();
     ren->AddActor(textActor[3]);
     ren->AddActor(peopleInforTextActor[3]);
-    ui->openGLWidget_4->renderWindow()->AddRenderer(ren);
+    ui->widget_4->renderWindow()->AddRenderer(ren);
     for (int i = 0; i < 3; i++)
     {
         planeWidget[i] = vtkSmartPointer<vtkImagePlaneWidget>::New();
-        planeWidget[i]->SetInteractor( ui->openGLWidget_4->interactor());
+        planeWidget[i]->SetInteractor( ui->widget_4->interactor());
         planeWidget[i]->SetPicker(picker);
         planeWidget[i]->RestrictPlaneToVolumeOn();
         color[0] = 0;
@@ -314,6 +333,13 @@ void ImageManage::paintEvent(QPaintEvent *event)
     p.drawRect(rect());
 }
 
+void ImageManage::openFolder()
+{
+    QString dir = QFileDialog::getExistingDirectory(this, tr("打开影像文件夹"),"/home",QFileDialog::ShowDirsOnly| QFileDialog::DontResolveSymlinks);
+//    if(!dir.isEmpty())
+//        mImageManage->slot_ReaderDICOMImage(dir.toLocal8Bit().data());
+}
+
 /**
  * @brief ImageManage::on_verticalSlider_colorlevel_valueChanged
  * @param value
@@ -325,10 +351,10 @@ void ImageManage::on_verticalSlider_colorlevel_valueChanged(int value)
     {
         riw[i]->SetColorLevel(value);
     }
-    ui->openGLWidget_1->renderWindow()->Render();
-    ui->openGLWidget_2->renderWindow()->Render();
-    ui->openGLWidget_3->renderWindow()->Render();
-    ui->openGLWidget_4->renderWindow()->Render();
+    ui->widget_1->renderWindow()->Render();
+    ui->widget_2->renderWindow()->Render();
+    ui->widget_3->renderWindow()->Render();
+    ui->widget_4->renderWindow()->Render();
 }
 
 /**
@@ -342,9 +368,9 @@ void ImageManage::on_verticalSlider_colorwindow_valueChanged(int value)
     {
         riw[i]->SetColorWindow(value);
     }
-    ui->openGLWidget_1->renderWindow()->Render();
-    ui->openGLWidget_2->renderWindow()->Render();
-    ui->openGLWidget_3->renderWindow()->Render();
-    ui->openGLWidget_4->renderWindow()->Render();
+    ui->widget_1->renderWindow()->Render();
+    ui->widget_2->renderWindow()->Render();
+    ui->widget_3->renderWindow()->Render();
+    ui->widget_4->renderWindow()->Render();
 }
 

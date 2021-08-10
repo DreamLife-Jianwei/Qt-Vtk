@@ -10,6 +10,13 @@
 #include <QPaintEvent>
 #include <QtDebug>
 #include <QPainter>
+#include <vtkRenderWidget.h>
+#include <QString>
+#include <QByteArray>
+#include <QFile>
+#include <QDir>
+#include <QFileDialog>
+
 
 #include "QVTKOpenGLNativeWidget.h"               //新版本，旧版QVTKWidget
 #include "vtkAutoInit.h"
@@ -55,9 +62,8 @@
 #include "vtkTextActor.h"
 #include "vtkTextProperty.h"
 #include "vtkImageFlip.h"
-#include "myqvtkopenglnativewidget.h"
 #include "vtkPolyDataMapper2D.h"
-
+#include "Core/vtkRenderWidget.h"
 
 class vtkResliceCursorCallback;
 
@@ -86,6 +92,11 @@ protected:
     void resizeEvent(QResizeEvent *event) override;
 
     void paintEvent(QPaintEvent *event) override;
+    /**
+     * @brief openFolder
+     * 打开文件夹
+     */
+    void openFolder();
 private slots:
     void on_verticalSlider_colorlevel_valueChanged(int value);
 

@@ -9,11 +9,7 @@
 #include <QPainter>
 #include <QLabel>
 #include <QMouseEvent>
-#include <QString>
-#include <QByteArray>
-#include <QFile>
-#include <QDir>
-#include <QFileDialog>
+
 
 #include "ExampleOrg/ambientspheres.h"
 #include "ExampleOrg/marrays.h"
@@ -50,9 +46,19 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = 0);
+
     ~MainWindow();
 
     void resizeEvent(QResizeEvent *event);
+
+public slots:
+    /**
+     * @brief slot_SetStateBarInfor
+     * 设置状态栏显示信息
+     * @param stateInfor
+     */
+    void slot_SetStateBarInfor(QString stateInfor = "");
+
 
 private slots:
     void on_actionAmbientSpheres_triggered();
@@ -108,6 +114,7 @@ private slots:
     void on_actionOpen_triggered();
 
     void on_actionStart_triggered();
+
     void on_actionFullScreen_triggered();
 
     void on_actionexit_ImageManage_triggered();
@@ -116,12 +123,19 @@ private slots:
 
 protected:
     inline void changeExample();
+
     inline void changeImageManage();
+
     inline void resizeWindow();
+
     void paintEvent(QPaintEvent *event);
+
     void mousePressEvent(QMouseEvent *event);
+
     void mouseMoveEvent(QMouseEvent *event);
+
     void mouseReleaseEvent(QMouseEvent *event);
+
     bool eventFilter(QObject *watched, QEvent *event);
 
 
@@ -129,7 +143,7 @@ protected:
 
 private:
     Ui::MainWindow *ui;
-    QLabel *infor = nullptr;
+    QLabel *stateBarInfor = nullptr;
     AmbientSpheres *mAmbintSpheres = nullptr;
     MArrays *mArrays = nullptr;
     Cone *mCone = nullptr;

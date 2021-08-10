@@ -20,15 +20,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->tabWidget_Example->setGeometry(0,0,ui->tab_Example->width(),ui->tab_Example->height());
     //    ui->tabWidget_Main->resize(1366,768);
     ui->ToolBarImage->hide();
-    infor = new QLabel(this);
-    infor->setText("Qt 版本: 5.14.2  "
+    stateBarInfor = new QLabel(this);
+    stateBarInfor->setText("Qt 版本: 5.14.2  "
                    "VS版本：2017"
                    "Vtk版本: 9.0.3 Release "
                    "制作：张建伟 "
                    "邮箱：jianwei1992@foxmail.com "
                    "博客：dreamlife.blog.csdn.net "
                    "GieHub地址：github.com/DreamLife-Jianwei");
-    ui->statusBar->addPermanentWidget(infor);
+    ui->statusBar->addPermanentWidget(stateBarInfor);
     ui->tabWidget_Example->setCurrentIndex(0);
     this->setWindowTitle("Qt&Vtk");
 
@@ -108,6 +108,12 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     mTheme->resize(ui->tab_Theme->size());
     //图像管理
     mImageManage->resize(ui->tab_ImageManage->size());
+}
+
+void MainWindow::slot_SetStateBarInfor(QString stateInfor)
+{
+    this->stateBarInfor->setText(stateInfor);
+    update();
 }
 
 void MainWindow::on_actionAmbientSpheres_triggered()
