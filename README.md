@@ -26,7 +26,7 @@
 >
 > 1. 在每个窗口右上角增加了三个按钮
 > 2. 增加了打开文件夹提示，并支持鼠标双击打开文件夹
-> 3. 每个按钮增加菜单迟迟
+> 3. 每个按钮增加菜单支持
 
 ![image-20210810160942220](https://raw.githubusercontent.com/DreamLife-Jianwei/CSDNResources/master/20210810160942.png)
 
