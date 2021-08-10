@@ -36,7 +36,7 @@
        <string notr="true"/>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <widget class="QWidget" name="tab_Logo">
        <attribute name="title">
@@ -58,7 +58,7 @@
          </rect>
         </property>
         <property name="currentIndex">
-         <number>22</number>
+         <number>15</number>
         </property>
         <widget class="QWidget" name="tab_ambientSpheres">
          <attribute name="title">
@@ -110,12 +110,32 @@
           <string>页</string>
          </attribute>
         </widget>
+        <widget class="QWidget" name="tab_CustomLinkView">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
         <widget class="QWidget" name="tab_Cylinder">
          <attribute name="title">
           <string>页</string>
          </attribute>
         </widget>
         <widget class="QWidget" name="tab_DiffuseSpheres">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_EasyView">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_FixedPointVolumeRayCastMapperCT">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
+        <widget class="QWidget" name="tab_GPURenderDemo">
          <attribute name="title">
           <string>页</string>
          </attribute>
@@ -210,8 +230,12 @@
     <addaction name="actionCone6"/>
     <addaction name="actionCreateTree"/>
     <addaction name="actionCube"/>
+    <addaction name="actionCustomLinkView"/>
     <addaction name="actionCylinder"/>
     <addaction name="actionDiffuseSpheres"/>
+    <addaction name="actionEasyView"/>
+    <addaction name="actionFixedPointVolumeRayCastMapperCT"/>
+    <addaction name="actionGPURenderDemo"/>
     <addaction name="actionGraphItem"/>
     <addaction name="actionHelloWorld"/>
     <addaction name="actionLabeledMesh"/>
@@ -438,6 +462,26 @@
   <action name="actionSetResliceMode">
    <property name="text">
     <string>十</string>
+   </property>
+  </action>
+  <action name="actionCustomLinkView">
+   <property name="text">
+    <string>CustomLinkView</string>
+   </property>
+  </action>
+  <action name="actionEasyView">
+   <property name="text">
+    <string>EasyView</string>
+   </property>
+  </action>
+  <action name="actionFixedPointVolumeRayCastMapperCT">
+   <property name="text">
+    <string>FixedPointVolumeRayCastMapperCT</string>
+   </property>
+  </action>
+  <action name="actionGPURenderDemo">
+   <property name="text">
+    <string>GPURenderDemo</string>
    </property>
   </action>
  </widget>

@@ -29,6 +29,10 @@ SOURCES += main.cpp\
     ExampleOrg/GraphItem/graphitem.cpp \
     ExampleOrg/GraphItem/vtkgraphitem.cpp \
     ExampleOrg/cone2.cpp \
+    ExampleOrg/customlinkview.cpp \
+    ExampleOrg/easyview.cpp \
+    ExampleOrg/fixedpointvolumeraycastmapperct.cpp \
+    ExampleOrg/gpurenderdemo.cpp \
     ImageManage/Core/myqvtkopenglnativewidget.cpp \
     ImageManage/Core/vtkrenderwidget.cpp \
     ImageManage/imagemanage.cpp \
@@ -61,6 +65,10 @@ HEADERS  += mainwindow.h \
     ExampleOrg/GraphItem/vtkgraphitem.h \
     ExampleOrg/ambientspheres.h \
     ExampleOrg/cone2.h \
+    ExampleOrg/customlinkview.h \
+    ExampleOrg/easyview.h \
+    ExampleOrg/fixedpointvolumeraycastmapperct.h \
+    ExampleOrg/gpurenderdemo.h \
     ExampleOrg/marrays.h \
     ExampleOrg/cone.h \
     ExampleOrg/cone3.h \
@@ -90,6 +98,10 @@ FORMS    += mainwindow.ui \
     ExampleOrg/GraphItem/graphitem.ui \
     ExampleOrg/ambientspheres.ui \
     ExampleOrg/cone2.ui \
+    ExampleOrg/customlinkview.ui \
+    ExampleOrg/easyview.ui \
+    ExampleOrg/fixedpointvolumeraycastmapperct.ui \
+    ExampleOrg/gpurenderdemo.ui \
     ExampleOrg/marrays.ui \
     ExampleOrg/cone.ui \
     ExampleOrg/cone3.ui \

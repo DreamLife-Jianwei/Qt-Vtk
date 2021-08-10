@@ -121,6 +121,14 @@ private slots:
 
     void on_actionSetResliceMode_triggered();
 
+    void on_actionCustomLinkView_triggered();
+
+    void on_actionEasyView_triggered();
+
+    void on_actionFixedPointVolumeRayCastMapperCT_triggered();
+
+    void on_actionGPURenderDemo_triggered();
+
 protected:
     inline void changeExample();
 

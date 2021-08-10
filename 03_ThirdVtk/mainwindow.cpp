@@ -199,26 +199,49 @@ void MainWindow::on_actionCube_triggered()
     changeExample();
 }
 
+void MainWindow::on_actionCustomLinkView_triggered()
+{
+    ui->tabWidget_Example->setCurrentIndex(10);
+    this->setWindowTitle("Qt&Vtk-CustomLinkView");
+    changeExample();
+}
+
 void MainWindow::on_actionCylinder_triggered()
 {
 
-    ui->tabWidget_Example->setCurrentIndex(10);
+    ui->tabWidget_Example->setCurrentIndex(11);
     this->setWindowTitle("Qt&Vtk-Cylinder");
     changeExample();
 }
 
 void MainWindow::on_actionDiffuseSpheres_triggered()
 {
-    ui->tabWidget_Example->setCurrentIndex(11);
+    ui->tabWidget_Example->setCurrentIndex(12);
     this->setWindowTitle("Qt&Vtk-DiffuseSpheres");
-
     changeExample();
 }
-
+void MainWindow::on_actionEasyView_triggered()
+{
+    ui->tabWidget_Example->setCurrentIndex(13);
+    this->setWindowTitle("Qt&Vtk-EasyView");
+    changeExample();
+}
+void MainWindow::on_actionFixedPointVolumeRayCastMapperCT_triggered()
+{
+    ui->tabWidget_Example->setCurrentIndex(14);
+    this->setWindowTitle("Qt&Vtk-FixedPointVolumeRayCastMapperCT");
+    changeExample();
+}
+void MainWindow::on_actionGPURenderDemo_triggered()
+{
+    ui->tabWidget_Example->setCurrentIndex(15);
+    this->setWindowTitle("Qt&Vtk-GPURenderDemo");
+    changeExample();
+}
 void MainWindow::on_actionGraphItem_triggered()
 {
 
-    ui->tabWidget_Example->setCurrentIndex(12);
+    ui->tabWidget_Example->setCurrentIndex(16);
     this->setWindowTitle("Qt&Vtk-GraphItem");
     changeExample();
 }
@@ -226,7 +249,7 @@ void MainWindow::on_actionGraphItem_triggered()
 void MainWindow::on_actionHelloWorld_triggered()
 {
 
-    ui->tabWidget_Example->setCurrentIndex(13);
+    ui->tabWidget_Example->setCurrentIndex(17);
     this->setWindowTitle("Qt&Vtk-HelloWorld");
     changeExample();
 }
@@ -234,7 +257,7 @@ void MainWindow::on_actionHelloWorld_triggered()
 void MainWindow::on_actionLabeledMesh_triggered()
 {
 
-    ui->tabWidget_Example->setCurrentIndex(14);
+    ui->tabWidget_Example->setCurrentIndex(18);
     this->setWindowTitle("Qt&Vtk-LabeldMesh");
     changeExample();
 
@@ -243,7 +266,7 @@ void MainWindow::on_actionLabeledMesh_triggered()
 void MainWindow::on_actionMultiView_triggered()
 {
 
-    ui->tabWidget_Example->setCurrentIndex(15);
+    ui->tabWidget_Example->setCurrentIndex(19);
     this->setWindowTitle("Qt&Vtk-MultiView");
     changeExample();
 }
@@ -251,7 +274,7 @@ void MainWindow::on_actionMultiView_triggered()
 void MainWindow::on_actionPiecewiseItem_triggered()
 {
 
-    ui->tabWidget_Example->setCurrentIndex(16);
+    ui->tabWidget_Example->setCurrentIndex(20);
     this->setWindowTitle("Qt&Vtk-PiecewiseItem");
     changeExample();
 }
@@ -259,7 +282,7 @@ void MainWindow::on_actionPiecewiseItem_triggered()
 void MainWindow::on_actionQChartTable_triggered()
 {
 
-    ui->tabWidget_Example->setCurrentIndex(17);
+    ui->tabWidget_Example->setCurrentIndex(21);
     this->setWindowTitle("Qt&Vtk-QChartTable");
     changeExample();
 }
@@ -267,7 +290,7 @@ void MainWindow::on_actionQChartTable_triggered()
 void MainWindow::on_actionQScalarsToColors_triggered()
 {
 
-    ui->tabWidget_Example->setCurrentIndex(18);
+    ui->tabWidget_Example->setCurrentIndex(22);
     this->setWindowTitle("Qt&Vtk-QScalarsToColors");
     changeExample();
 }
@@ -275,7 +298,7 @@ void MainWindow::on_actionQScalarsToColors_triggered()
 void MainWindow::on_actionRGrid_triggered()
 {
 
-    ui->tabWidget_Example->setCurrentIndex(19);
+    ui->tabWidget_Example->setCurrentIndex(23);
     this->setWindowTitle("Qt&Vtk-RGrid");
     changeExample();
 }
@@ -283,7 +306,7 @@ void MainWindow::on_actionRGrid_triggered()
 void MainWindow::on_actionSGrid_triggered()
 {
 
-    ui->tabWidget_Example->setCurrentIndex(20);
+    ui->tabWidget_Example->setCurrentIndex(24);
     this->setWindowTitle("Qt&Vtk-SGrid");
     changeExample();
 }
@@ -291,7 +314,7 @@ void MainWindow::on_actionSGrid_triggered()
 void MainWindow::on_actionSpecularSpheres_triggered()
 {
 
-    ui->tabWidget_Example->setCurrentIndex(21);
+    ui->tabWidget_Example->setCurrentIndex(25);
     this->setWindowTitle("Qt&Vtk-SpecularSpheres");
     changeExample();
 }
@@ -299,7 +322,7 @@ void MainWindow::on_actionSpecularSpheres_triggered()
 void MainWindow::on_actionTheme_triggered()
 {
 
-    ui->tabWidget_Example->setCurrentIndex(22);
+    ui->tabWidget_Example->setCurrentIndex(26);
     this->setWindowTitle("Qt&Vtk-Theme");
     changeExample();
 }
@@ -473,4 +496,12 @@ void MainWindow::on_actionSetResliceMode_triggered()
 {
 
 }
+
+
+
+
+
+
+
+
 
