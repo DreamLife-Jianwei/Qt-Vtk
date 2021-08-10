@@ -88,15 +88,17 @@ public slots:
      * 读取DICOM文件
      */
     void slot_ReaderDICOMImage(const char* fn);
-protected:
-    void resizeEvent(QResizeEvent *event) override;
 
-    void paintEvent(QPaintEvent *event) override;
     /**
      * @brief openFolder
      * 打开文件夹
      */
     void openFolder();
+protected:
+    void resizeEvent(QResizeEvent *event) override;
+
+    void paintEvent(QPaintEvent *event) override;
+
 private slots:
     void on_verticalSlider_colorlevel_valueChanged(int value);
 

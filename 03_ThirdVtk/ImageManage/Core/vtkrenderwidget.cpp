@@ -6,7 +6,24 @@ VTKRenderWidget::VTKRenderWidget(QWidget *parent) :
     ui(new Ui::VTKRenderWidget)
 {
     ui->setupUi(this);
+
     connect(ui->openGLWidget,&MyQVTKOpenGLNativeWidget::signal_mouseDoubleClicked,this,[=](){emit signal_mouseDoubleClicked();});
+
+    m_OpenFolderText = new QLabel(this);
+    m_OpenFolderText->setText("Open Folder!");
+    m_OpenFolderText->setStyleSheet("QLabel{color: rgb(136, 136, 136);}QLabel{font: 24pt '黑体';}");
+    m_OpenFolderText->raise();
+
+
+
+
+
+
+
+
+
+
+
     m_Menu_1 = new QMenu(this);
     test = new QAction(m_Menu_1);
     test->setText("ABC");
@@ -16,31 +33,26 @@ VTKRenderWidget::VTKRenderWidget(QWidget *parent) :
     test1->setText("EFG");
     test1->setCheckable(true);
 
-
-
     m_Menu_1->addAction(test);
     m_Menu_1->addAction(test1);
     ui->pushButton_1->setMenu(m_Menu_1);
     ui->pushButton_2->setMenu(m_Menu_1);
     ui->pushButton_3->setMenu(m_Menu_1);
 
-
-
     ui->pushButton_1->setStyleSheet("QPushButton::menu-indicator{image:none;}"      //不显示下拉图标
-"QPushButton{border-image:url(:/ImageManage/Images/ImageManage/btn_n_1.png);}"
-"QPushButton:hover{border-image:url(:/ImageManage/Images/ImageManage/btn_p_1.png);}"
-"QPushButton:pressed{border-image:url(:/ImageManage/Images/ImageManage/btn_n_1.png);}");
+                                    "QPushButton{border-image:url(:/ImageManage/Images/ImageManage/btn_n_1.png);}"
+                                    "QPushButton:hover{border-image:url(:/ImageManage/Images/ImageManage/btn_p_1.png);}"
+                                    "QPushButton:pressed{border-image:url(:/ImageManage/Images/ImageManage/btn_n_1.png);}");
 
     ui->pushButton_2->setStyleSheet("QPushButton::menu-indicator{image:none;}"      //不显示下拉图标
-"QPushButton{border-image:url(:/ImageManage/Images/ImageManage/btn_n_2.png);}"
-"QPushButton:hover{border-image:url(:/ImageManage/Images/ImageManage/btn_p_2.png);}"
-"QPushButton:pressed{border-image:url(:/ImageManage/Images/ImageManage/btn_n_2.png);}");
+                                    "QPushButton{border-image:url(:/ImageManage/Images/ImageManage/btn_n_2.png);}"
+                                    "QPushButton:hover{border-image:url(:/ImageManage/Images/ImageManage/btn_p_2.png);}"
+                                    "QPushButton:pressed{border-image:url(:/ImageManage/Images/ImageManage/btn_n_2.png);}");
 
     ui->pushButton_3->setStyleSheet("QPushButton::menu-indicator{image:none;}"      //不显示下拉图标
-"QPushButton{border-image:url(:/ImageManage/Images/ImageManage/btn_n_3.png);}"
-"QPushButton:hover{border-image:url(:/ImageManage/Images/ImageManage/btn_p_3.png);}"
-"QPushButton:pressed{border-image:url(:/ImageManage/Images/ImageManage/btn_n_3.png);}");
-
+                                    "QPushButton{border-image:url(:/ImageManage/Images/ImageManage/btn_n_3.png);}"
+                                    "QPushButton:hover{border-image:url(:/ImageManage/Images/ImageManage/btn_p_3.png);}"
+                                    "QPushButton:pressed{border-image:url(:/ImageManage/Images/ImageManage/btn_n_3.png);}");
 
 }
 
@@ -53,6 +65,14 @@ void VTKRenderWidget::set_BackGroundColor(int r, int g, int b, int a)
 {
     m_BackGroundColor.setRgb(r,g,b,a);
     this->update();
+}
+
+void VTKRenderWidget::set_OpenFolderEnable(bool enable)
+{
+    if(enable)
+        m_OpenFolderText->show();
+    else
+        m_OpenFolderText->hide();
 }
 
 vtkRenderWindow *VTKRenderWidget::renderWindow() const
@@ -96,8 +116,12 @@ void VTKRenderWidget::resizeEvent(QResizeEvent *event)
     Q_UNUSED(event)
     ui->openGLWidget->move(2,2);
     ui->openGLWidget->resize(this->width()-4,this->height()-4);
+
     ui->pushButton_1->move(this->width()-ui->pushButton_1->width()-7,7);
     ui->pushButton_2->move(this->width()-ui->pushButton_1->width()*2-12,7);
     ui->pushButton_3->move(this->width()-ui->pushButton_1->width()*3-17,7);
+
+    m_OpenFolderText->move((this->width()-m_OpenFolderText->width())/2,(this->height()-m_OpenFolderText->height())/2);
+    m_OpenFolderText->raise();
 }
 

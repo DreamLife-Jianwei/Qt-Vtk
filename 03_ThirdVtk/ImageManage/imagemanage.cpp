@@ -95,16 +95,22 @@ ImageManage::ImageManage(QWidget *parent) :QWidget(parent),ui(new Ui::ImageManag
     mSplitterMain->setStretchFactor(0,1);               //很魔性啊
 
     /******************关联四窗口鼠标双击信号*************************/
-    connect(ui->widget_1,&VTKRenderWidget::signal_mouseDoubleClicked,this,[=](){qDebug() <<"dsadas";});
-    connect(ui->widget_2,&VTKRenderWidget::signal_mouseDoubleClicked,this,[=](){qDebug() <<"dsadas";});
-    connect(ui->widget_3,&VTKRenderWidget::signal_mouseDoubleClicked,this,[=](){qDebug() <<"dsadas";});
-    connect(ui->widget_4,&VTKRenderWidget::signal_mouseDoubleClicked,this,[=](){qDebug() <<"dsadas";});
+    connect(ui->widget_1,&VTKRenderWidget::signal_mouseDoubleClicked,this,&ImageManage::openFolder);
+    connect(ui->widget_2,&VTKRenderWidget::signal_mouseDoubleClicked,this,&ImageManage::openFolder);
+    connect(ui->widget_3,&VTKRenderWidget::signal_mouseDoubleClicked,this,&ImageManage::openFolder);
+    connect(ui->widget_4,&VTKRenderWidget::signal_mouseDoubleClicked,this,&ImageManage::openFolder);
 
     /******************设置四窗口背景颜色*************************/
     ui->widget_1->set_BackGroundColor(255,0,0);
     ui->widget_2->set_BackGroundColor(0,255,0);
     ui->widget_3->set_BackGroundColor(0,0,255);
     ui->widget_4->set_BackGroundColor(255,255,0);
+
+
+
+
+
+
 
     update();
 }
@@ -336,8 +342,14 @@ void ImageManage::paintEvent(QPaintEvent *event)
 void ImageManage::openFolder()
 {
     QString dir = QFileDialog::getExistingDirectory(this, tr("打开影像文件夹"),"/home",QFileDialog::ShowDirsOnly| QFileDialog::DontResolveSymlinks);
-//    if(!dir.isEmpty())
-//        mImageManage->slot_ReaderDICOMImage(dir.toLocal8Bit().data());
+    if(!dir.isEmpty())
+    {
+        this->slot_ReaderDICOMImage(dir.toLocal8Bit().data());
+        ui->widget_1->set_OpenFolderEnable(false);
+        ui->widget_2->set_OpenFolderEnable(false);
+        ui->widget_3->set_OpenFolderEnable(false);
+        ui->widget_4->set_OpenFolderEnable(false);
+    }
 }
 
 /**

@@ -427,10 +427,8 @@ void MainWindow::on_action2_2_triggered()
  */
 void MainWindow::on_actionOpen_triggered()
 {
-    //打开文件,如果是全局，要清理
-    QString dir = QFileDialog::getExistingDirectory(this, tr("打开影像文件夹"),"/home",QFileDialog::ShowDirsOnly| QFileDialog::DontResolveSymlinks);
-    if(!dir.isEmpty())
-        mImageManage->slot_ReaderDICOMImage(dir.toLocal8Bit().data());
+    if(mImageManage)
+        mImageManage->openFolder();
 }
 /**
  * @brief MainWindow::on_actionStart_triggered

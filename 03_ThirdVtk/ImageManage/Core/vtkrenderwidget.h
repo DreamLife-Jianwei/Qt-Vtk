@@ -41,6 +41,8 @@ public:
      */
     void set_BackGroundColor(int r=0,int g=0,int b = 0,int a = 255);
 
+    void set_OpenFolderEnable(bool enable = false);
+
     //------------------------------------------------------------------------------------
 
     vtkRenderWindow* renderWindow() const;
@@ -60,7 +62,10 @@ private:
 
 private:
     Ui::VTKRenderWidget *ui;
-    QColor m_BackGroundColor = QColor(255,255,0,255);         //测试
+    QColor m_BackGroundColor = QColor(255,255,0,255);           //背景颜色
+
+    QLabel *m_OpenFolderText = nullptr;                         //打开文件夹提示
+
 
     QMenu *m_Menu_1 = nullptr;
     QAction *test = nullptr;
