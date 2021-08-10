@@ -107,11 +107,6 @@ ImageManage::ImageManage(QWidget *parent) :QWidget(parent),ui(new Ui::ImageManag
     ui->widget_4->set_BackGroundColor(255,255,0);
 
 
-
-
-
-
-
     update();
 }
 

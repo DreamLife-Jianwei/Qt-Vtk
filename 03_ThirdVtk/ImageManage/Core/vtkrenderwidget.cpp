@@ -14,16 +14,6 @@ VTKRenderWidget::VTKRenderWidget(QWidget *parent) :
     m_OpenFolderText->setStyleSheet("QLabel{color: rgb(136, 136, 136);}QLabel{font: 24pt '黑体';}");
     m_OpenFolderText->raise();
 
-
-
-
-
-
-
-
-
-
-
     m_Menu_1 = new QMenu(this);
     test = new QAction(m_Menu_1);
     test->setText("ABC");

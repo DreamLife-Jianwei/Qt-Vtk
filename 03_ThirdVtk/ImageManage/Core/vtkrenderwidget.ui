@@ -19,8 +19,8 @@
   <widget class="MyQVTKOpenGLNativeWidget" name="openGLWidget">
    <property name="geometry">
     <rect>
-     <x>40</x>
-     <y>40</y>
+     <x>30</x>
+     <y>30</y>
      <width>161</width>
      <height>111</height>
     </rect>

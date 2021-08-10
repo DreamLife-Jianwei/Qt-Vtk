@@ -22,7 +22,17 @@
 
 > 2.0版本中将实现医学生的四视图。并在从这里开始，Qt版本升级为5.14.2 ，因为在5.7.1 中有个paintevent绘制背景的问题，我暂时解决不了，在我这里理解为Qt的Bug了，所以升级了Qt，VS的版本是VS2015 和2017 两个版本，公司基本用2015，家里用2017。
 
-> 3.0更新啦，这里我暂时把它称为3.0的版本吧，这个版本主要是更新了VTK版本，使用9.0.3 编译器也换成VS2017。
+> 3.0更新啦，这里我暂时把它称为3.0的版本吧，这个版本主要是更新了VTK版本，使用9.0.3 编译器也换成VS2017。这里做了以下更新：
+>
+> 1. 在每个窗口右上角增加了三个按钮
+> 2. 增加了打开文件夹提示，并支持鼠标双击打开文件夹
+> 3. 每个按钮增加菜单迟迟
+
+![image-20210810160942220](https://raw.githubusercontent.com/DreamLife-Jianwei/CSDNResources/master/20210810160942.png)
+
+![image-20210810161006881](https://raw.githubusercontent.com/DreamLife-Jianwei/CSDNResources/master/20210810161007.png)
+
+![演示动画](https://raw.githubusercontent.com/DreamLife-Jianwei/CSDNResources/master/20210810161534.gif)
 
 ### 1.4 04_Document
 
@@ -73,10 +83,6 @@
 ### 1.12 12_Vtk9ReadDicomDemoQmake
 
 > 使用QMake调用Vtk9.0.3，仅实现一个Cone用于测试，测试通过后将计划更新ThirdVtk
-
-
-
-
 
 
 
