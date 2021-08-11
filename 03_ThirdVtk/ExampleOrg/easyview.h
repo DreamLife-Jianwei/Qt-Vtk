@@ -2,7 +2,7 @@
 #define EASYVIEW_H
 
 #include <QWidget>
-
+#include "QVTKOpenGLNativeWidget.h"
 namespace Ui {
 class EasyView;
 }

@@ -286,16 +286,15 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
         planeWidget[i]->GetColorMap()->SetLookupTable(riw[0]->GetLookupTable());
         //planeWidget[i]->GetColorMap()->SetInput(riw[i]->GetResliceCursorWidget()->GetResliceCursorRepresentation()->GetColorMap()->GetInput());
         planeWidget[i]->SetColorMap(riw[i]->GetResliceCursorWidget()->GetResliceCursorRepresentation()->GetColorMap());
-
     }
 
     //十字线
-    for (int i = 0; i < 3; i++)
-    {
-        riw[i]->SetResliceMode(1);
-        riw[i]->GetRenderer()->ResetCamera();
-        riw[i]->Render();
-    }
+//    for (int i = 0; i < 3; i++)
+//    {
+//        riw[i]->SetResliceMode(1);
+//        riw[i]->GetRenderer()->ResetCamera();
+//        riw[i]->Render();
+//    }
     // 还不知道干啥
     //    for (int i = 0; i < 3; i++)
     //    {

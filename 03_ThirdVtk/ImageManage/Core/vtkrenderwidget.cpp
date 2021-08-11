@@ -1,6 +1,6 @@
 #include "vtkrenderwidget.h"
 #include "ui_vtkrenderwidget.h"
-
+#include <QtDebug>
 VTKRenderWidget::VTKRenderWidget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::VTKRenderWidget)
@@ -11,7 +11,7 @@ VTKRenderWidget::VTKRenderWidget(QWidget *parent) :
 
     m_OpenFolderText = new QLabel(this);
     m_OpenFolderText->setText("Open Folder!");
-    m_OpenFolderText->setStyleSheet("QLabel{color: rgb(136, 136, 136);}QLabel{font: 24pt '黑体';}");
+    m_OpenFolderText->setStyleSheet("QLabel{color: rgb(136, 136, 136);}QLabel{font: 36pt '黑体';}");
     m_OpenFolderText->raise();
 
     m_Menu_1 = new QMenu(this);
@@ -25,6 +25,7 @@ VTKRenderWidget::VTKRenderWidget(QWidget *parent) :
 
     m_Menu_1->addAction(test);
     m_Menu_1->addAction(test1);
+
     ui->pushButton_1->setMenu(m_Menu_1);
     ui->pushButton_2->setMenu(m_Menu_1);
     ui->pushButton_3->setMenu(m_Menu_1);
@@ -43,6 +44,9 @@ VTKRenderWidget::VTKRenderWidget(QWidget *parent) :
                                     "QPushButton{border-image:url(:/ImageManage/Images/ImageManage/btn_n_3.png);}"
                                     "QPushButton:hover{border-image:url(:/ImageManage/Images/ImageManage/btn_p_3.png);}"
                                     "QPushButton:pressed{border-image:url(:/ImageManage/Images/ImageManage/btn_n_3.png);}");
+    ui->pushButton_1->hide();
+    ui->pushButton_2->hide();
+    ui->pushButton_3->hide();
 
 }
 
@@ -113,5 +117,21 @@ void VTKRenderWidget::resizeEvent(QResizeEvent *event)
 
     m_OpenFolderText->move((this->width()-m_OpenFolderText->width())/2,(this->height()-m_OpenFolderText->height())/2);
     m_OpenFolderText->raise();
+}
+
+void VTKRenderWidget::enterEvent(QEvent *event)
+{
+    Q_UNUSED(event)
+    ui->pushButton_1->show();
+    ui->pushButton_2->show();
+    ui->pushButton_3->show();
+}
+
+void VTKRenderWidget::leaveEvent(QEvent *event)
+{
+    Q_UNUSED(event)
+    ui->pushButton_1->hide();
+    ui->pushButton_2->hide();
+    ui->pushButton_3->hide();
 }
 

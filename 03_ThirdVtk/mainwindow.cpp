@@ -57,6 +57,10 @@ MainWindow::MainWindow(QWidget *parent) :
     mSGrid = new SGrid(ui->tab_SGrid);
     mSpecularSpheres = new SpecularSpheres(ui->tab_SpecularSpheres);
     mTheme = new Theme(ui->tab_Theme);
+    mCustomLinkView = new CustomLinkView(ui->tab_CustomLinkView);
+    mEasyView = new EasyView(ui->tab_EasyView);
+    mFixedPointVolumeRayCastMapperCT = new FixedPointVolumeRayCastMapperCT(ui->tab_FixedPointVolumeRayCastMapperCT);
+    mGPURenderDemo = new GPURenderDemo(ui->tab_GPURenderDemo);
 
     /****************图像管理*********************/
 
@@ -106,6 +110,15 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     mSGrid->resize(ui->tab_SGrid->size());
     mSpecularSpheres->resize(ui->tab_SpecularSpheres->size());
     mTheme->resize(ui->tab_Theme->size());
+    mCustomLinkView->resize(ui->tab_CustomLinkView->size());
+    mEasyView->resize(ui->tab_EasyView->size());
+    mFixedPointVolumeRayCastMapperCT->resize(ui->tab_FixedPointVolumeRayCastMapperCT->size());
+    mGPURenderDemo->resize(ui->tab_GPURenderDemo->size());
+
+
+
+
+
     //图像管理
     mImageManage->resize(ui->tab_ImageManage->size());
 }
@@ -494,7 +507,8 @@ void MainWindow::on_actionexit_ImageManage_triggered()
 
 void MainWindow::on_actionSetResliceMode_triggered()
 {
-
+    if(mImageManage)
+        mImageManage->SetResliceMode();
 }
 
 

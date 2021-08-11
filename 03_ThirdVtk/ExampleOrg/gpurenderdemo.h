@@ -2,7 +2,7 @@
 #define GPURENDERDEMO_H
 
 #include <QWidget>
-
+#include "QVTKOpenGLNativeWidget.h"
 namespace Ui {
 class GPURenderDemo;
 }

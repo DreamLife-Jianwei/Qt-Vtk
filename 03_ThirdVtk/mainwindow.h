@@ -34,6 +34,10 @@
 #include "ExampleOrg/sgrid.h"
 #include "ExampleOrg/specularspheres.h"
 #include "ExampleOrg/theme.h"
+#include "ExampleOrg/customlinkview.h"
+#include "ExampleOrg/easyview.h"
+#include "ExampleOrg/fixedpointvolumeraycastmapperct.h"
+#include "ExampleOrg/gpurenderdemo.h"
 
 #include "ImageManage/imagemanage.h"
 namespace Ui {
@@ -176,6 +180,13 @@ private:
     SpecularSpheres *mSpecularSpheres = nullptr;
     Theme *mTheme = nullptr;
 
+    CustomLinkView *mCustomLinkView = nullptr;
+    EasyView *mEasyView = nullptr;
+    FixedPointVolumeRayCastMapperCT *mFixedPointVolumeRayCastMapperCT = nullptr;
+    GPURenderDemo *mGPURenderDemo = nullptr;
+
+
+    //图像管理
     ImageManage *mImageManage = nullptr;
 };
 

@@ -58,7 +58,7 @@
          </rect>
         </property>
         <property name="currentIndex">
-         <number>15</number>
+         <number>0</number>
         </property>
         <widget class="QWidget" name="tab_ambientSpheres">
          <attribute name="title">
@@ -462,6 +462,9 @@
   <action name="actionSetResliceMode">
    <property name="text">
     <string>十</string>
+   </property>
+   <property name="toolTip">
+    <string>十字线开关</string>
    </property>
   </action>
   <action name="actionCustomLinkView">

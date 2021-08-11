@@ -263,6 +263,5 @@ LIBS += -L./Vtk9/lib/ -lvtkViewsQt-9.0
 LIBS += -L./Vtk9/lib/ -lvtkWrappingTools-9.0
 LIBS += -L./Vtk9/lib/ -lvtkzlib-9.0
 
-
 RESOURCES += \
     images.qrc

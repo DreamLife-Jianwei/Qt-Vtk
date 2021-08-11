@@ -2,7 +2,7 @@
 #define FIXEDPOINTVOLUMERAYCASTMAPPERCT_H
 
 #include <QWidget>
-
+#include "QVTKOpenGLNativeWidget.h"
 namespace Ui {
 class FixedPointVolumeRayCastMapperCT;
 }
