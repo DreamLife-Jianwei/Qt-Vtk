@@ -122,10 +122,10 @@ void ImageManage::setCurrentTab(int temp)
 /**
  * @brief ImageManage::SetResliceMode
  * 开关十字线
- * 目前还有问题，没有实现开关
+ * 目前还有问题，在读取数据情况下，会卡死，因为我还没有New
  */
 void ImageManage::SetResliceMode()
-{
+{    
     if(riw[0]->GetResliceMode())
     {
         for (int i = 0; i < 3; i++)
@@ -144,8 +144,6 @@ void ImageManage::SetResliceMode()
             riw[i]->Render();
         }
     }
-
-
 }
 void ImageManage::slot_ReaderDICOMImage(const char *fn)
 {

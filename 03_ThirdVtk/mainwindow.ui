@@ -279,6 +279,7 @@
    <addaction name="separator"/>
    <addaction name="actionexit_ImageManage"/>
    <addaction name="actionSetResliceMode"/>
+   <addaction name="action_Draw"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionAmbientSpheres">
@@ -485,6 +486,14 @@
   <action name="actionGPURenderDemo">
    <property name="text">
     <string>GPURenderDemo</string>
+   </property>
+  </action>
+  <action name="action_Draw">
+   <property name="text">
+    <string>Draw</string>
+   </property>
+   <property name="toolTip">
+    <string>绘制</string>
    </property>
   </action>
  </widget>

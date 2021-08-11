@@ -133,6 +133,8 @@ private slots:
 
     void on_actionGPURenderDemo_triggered();
 
+    void on_action_Draw_triggered();
+
 protected:
     inline void changeExample();
 

@@ -493,7 +493,6 @@ void MainWindow::on_actionFullScreen_triggered()
         //        ui->menuBar->hide();
     }
 }
-
 /**
  * @brief MainWindow::on_actionexit_ImageManage_triggered
  * 退出图片浏览模式，返回到开始模式
@@ -504,18 +503,17 @@ void MainWindow::on_actionexit_ImageManage_triggered()
     ui->ToolBarImage->hide();
 }
 
-
 void MainWindow::on_actionSetResliceMode_triggered()
 {
     if(mImageManage)
         mImageManage->SetResliceMode();
 }
+/**
+ * @brief MainWindow::on_action_Draw_triggered
+ * 开启鼠标绘制模式
+ */
+void MainWindow::on_action_Draw_triggered()
+{
 
-
-
-
-
-
-
-
+}
 
