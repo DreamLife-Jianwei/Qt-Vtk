@@ -107,6 +107,13 @@ ImageManage::ImageManage(QWidget *parent) :QWidget(parent),ui(new Ui::ImageManag
     ui->widget_4->set_BackGroundColor(255,255,0);
 
 
+    /******************Dicom读取信息*************************/
+    reader = vtkSmartPointer<vtkDICOMImageReader>::New();
+
+
+
+
+
     update();
 }
 
@@ -147,21 +154,12 @@ void ImageManage::SetResliceMode()
 }
 void ImageManage::slot_ReaderDICOMImage(const char *fn)
 {
-
-    /***************************************************1.0版本****************************************/
-
-    if(!reader)
-    {
-        reader = vtkSmartPointer<vtkDICOMImageReader>::New();
-    }
     reader->SetDirectoryName(fn);                               //这里主要，是文件夹哈，不是文件名
     reader->Update();                                           //得更新呀，惰性渲染
     reader->GetOutput()->GetDimensions(imageDims);              //还不理解,翻译为获取维度,注释掉以后三维中有影响
 
     double range[2];
     reader->GetOutput()->GetScalarRange(range);                 //获取灰度范围
-
-    //HUD 2D文字**************************************************************
 
     for (auto i=0;i<4;i++)
     {
@@ -202,7 +200,6 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     peopleInforTextActor[3]->GetTextProperty()->SetColor(1, 1, 0);
     peopleInforTextActor[3]->SetDisplayPosition(5,ui->widget_4->height()-40);
 
-    //**********************************************************************
     for (auto i = 0; i < 3; i++)
     {
         riw[i] = vtkSmartPointer< vtkResliceImageViewer >::New();
@@ -210,9 +207,6 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
         riw[i]->GetRenderer()->AddActor(peopleInforTextActor[i]);
     }
 
-    //        widget_1 水平;
-    //        widget_2 矢状;
-    //        widget_3 冠状;
     riw[0]->SetRenderWindow(ui->widget_2->renderWindow());
     riw[0]->SetupInteractor(ui->widget_2->renderWindow()->GetInteractor());
 
@@ -224,15 +218,12 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
 
     for (int i = 0; i < 3; i++)
     {
-        vtkResliceCursorLineRepresentation *rep =
-                vtkResliceCursorLineRepresentation::SafeDownCast(
-                    riw[i]->GetResliceCursorWidget()->GetRepresentation());
+        vtkResliceCursorLineRepresentation *rep = vtkResliceCursorLineRepresentation::SafeDownCast(riw[i]->GetResliceCursorWidget()->GetRepresentation());
         riw[i]->SetResliceCursor(riw[0]->GetResliceCursor());
         rep->GetResliceCursorActor()->GetCursorAlgorithm()->SetReslicePlaneNormal(i);
         riw[i]->SetInputData(reader->GetOutput());
         riw[i]->SetSliceOrientation(i);
         riw[i]->SetResliceModeToAxisAligned();
-        //        riw[i]->SetResliceModeToOblique();
     }
 
     picker = vtkSmartPointer<vtkCellPicker>::New();
@@ -242,7 +233,7 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
     ren->AddActor(textActor[3]);
     ren->AddActor(peopleInforTextActor[3]);
     ui->widget_4->renderWindow()->AddRenderer(ren);
-    for (int i = 0; i < 3; i++)
+    for (auto i = 0; i < 3; i++)
     {
         planeWidget[i] = vtkSmartPointer<vtkImagePlaneWidget>::New();
         planeWidget[i]->SetInteractor( ui->widget_4->interactor());
@@ -270,7 +261,7 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
         planeWidget[i]->InteractionOn();
     }
     cbk = vtkSmartPointer<vtkResliceCursorCallback>::New();
-    for (int i = 0; i < 3; i++)
+    for (auto i = 0; i < 3; i++)
     {
         cbk->IPW[i] = planeWidget[i];
         cbk->RCW[i] = riw[i]->GetResliceCursorWidget();
@@ -286,29 +277,20 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
         planeWidget[i]->SetColorMap(riw[i]->GetResliceCursorWidget()->GetResliceCursorRepresentation()->GetColorMap());
     }
 
-    //十字线
-//    for (int i = 0; i < 3; i++)
-//    {
-//        riw[i]->SetResliceMode(1);
-//        riw[i]->GetRenderer()->ResetCamera();
-//        riw[i]->Render();
-//    }
-    // 还不知道干啥
-    //    for (int i = 0; i < 3; i++)
-    //    {
-    //        riw[i]->SetThickMode(0);
-    //        riw[i]->Render();
-    //    }
 
-    //        for (int i = 0; i < 3; i++)
-    //          {
-    //            vtkImageSlabReslice *thickSlabReslice = vtkImageSlabReslice::SafeDownCast(
-    //                vtkResliceCursorThickLineRepresentation::SafeDownCast(
-    //                  riw[i]->GetResliceCursorWidget()->GetRepresentation())->GetReslice());
-    //            thickSlabReslice->SetBlendMode(1);
-    //            riw[i]->Render();
-    //          }
-    /***************************************************1.0版本****************************************/
+
+    for (auto i = 0; i < 3; i++)
+    {
+        riw[i]->SetThickMode(0);
+        riw[i]->Render();
+    }
+
+    //    for (auto i = 0; i < 3; i++)
+    //    {
+    //        vtkImageSlabReslice *thickSlabReslice = vtkImageSlabReslice::SafeDownCast(vtkResliceCursorThickLineRepresentation::SafeDownCast(riw[i]->GetResliceCursorWidget()->GetRepresentation())->GetReslice());
+    ////        thickSlabReslice->SetBlendMode(1);
+    ////        riw[i]->Render();
+    //    }
 
 }
 
@@ -316,6 +298,18 @@ void ImageManage::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
     mSplitterMain->resize(this->size());
+    if(peopleInforTextActor[0])
+        peopleInforTextActor[0]->SetDisplayPosition(5,ui->widget_1->height()-40);
+    if(peopleInforTextActor[1])
+        peopleInforTextActor[1]->SetDisplayPosition(5,ui->widget_2->height()-40);
+    if(peopleInforTextActor[2])
+        peopleInforTextActor[2]->SetDisplayPosition(5,ui->widget_3->height()-40);
+    if(peopleInforTextActor[3])
+        peopleInforTextActor[3]->SetDisplayPosition(5,ui->widget_4->height()-40);
+    ui->widget_1->renderWindow()->Render();     //重新渲染
+    ui->widget_2->renderWindow()->Render();     //重新渲染
+    ui->widget_3->renderWindow()->Render();     //重新渲染
+    ui->widget_4->renderWindow()->Render();     //重新渲染
 }
 /**
  * @brief ImageManage::paintEvent

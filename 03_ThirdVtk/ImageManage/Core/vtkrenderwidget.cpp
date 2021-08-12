@@ -6,26 +6,21 @@ VTKRenderWidget::VTKRenderWidget(QWidget *parent) :
     ui(new Ui::VTKRenderWidget)
 {
     ui->setupUi(this);
-
     connect(ui->openGLWidget,&MyQVTKOpenGLNativeWidget::signal_mouseDoubleClicked,this,[=](){emit signal_mouseDoubleClicked();});
 
     m_OpenFolderText = new QLabel(this);
-    m_OpenFolderText->setText("Open Folder!");
+    m_OpenFolderText->setText("Please Open Directory");
     m_OpenFolderText->setStyleSheet("QLabel{color: rgb(136, 136, 136);}QLabel{font: 36pt '黑体';}");
     m_OpenFolderText->raise();
-
     m_Menu_1 = new QMenu(this);
     test = new QAction(m_Menu_1);
     test->setText("ABC");
     test->setCheckable(true);
-
     test1 = new QAction(m_Menu_1);
     test1->setText("EFG");
     test1->setCheckable(true);
-
     m_Menu_1->addAction(test);
     m_Menu_1->addAction(test1);
-
     ui->pushButton_1->setMenu(m_Menu_1);
     ui->pushButton_2->setMenu(m_Menu_1);
     ui->pushButton_3->setMenu(m_Menu_1);
@@ -34,12 +29,10 @@ VTKRenderWidget::VTKRenderWidget(QWidget *parent) :
                                     "QPushButton{border-image:url(:/ImageManage/Images/ImageManage/btn_n_1.png);}"
                                     "QPushButton:hover{border-image:url(:/ImageManage/Images/ImageManage/btn_p_1.png);}"
                                     "QPushButton:pressed{border-image:url(:/ImageManage/Images/ImageManage/btn_n_1.png);}");
-
     ui->pushButton_2->setStyleSheet("QPushButton::menu-indicator{image:none;}"      //不显示下拉图标
                                     "QPushButton{border-image:url(:/ImageManage/Images/ImageManage/btn_n_2.png);}"
                                     "QPushButton:hover{border-image:url(:/ImageManage/Images/ImageManage/btn_p_2.png);}"
                                     "QPushButton:pressed{border-image:url(:/ImageManage/Images/ImageManage/btn_n_2.png);}");
-
     ui->pushButton_3->setStyleSheet("QPushButton::menu-indicator{image:none;}"      //不显示下拉图标
                                     "QPushButton{border-image:url(:/ImageManage/Images/ImageManage/btn_n_3.png);}"
                                     "QPushButton:hover{border-image:url(:/ImageManage/Images/ImageManage/btn_p_3.png);}"
