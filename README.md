@@ -36,13 +36,25 @@
 > > 4. 支持十字线的开关了，其实以前实现了，只是忘记了调用接口，还以为自己搞错了
 > > 5. 支持了每个子窗口中三个按钮在鼠标进入是显示，鼠标离开时隐藏
 
+增加按钮，文本提示
+
 ![image-20210810160942220](https://raw.githubusercontent.com/DreamLife-Jianwei/CSDNResources/master/20210810160942.png)
+
+增加按钮，文本提示
 
 ![image-20210810161006881](https://raw.githubusercontent.com/DreamLife-Jianwei/CSDNResources/master/20210810161007.png)
 
+动态演示
+
 ![演示动画](https://raw.githubusercontent.com/DreamLife-Jianwei/CSDNResources/master/20210810161534.gif)
 
+修改按钮状态，动态演示
+
 ![按钮动态显示，十字线开关](https://raw.githubusercontent.com/DreamLife-Jianwei/CSDNResources/master/20210811104651.gif)
+
+开启显卡加速，不过效果不怎么明显
+
+![开启显卡加速](https://raw.githubusercontent.com/DreamLife-Jianwei/CSDNResources/master/20210813095156.gif)
 
 ### 1.4 04_Document
 
