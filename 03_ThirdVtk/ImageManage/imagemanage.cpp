@@ -341,7 +341,7 @@ void ImageManage::openFolder()
 /**
  * @brief ImageManage::on_verticalSlider_colorlevel_valueChanged
  * @param value
- * SetColorLevel
+ * SetColorLevel 窗位
  */
 void ImageManage::on_verticalSlider_colorlevel_valueChanged(int value)
 {
@@ -358,7 +358,7 @@ void ImageManage::on_verticalSlider_colorlevel_valueChanged(int value)
 /**
  * @brief ImageManage::on_verticalSlider_colorwindow_valueChanged
  * @param value
- * SetColorWindow
+ * SetColorWindow 窗宽
  */
 void ImageManage::on_verticalSlider_colorwindow_valueChanged(int value)
 {
