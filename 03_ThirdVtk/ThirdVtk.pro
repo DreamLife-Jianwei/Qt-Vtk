@@ -35,6 +35,7 @@ SOURCES += main.cpp\
     ExampleOrg/gpurenderdemo.cpp \
     ImageManage/Core/myqvtkopenglnativewidget.cpp \
     ImageManage/Core/myvtkresliceimageviewer.cpp \
+    ImageManage/Core/myvtkresliceimageviewermeasurements.cpp \
     ImageManage/Core/vtkrenderwidget.cpp \
     ImageManage/imagemanage.cpp \
         mainwindow.cpp \
@@ -92,6 +93,7 @@ HEADERS  += mainwindow.h \
     ExampleOrg/theme.h \
     ImageManage/Core/myqvtkopenglnativewidget.h \
     ImageManage/Core/myvtkresliceimageviewer.h \
+    ImageManage/Core/myvtkresliceimageviewermeasurements.h \
     ImageManage/Core/vtkrenderwidget.h \
     ImageManage/imagemanage.h
 

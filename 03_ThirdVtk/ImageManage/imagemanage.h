@@ -21,7 +21,8 @@
 #include "QVTKOpenGLNativeWidget.h"               //新版本，旧版QVTKWidget
 #include "vtkAutoInit.h"
 #include "vtkSmartPointer.h"
-#include "vtkResliceImageViewer.h"
+//#include "vtkResliceImageViewer.h"
+#include "Core/myvtkresliceimageviewer.h"
 #include "vtkImagePlaneWidget.h"
 #include "vtkDistanceWidget.h"
 #include "vtkResliceImageViewerMeasurements.h"
@@ -56,7 +57,8 @@
 #include "vtkResliceCursorActor.h"
 #include "vtkResliceCursorPolyDataAlgorithm.h"
 #include "vtkResliceCursor.h"
-#include "vtkResliceImageViewerMeasurements.h"
+//#include "vtkResliceImageViewerMeasurements.h"
+#include "Core/myvtkresliceimageviewermeasurements.h"
 #include "vtkOpenGLTextActor.h"
 #include "vtkRendererCollection.h"
 #include "vtkTextActor.h"
@@ -115,10 +117,10 @@ private:
     double color[3] = {0,0,0};                                                      //颜色
     vtkSmartPointer<vtkDICOMImageReader> reader = nullptr;                          //读取DICOM文件
     int imageDims[3] = {0};                                                         //暂时不理解
-    vtkSmartPointer< vtkResliceImageViewer > riw[3];                                //三个二维视图
+    vtkSmartPointer< MyVtkResliceImageViewer > riw[3];                                //三个二维视图
     vtkSmartPointer< vtkImagePlaneWidget > planeWidget[3];
     vtkSmartPointer< vtkDistanceWidget > DistanceWidget[3];                         //测试距离的，暂时没有移植，无用
-    vtkSmartPointer< vtkResliceImageViewerMeasurements > ResliceMeasurements;       //不知道干啥，没有用到
+    vtkSmartPointer< MyVtkResliceImageViewerMeasurements > ResliceMeasurements;       //不知道干啥，没有用到
     vtkSmartPointer<vtkProperty> ipwProp;                                           //属性
     vtkSmartPointer<vtkCellPicker> picker;                                          //拾取器
     vtkSmartPointer< vtkRenderer > ren;                                             //3D渲染器

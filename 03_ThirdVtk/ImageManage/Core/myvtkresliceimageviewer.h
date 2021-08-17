@@ -3,34 +3,25 @@
 
 #include "vtkImageViewer2.h"
 #include "vtkInteractionImageModule.h"
-
-
 class vtkResliceCursorWidget;
 class vtkResliceCursor;
 class vtkScalarsToColors;
 class vtkBoundedPlanePointPlacer;
-class vtkResliceImageViewerMeasurements;
+class MyVtkResliceImageViewerMeasurements;
 class vtkResliceImageViewerScrollCallback;
 class vtkPlane;
-
-
 class MyVtkResliceImageViewer : public vtkImageViewer2
 {
 
 public:
-
     static MyVtkResliceImageViewer *New();
     vtkTypeMacro(MyVtkResliceImageViewer,vtkImageViewer2);
     void PrintSelf(ostream& os,vtkIndent indent) override;
-
     void Render() override;
-
     void SetInputData(vtkImageData *in) override;
     void SetInputConnection(vtkAlgorithmOutput *input) override;
-
     void SetColorWindow(double s) override;
     void SetColorLevel(double s) override;
-
     vtkGetObjectMacro(ResliceCursorWidget,vtkResliceCursorWidget);
     enum
     {
@@ -49,7 +40,7 @@ public:
     virtual int GetThickMode();
     virtual void Reset();
     vtkGetObjectMacro(PointPlacer,vtkBoundedPlanePointPlacer);
-    vtkGetObjectMacro(Measurements,vtkResliceImageViewerMeasurements);
+    vtkGetObjectMacro(Measurements,MyVtkResliceImageViewerMeasurements);
     vtkGetObjectMacro(Interactor,vtkRenderWindowInteractor);
     vtkSetMacro(SliceScrollOnMouseWheel,vtkTypeBool);
     vtkGetMacro(SliceScrollOnMouseWheel, vtkTypeBool);
@@ -59,32 +50,26 @@ public:
     {
         SliceChangedEvent = 1001
     };
-
-
-
-
-
-
 protected:
 
     MyVtkResliceImageViewer();
-
+    ~MyVtkResliceImageViewer() override;
+    void InstallPipeline() override;
+    void UnInstallPipeline() override;
+    void UpdateOrientation() override;
     void UpdateDisplayExtent() override;
     virtual void UpdataPointPlacer();
-
-
-
     vtkPlane* GetReslicePlane();
     double GetInterSliceSpacingInResliceMode();
-
-
     vtkResliceCursorWidget *ResliceCursorWidget;
     vtkBoundedPlanePointPlacer *PointPlacer;
     int ResliceMode;
-    vtkResliceImageViewerMeasurements *Measurements;
+    MyVtkResliceImageViewerMeasurements *Measurements;
     vtkTypeBool SliceScrollOnMouseWheel;
-    vtkRenderWindowInteractor *Interactor;
     vtkResliceImageViewerScrollCallback *ScrollCallback;
+private:
+    MyVtkResliceImageViewer(const MyVtkResliceImageViewer&) = delete;
+    void operator=(const MyVtkResliceImageViewer&) = delete;
 
 };
 

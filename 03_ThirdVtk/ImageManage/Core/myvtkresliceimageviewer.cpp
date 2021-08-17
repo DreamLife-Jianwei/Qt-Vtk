@@ -20,7 +20,8 @@
 #include "vtkResliceCursorPolyDataAlgorithm.h"
 #include "vtkResliceCursorThickLineRepresentation.h"
 #include "vtkResliceCursorWidget.h"
-#include "vtkResliceImageViewerMeasurements.h"
+//#include "vtkResliceImageViewerMeasurements.h"
+#include "myvtkresliceimageviewermeasurements.h"
 #include "vtkScalarsToColors.h"
 #include "vtkSmartPointer.h"
 
@@ -39,20 +40,13 @@ public:
             return;
         if(this->Viewer->GetInteractor()->GetShiftKey() || this->Viewer->GetInteractor()->GetControlKey() || this->Viewer->GetInteractor()->GetAltKey())
             return;
+        int sign = (ev == vtkCommand::MouseWheelForwardEvent) ? 1 : -1;
+        this->Viewer->IncrementSlice(sign);
+        this->SetAbortFlag(1);
     }
+    vtkResliceImageViewerScrollCallback() : Viewer(nullptr){}
     MyVtkResliceImageViewer *Viewer;
 };
-
-
-
-
-
-
-
-
-
-
-
 
 void MyVtkResliceImageViewer::PrintSelf(std::ostream &os, vtkIndent indent)
 {
@@ -237,25 +231,115 @@ void MyVtkResliceImageViewer::IncrementSlice(int inc)
 MyVtkResliceImageViewer::MyVtkResliceImageViewer()
 {
     this->ResliceMode = MyVtkResliceImageViewer::RESLICE_AXIS_ALIGNED;
-
     this->ResliceCursorWidget = vtkResliceCursorWidget::New();
-
     vtkSmartPointer<vtkResliceCursor> resliceCursor = vtkSmartPointer<vtkResliceCursor>::New();
     resliceCursor->SetThickMode(0);
     resliceCursor->SetThickness(10,10,10);
-
     vtkSmartPointer<vtkResliceCursorLineRepresentation> resliceCursorRep = vtkSmartPointer<vtkResliceCursorLineRepresentation>::New();
     resliceCursorRep->GetResliceCursorActor()->GetCursorAlgorithm()->SetResliceCursor(resliceCursor);
     resliceCursorRep->GetResliceCursorActor()->GetCursorAlgorithm()->SetReslicePlaneNormal(this->SliceOrientation);
     this->ResliceCursorWidget->SetRepresentation(resliceCursorRep);
     this->PointPlacer = vtkBoundedPlanePointPlacer::New();
-    this->Measurements = vtkResliceImageViewerMeasurements::New();
+    this->Measurements = MyVtkResliceImageViewerMeasurements::New();
 //    this->Measurements->SetResliceImageViewer(this);                    //重写
 
-//    this->ScrollCallback = vtkResliceImageViewerScrollCallback::New();    //等待实现
-//    this->ScrollCallback->Viewer = this;
+    this->ScrollCallback = vtkResliceImageViewerScrollCallback::New();    //等待实现
+    this->ScrollCallback->Viewer = this;
     this->SliceScrollOnMouseWheel = 1;
     this->InstallPipeline();
+}
+
+MyVtkResliceImageViewer::~MyVtkResliceImageViewer()
+{
+    this->Measurements->Delete();
+    if(this->ResliceCursorWidget)
+    {
+        this->ResliceCursorWidget->Delete();
+        this->ResliceCursorWidget = nullptr;
+    }
+
+    this->PointPlacer->Delete();
+    this->ScrollCallback->Delete();
+}
+
+void MyVtkResliceImageViewer::InstallPipeline()
+{
+    this->Superclass::InstallPipeline();
+    if(this->Interactor)
+    {
+        this->ResliceCursorWidget->SetInteractor(this->Interactor);
+        this->Interactor->RemoveObserver(this->ScrollCallback);
+        this->Interactor->AddObserver(vtkCommand::MouseWheelForwardEvent,this->ScrollCallback,0.55);
+        this->Interactor->AddObserver(vtkCommand::MouseWheelBackwardEvent,this->ScrollCallback,0.55);
+    }
+
+    if(this->Renderer)
+    {
+        this->ResliceCursorWidget->SetDefaultRenderer(this->Renderer);
+        vtkCamera *cam = this->Renderer->GetActiveCamera();
+        cam->ParallelProjectionOn();
+    }
+
+    if(this->ResliceMode == RESLICE_OBLIQUE)
+    {
+        this->ResliceCursorWidget->SetEnabled(1);
+        this->ImageActor->SetVisibility(0);
+        this->UpdateOrientation();
+
+        double bounds[6] = {0,1,0,1,0,1};
+
+        vtkCamera *cam = this->Renderer->GetActiveCamera();
+        double onespacing[3] = {1,1,1};
+        double *spacing = onespacing;
+        if(this->GetResliceCursor()->GetImage())
+        {
+            this->GetResliceCursor()->GetImage()->GetBounds(bounds);
+            spacing = this->GetResliceCursor()->GetImage()->GetSpacing();
+        }
+        double avg_spacing = (spacing[0] + spacing[1] + spacing[2]) / 3.0;
+        cam->SetClippingRange(bounds[this->SliceOrientation * 2] - 100 * avg_spacing,bounds[this->SliceOrientation *2 +1] + 100 * avg_spacing);
+    }
+    else
+    {
+        this->ResliceCursorWidget->SetEnabled(0);
+        this->ImageActor->SetVisibility(1);
+        this->UpdateOrientation();
+    }
+    if(this->WindowLevel)
+        this->WindowLevel->SetLookupTable(this->GetLookupTable());
+}
+
+void MyVtkResliceImageViewer::UnInstallPipeline()
+{
+    this->ResliceCursorWidget->SetEnabled(0);
+    if(this->Interactor)
+        this->Interactor->RemoveObserver(this->ScrollCallback);
+    this->Superclass::UnInstallPipeline();
+}
+
+void MyVtkResliceImageViewer::UpdateOrientation()
+{
+    vtkCamera *cam = this->Renderer ? this->Renderer->GetActiveCamera() : nullptr;
+    if(cam)
+    {
+        switch (this->SliceOrientation) {
+        case vtkImageViewer2::SLICE_ORIENTATION_XY:
+            cam->SetFocalPoint(0,0,0);
+            cam->SetPosition(0,0,1);
+            cam->SetViewUp(0,1,0);
+            break;
+        case vtkImageViewer2::SLICE_ORIENTATION_XZ:
+            cam->SetFocalPoint(0,0,0);
+            cam->SetPosition(0,-1,0);
+            cam->SetViewUp(0,0,1);
+            break;
+        case vtkImageViewer2::SLICE_ORIENTATION_YZ:
+            cam->SetFocalPoint(0,0,0);
+            cam->SetPosition(1,0,0);
+            cam->SetViewUp(0,0,1);
+            break;
+        }
+    }
 }
 
 vtkResliceCursor *MyVtkResliceImageViewer::GetResliceCursor()
@@ -348,11 +432,25 @@ void MyVtkResliceImageViewer::UpdataPointPlacer()
 
 vtkPlane *MyVtkResliceImageViewer::GetReslicePlane()
 {
+    if(vtkResliceCursorRepresentation *rep = vtkResliceCursorRepresentation::SafeDownCast(this->ResliceCursorWidget->GetRepresentation()))
+    {
+        const int planeOrientation = rep->GetCursorAlgorithm()->GetReslicePlaneNormal();
+        vtkPlane *plane = this->GetResliceCursor()->GetPlane(planeOrientation);
+        return plane;
+    }
 
+    return nullptr;
 }
 
 double MyVtkResliceImageViewer::GetInterSliceSpacingInResliceMode()
 {
-
+    double n[3],imageSpacing[3],resliceSpacing = 0;
+    if(vtkPlane *plane = this->GetReslicePlane())
+    {
+        plane->GetNormal(n);
+        this->GetResliceCursor()->GetImage()->GetSpacing(imageSpacing);
+        resliceSpacing = fabs(vtkMath::Dot(n,imageSpacing));
+    }
+    return resliceSpacing;
 }
 

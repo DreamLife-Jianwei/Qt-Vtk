@@ -202,7 +202,7 @@ void ImageManage::slot_ReaderDICOMImage(const char *fn)
 
     for (auto i = 0; i < 3; i++)
     {
-        riw[i] = vtkSmartPointer< vtkResliceImageViewer >::New();
+        riw[i] = vtkSmartPointer< MyVtkResliceImageViewer >::New();
         riw[i]->GetRenderer()->AddActor(textActor[i]);
         riw[i]->GetRenderer()->AddActor(peopleInforTextActor[i]);
     }
