@@ -241,7 +241,7 @@ MyVtkResliceImageViewer::MyVtkResliceImageViewer()
     this->ResliceCursorWidget->SetRepresentation(resliceCursorRep);
     this->PointPlacer = vtkBoundedPlanePointPlacer::New();
     this->Measurements = MyVtkResliceImageViewerMeasurements::New();
-//    this->Measurements->SetResliceImageViewer(this);                    //重写
+    this->Measurements->SetResliceImageViewer(this);                    //重写
 
     this->ScrollCallback = vtkResliceImageViewerScrollCallback::New();    //等待实现
     this->ScrollCallback->Viewer = this;
@@ -353,7 +353,7 @@ void MyVtkResliceImageViewer::SetResliceCursor(vtkResliceCursor *rc)
 {
     vtkResliceCursorRepresentation *rep = vtkResliceCursorRepresentation::SafeDownCast(this->GetResliceCursorWidget()->GetRepresentation());
     rep->GetCursorAlgorithm()->SetResliceCursor(rc);
-    // this->Measurements->SetResliceImageViewer(this);            //这里需要重新vtkResliceImageViewerMeasurements
+     this->Measurements->SetResliceImageViewer(this);            //这里需要重新vtkResliceImageViewerMeasurements
 }
 
 void MyVtkResliceImageViewer::SetLookupTable(vtkScalarsToColors *l)
