@@ -33,6 +33,7 @@ SOURCES += main.cpp\
     ExampleOrg/easyview.cpp \
     ExampleOrg/fixedpointvolumeraycastmapperct.cpp \
     ExampleOrg/gpurenderdemo.cpp \
+    ExampleOrg/pickpixel2.cpp \
     ImageManage/Core/myqvtkopenglnativewidget.cpp \
     ImageManage/Core/myvtkresliceimageviewer.cpp \
     ImageManage/Core/myvtkresliceimageviewermeasurements.cpp \
@@ -84,6 +85,7 @@ HEADERS  += mainwindow.h \
     ExampleOrg/helloworld.h \
     ExampleOrg/labeledmesh.h \
     ExampleOrg/multiview.h \
+    ExampleOrg/pickpixel2.h \
     ExampleOrg/piecewiseitem.h \
     ExampleOrg/qcharttable.h \
     ExampleOrg/qscalarstocolors.h \
@@ -119,6 +121,7 @@ FORMS    += mainwindow.ui \
     ExampleOrg/helloworld.ui \
     ExampleOrg/labeledmesh.ui \
     ExampleOrg/multiview.ui \
+    ExampleOrg/pickpixel2.ui \
     ExampleOrg/piecewiseitem.ui \
     ExampleOrg/qcharttable.ui \
     ExampleOrg/qscalarstocolors.ui \

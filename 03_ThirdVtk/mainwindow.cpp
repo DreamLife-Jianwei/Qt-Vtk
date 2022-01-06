@@ -61,6 +61,8 @@ MainWindow::MainWindow(QWidget *parent) :
     mEasyView = new EasyView(ui->tab_EasyView);
     mFixedPointVolumeRayCastMapperCT = new FixedPointVolumeRayCastMapperCT(ui->tab_FixedPointVolumeRayCastMapperCT);
     mGPURenderDemo = new GPURenderDemo(ui->tab_GPURenderDemo);
+    mPickPixel2 = new PickPixel2(ui->tab_PickPixel2);
+
 
     /****************图像管理*********************/
 
@@ -114,7 +116,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     mEasyView->resize(ui->tab_EasyView->size());
     mFixedPointVolumeRayCastMapperCT->resize(ui->tab_FixedPointVolumeRayCastMapperCT->size());
     mGPURenderDemo->resize(ui->tab_GPURenderDemo->size());
-
+    mPickPixel2->resize(ui->tab_PickPixel2->size());
 
 
 
@@ -515,5 +517,16 @@ void MainWindow::on_actionSetResliceMode_triggered()
 void MainWindow::on_action_Draw_triggered()
 {
 
+}
+
+/**
+ * @brief MainWindow::on_actionPickPixel2_triggered
+ * 切换到像素拾取示例
+ */
+void MainWindow::on_actionPickPixel2_triggered()
+{
+    ui->tabWidget_Example->setCurrentIndex(27);
+    this->setWindowTitle("Qt&Vtk-PickPixel2");
+    changeExample();
 }
 

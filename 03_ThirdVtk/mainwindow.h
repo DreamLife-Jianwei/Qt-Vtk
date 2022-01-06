@@ -38,7 +38,7 @@
 #include "ExampleOrg/easyview.h"
 #include "ExampleOrg/fixedpointvolumeraycastmapperct.h"
 #include "ExampleOrg/gpurenderdemo.h"
-
+#include "ExampleOrg/pickpixel2.h"
 #include "ImageManage/imagemanage.h"
 namespace Ui {
 class MainWindow;
@@ -135,6 +135,8 @@ private slots:
 
     void on_action_Draw_triggered();
 
+    void on_actionPickPixel2_triggered();
+
 protected:
     inline void changeExample();
 
@@ -181,6 +183,9 @@ private:
     SGrid *mSGrid = nullptr;
     SpecularSpheres *mSpecularSpheres = nullptr;
     Theme *mTheme = nullptr;
+    PickPixel2* mPickPixel2 = nullptr;
+
+
 
     CustomLinkView *mCustomLinkView = nullptr;
     EasyView *mEasyView = nullptr;

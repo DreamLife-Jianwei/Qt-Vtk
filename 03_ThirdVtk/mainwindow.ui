@@ -58,7 +58,7 @@
          </rect>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>27</number>
         </property>
         <widget class="QWidget" name="tab_ambientSpheres">
          <attribute name="title">
@@ -195,6 +195,11 @@
           <string>页</string>
          </attribute>
         </widget>
+        <widget class="QWidget" name="tab_PickPixel2">
+         <attribute name="title">
+          <string>页</string>
+         </attribute>
+        </widget>
        </widget>
       </widget>
       <widget class="QWidget" name="tab_ImageManage">
@@ -213,7 +218,7 @@
      <x>0</x>
      <y>0</y>
      <width>1366</width>
-     <height>19</height>
+     <height>18</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu_Example">
@@ -247,6 +252,7 @@
     <addaction name="actionSGrid"/>
     <addaction name="actionSpecularSpheres"/>
     <addaction name="actionTheme"/>
+    <addaction name="actionPickPixel2"/>
    </widget>
    <widget class="QMenu" name="menu_Start">
     <property name="title">
@@ -494,6 +500,11 @@
    </property>
    <property name="toolTip">
     <string>绘制</string>
+   </property>
+  </action>
+  <action name="actionPickPixel2">
+   <property name="text">
+    <string>PickPixel2</string>
    </property>
   </action>
  </widget>
