@@ -65,17 +65,14 @@ public:
 
         qDebug() << "asd";
 
-        vtkRenderWindowInteractor* interactor =
-                this->Viewer->GetRenderWindow()->GetInteractor();
+        vtkRenderWindowInteractor* interactor = this->Viewer->GetRenderWindow()->GetInteractor();
         vtkRenderer* renderer = this->Viewer->GetRenderer();
         vtkImageActor* actor = this->Viewer->GetImageActor();
         vtkImageData* image = this->Viewer->GetInput();
-        vtkInteractorStyle* style =
-                dynamic_cast<vtkInteractorStyle*>(interactor->GetInteractorStyle());
+        vtkInteractorStyle* style = dynamic_cast<vtkInteractorStyle*>(interactor->GetInteractorStyle());
 
         // Pick at the mouse location provided by the interactor
-        this->Picker->Pick(interactor->GetEventPosition()[0],
-                interactor->GetEventPosition()[1], 0.0, renderer);
+       qDebug() << this->Picker->Pick(interactor->GetEventPosition()[0],interactor->GetEventPosition()[1], 0.0, renderer);
 
         // There could be other props assigned to this picker, so
         // make sure we picked the image actor
